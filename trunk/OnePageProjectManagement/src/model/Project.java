@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import exception.AddElementException;
+import exception.RemoveElementException;
+
 public class Project {
 
 	private String name;
@@ -25,48 +28,61 @@ public class Project {
 		this.objective = objective;
 	}
 
-	public void addUser(User usr) {
+	public void addUser(User usr) throws AddElementException {
 		if (this.users == null)
 			setUsers(new ArrayList<User>());
-		this.users.add(usr);
+		if (!this.users.add(usr))
+			throw new AddElementException("Specified user cannot be added!");
 	}
 
-	public void removeUser(User usr) {
+	public void removeUser(User usr) throws RemoveElementException {
 		if (this.users.size() > 0)
-			this.users.remove(usr);
+			if (!this.users.remove(usr))
+				throw new RemoveElementException(
+						"Specified user cannot be removed!");
 	}
 
-	public void addObjective(Objective obj) {
+	public void addObjective(Objective obj) throws AddElementException {
 		if (this.objectives == null)
 			setObjectives(new ArrayList<Objective>());
-		this.objectives.add(obj);
+		if (!this.objectives.add(obj))
+			throw new AddElementException(
+					"Specified objective cannot be added!");
 	}
 
-	public void removeObjective(Objective obj) {
+	public void removeObjective(Objective obj) throws RemoveElementException {
 		if (this.objectives.size() > 0)
-			this.objectives.remove(obj);
+			if (!this.objectives.remove(obj))
+				throw new RemoveElementException(
+						"Specified objective cannot be removed!");
 	}
 
-	public void addCost(Cost cs) {
+	public void addCost(Cost cs) throws AddElementException {
 		if (this.costs == null)
 			setCosts(new ArrayList<Cost>());
-		this.costs.add(cs);
+		if (!this.costs.add(cs))
+			throw new AddElementException("Specified cost cannot be added!");
 	}
 
-	public void removeCost(Cost cs) {
+	public void removeCost(Cost cs) throws RemoveElementException {
 		if (this.costs.size() > 0)
-			this.costs.remove(cs);
+			if (!this.costs.remove(cs))
+				throw new RemoveElementException(
+						"Specified cost cannot be removed!");
 	}
 
-	public void addSummary(Summary sm) {
+	public void addSummary(Summary sm) throws AddElementException {
 		if (this.summaries == null)
 			setSummaries(new ArrayList<Summary>());
-		this.summaries.add(sm);
+		if (!this.summaries.add(sm))
+			throw new AddElementException("Specified summary cannot be added!");
 	}
 
-	public void removeSummary(Summary sm) {
+	public void removeSummary(Summary sm) throws RemoveElementException {
 		if (this.summaries.size() > 0)
-			this.summaries.remove(sm);
+			if (!this.summaries.remove(sm))
+				throw new RemoveElementException(
+						"Specified summary cannot be removed!");
 	}
 
 	public ArrayList<Summary> getSummaries() {
