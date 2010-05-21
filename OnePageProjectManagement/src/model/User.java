@@ -1,11 +1,16 @@
 package model;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import exception.AddElementException;
+
 public class User {
 
 	private String userName;
 	private String nameSurname;
 	private String password;
-	private Assignment assignments;
+	private ArrayList<Assignment> assignments;
 
 	public User(String userName, String nameSurname, String password) {
 		super();
@@ -14,11 +19,26 @@ public class User {
 		this.password = password;
 	}
 
-	public Assignment getAssignments() {
+	public void addAssignment(Assignment assgn) throws AddElementException {
+		if (this.assignments == null)
+			setAssignments(new ArrayList<Assignment>());
+		if (!this.assignments.add(assgn))
+			throw new AddElementException(
+					"Specified assignment cannot be added!");
+	}
+
+	public void removeAssignment(Assignment assgn) throws RemoteException {
+		if (this.assignments.size() > 0)
+			if (!this.assignments.remove(assgn))
+				throw new RemoteException(
+						"Specified assignment cannot be removed!");
+	}
+
+	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
 
-	public void setAssignments(Assignment assignments) {
+	public void setAssignments(ArrayList<Assignment> assignments) {
 		this.assignments = assignments;
 	}
 
