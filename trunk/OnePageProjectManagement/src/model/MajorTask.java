@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import exception.AddElementException;
+import exception.RemoveElementException;
+
 public class MajorTask extends Task {
 
 	private ArrayList<MajorSlice> majorSlices;
@@ -10,15 +13,19 @@ public class MajorTask extends Task {
 		super(name);
 	}
 
-	public void addMajorSlice(MajorSlice ms) {
+	public void addMajorSlice(MajorSlice ms) throws AddElementException {
 		if (this.majorSlices == null)
 			setMajorSlices(new ArrayList<MajorSlice>());
-		this.majorSlices.add(ms);
+		if (!this.majorSlices.add(ms))
+			throw new AddElementException(
+					"Specified major task cannot be added!");
 	}
 
-	public void removeMajorSlice(MajorSlice ms) {
+	public void removeMajorSlice(MajorSlice ms) throws RemoveElementException {
 		if (this.majorSlices.size() > 0)
-			this.majorSlices.remove(ms);
+			if (!this.majorSlices.remove(ms))
+				throw new RemoveElementException(
+						"Specified major task cannot be removed!");
 	}
 
 	public ArrayList<MajorSlice> getMajorSlices() {

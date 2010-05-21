@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import exception.AddElementException;
+import exception.RemoveElementException;
+
 public class Objective {
 
 	private String name;
@@ -12,15 +15,18 @@ public class Objective {
 		this.name = name;
 	}
 
-	public void addTask(Task newTask) {
+	public void addTask(Task newTask) throws AddElementException {
 		if (this.tasks == null)
 			setTasks(new ArrayList<Task>());
-		this.tasks.add(newTask);
+		if (!this.tasks.add(newTask))
+			throw new AddElementException("Specified task cannot be added!");
 	}
 
-	public void removeTask(Task tsk) {
+	public void removeTask(Task tsk) throws RemoveElementException {
 		if (this.tasks.size() > 0)
-			this.tasks.remove(tsk);
+			if (!this.tasks.remove(tsk))
+				throw new RemoveElementException(
+						"Specified task cannot be removed!");
 	}
 
 	public ArrayList<Task> getTasks() {
