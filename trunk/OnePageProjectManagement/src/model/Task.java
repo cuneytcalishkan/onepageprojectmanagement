@@ -13,7 +13,11 @@ public abstract class Task {
 	private ArrayList<Slice> slices;
 	private ArrayList<Assignment> assignments;
 
-	public Task(long id,String name) {
+	public Task() {
+		super();
+	}
+
+	public Task(long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
