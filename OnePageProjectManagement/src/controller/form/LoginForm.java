@@ -20,10 +20,10 @@ public class LoginForm extends ActionForm {
         ActionErrors errors = new ActionErrors();
 
         if(username == null || username.equals(""))
-	    	errors.add("city", new ActionMessage("username.invalid"));
+	    	errors.add("username", new ActionMessage("username.invalid"));
 
 	    if(username == null || username.equals(""))
-	    	errors.add("owner", new ActionMessage("password.invalid"));
+	    	errors.add("password", new ActionMessage("password.invalid"));
 	    
         return errors;
 }

@@ -13,7 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ant-antlr-1.6.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm.jar"/>
@@ -46,5 +45,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts-scripting-1.3.8.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts-taglib-1.3.8.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts-tiles-1.3.8.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ojdbc14.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

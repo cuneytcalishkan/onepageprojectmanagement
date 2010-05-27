@@ -4,5 +4,5 @@
                maxActive="100" maxIdle="30" maxWait="10000" 
                username="CENG432" password="CENG" 
                driverClassName="oracle.jdbc.driver.OracleDriver "
-               url="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+               url="jdbc:oracle:thin:@192.168.1.5:1521:ORCL"/>
 </Context>
