@@ -8,6 +8,7 @@ import exception.RemoveElementException;
 
 public class Project {
 
+	private long id;
 	private String name;
 	private Date startDate;
 	private Date finishDate;
@@ -18,9 +19,10 @@ public class Project {
 	private ArrayList<Objective> objectives;
 	private ArrayList<User> users;
 
-	public Project(String name, Date startDate, Date finishDate, String leader,
-			String objective) {
+	public Project(long id, String name, Date startDate, Date finishDate,
+			String leader, String objective) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
@@ -155,6 +157,14 @@ public class Project {
 
 	public void setObjective(String objective) {
 		this.objective = objective;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

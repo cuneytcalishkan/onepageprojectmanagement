@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Summary {
 
+	private long id;
 	private Date summaryDate;
 	private String description;
 
@@ -11,6 +12,14 @@ public class Summary {
 		super();
 		this.summaryDate = summaryDate;
 		this.description = description;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Date getSummaryDate() {

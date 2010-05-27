@@ -7,13 +7,15 @@ import exception.AddElementException;
 
 public class User {
 
+	private long id;
 	private String userName;
 	private String nameSurname;
 	private String password;
 	private ArrayList<Assignment> assignments;
 
-	public User(String userName, String nameSurname, String password) {
+	public User(long id,String userName, String nameSurname, String password) {
 		super();
+		this.id = id;
 		this.userName = userName;
 		this.nameSurname = nameSurname;
 		this.password = password;
@@ -64,6 +66,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

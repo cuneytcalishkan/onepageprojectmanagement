@@ -9,8 +9,8 @@ public class MajorTask extends Task {
 
 	private ArrayList<MajorSlice> majorSlices;
 
-	public MajorTask(String name) {
-		super(name);
+	public MajorTask(long id, String name) {
+		super(id, name);
 	}
 
 	public void addMajorSlice(MajorSlice ms) throws AddElementException {
