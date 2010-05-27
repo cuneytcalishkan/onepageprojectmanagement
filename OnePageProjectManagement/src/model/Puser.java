@@ -1,9 +1,10 @@
 package model;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,28 +16,24 @@ import javax.persistence.Table;
 import exception.AddElementException;
 import exception.RemoveElementException;
 
-
-
 @Entity
-@Table (name = "USERS")
+@Table(name = "PUSER")
 public class Puser {
 
-	@ManyToMany(
-	        targetEntity=Project.class,
-	        cascade={CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-	        name="WORKSON",
-	        joinColumns=@JoinColumn(name="USER_ID"),
-	        inverseJoinColumns=@JoinColumn(name="PROJECT_ID"))
-	        
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+
+	
 	private long id;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "ASSIGNMET", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	private String userName;
 	private String nameSurname;
 	private String password;
 	private ArrayList<Assignment> assignments;
 	private ArrayList<Project> projects;
 
-	public Puser(long id,String userName, String nameSurname, String password) {
+	public Puser(long id, String userName, String nameSurname, String password) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -58,26 +55,22 @@ public class Puser {
 				throw new RemoteException(
 						"Specified assignment cannot be removed!");
 	}
-	
-	public void addProject(Project prj) throws AddElementException
-	{
-		if(this.projects == null)
+
+	public void addProject(Project prj) throws AddElementException {
+		if (this.projects == null)
 			setProjects(new ArrayList<Project>());
-		if(!this.projects.add(prj))
-		{
-			throw new AddElementException(
-					"Specified project cannot be added!");
+		if (!this.projects.add(prj)) {
+			throw new AddElementException("Specified project cannot be added!");
 		}
 	}
 
-	public void removeProject(Project prj) throws RemoveElementException
-	{
-		if(this.projects.size() > 0)
-			if(!this.projects.remove(prj))
+	public void removeProject(Project prj) throws RemoveElementException {
+		if (this.projects.size() > 0)
+			if (!this.projects.remove(prj))
 				throw new RemoveElementException(
 						"Specified prject cannot be removed!");
 	}
-	
+
 	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
@@ -110,7 +103,8 @@ public class Puser {
 		this.password = password;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
