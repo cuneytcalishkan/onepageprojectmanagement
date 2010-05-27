@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import exception.AddElementException;
@@ -20,13 +21,7 @@ import exception.RemoveElementException;
 @Table(name = "PUSER")
 public class Puser {
 
-	@ManyToMany(targetEntity = Project.class, cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE })
-	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	private long id;
-	@ManyToMany(targetEntity = MajorTask.class, cascade = {
-			CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "ASSIGNMET", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	private String userName;
 	private String nameSurname;
 	private String password;
@@ -79,6 +74,7 @@ public class Puser {
 						"Specified prject cannot be removed!");
 	}
 
+	@OneToMany(mappedBy="user")
 	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
@@ -121,6 +117,9 @@ public class Puser {
 		this.id = id;
 	}
 
+	@ManyToMany(targetEntity = Project.class, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE })
+	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	public ArrayList<Project> getProjects() {
 		return projects;
 	}

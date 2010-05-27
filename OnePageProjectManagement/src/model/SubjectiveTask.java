@@ -2,7 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import exception.AddElementException;
@@ -12,8 +16,6 @@ import exception.RemoveElementException;
 @Table(name = "SUBJECTIVETASK")
 public class SubjectiveTask extends Task {
 
-	
-	
 	private ArrayList<SubjectiveSlice> subjectiveSlices;
 
 	public SubjectiveTask() {
@@ -41,6 +43,8 @@ public class SubjectiveTask extends Task {
 						"Specified subjective task cannot be removed!");
 	}
 
+	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"))
 	public ArrayList<SubjectiveSlice> getSubjectiveSlices() {
 		return subjectiveSlices;
 	}

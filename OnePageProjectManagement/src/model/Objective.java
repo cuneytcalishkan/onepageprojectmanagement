@@ -20,12 +20,9 @@ import exception.RemoveElementException;
 public class Objective {
 
 	private long id;
-
-	@ManyToMany(targetEntity = MajorTask.class, cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE })
-	@JoinTable(name = "HASTASK", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	private String name;
-	private ArrayList<Task> tasks;
+	private ArrayList<MajorTask> majorTasks;
+	private ArrayList<SubjectiveTask> subjectiveTasks;
 
 	public Objective() {
 		super();
@@ -37,26 +34,34 @@ public class Objective {
 		this.name = name;
 	}
 
-	public void addTask(Task newTask) throws AddElementException {
-		if (this.tasks == null)
-			setTasks(new ArrayList<Task>());
-		if (!this.tasks.add(newTask))
+	public void addMajorTask(MajorTask newTask) throws AddElementException {
+		if (this.majorTasks == null)
+			setMajorTasks(new ArrayList<MajorTask>());
+		if (!this.majorTasks.add(newTask))
 			throw new AddElementException("Specified task cannot be added!");
 	}
 
-	public void removeTask(Task tsk) throws RemoveElementException {
-		if (this.tasks.size() > 0)
-			if (!this.tasks.remove(tsk))
+	public void removeMajorTask(MajorTask tsk) throws RemoveElementException {
+		if (this.majorTasks.size() > 0)
+			if (!this.majorTasks.remove(tsk))
 				throw new RemoveElementException(
 						"Specified task cannot be removed!");
 	}
 
-	public ArrayList<Task> getTasks() {
-		return tasks;
+	public void addSubjectiveTask(SubjectiveTask newTask)
+			throws AddElementException {
+		if (this.subjectiveTasks == null)
+			setSubjectiveTasks(new ArrayList<SubjectiveTask>());
+		if (!this.subjectiveTasks.add(newTask))
+			throw new AddElementException("Specified task cannot be added!");
 	}
 
-	public void setTasks(ArrayList<Task> tasks) {
-		this.tasks = tasks;
+	public void removeSubjectiveTask(SubjectiveTask tsk)
+			throws RemoveElementException {
+		if (this.subjectiveTasks.size() > 0)
+			if (!this.subjectiveTasks.remove(tsk))
+				throw new RemoveElementException(
+						"Specified task cannot be removed!");
 	}
 
 	public String getName() {
@@ -75,6 +80,28 @@ public class Objective {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@ManyToMany(targetEntity = MajorTask.class, cascade = {
+			CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "HASTASK", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
+	public ArrayList<MajorTask> getMajorTasks() {
+		return majorTasks;
+	}
+
+	public void setMajorTasks(ArrayList<MajorTask> majorTasks) {
+		this.majorTasks = majorTasks;
+	}
+
+	@ManyToMany(targetEntity = SubjectiveTask.class, cascade = {
+			CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "HASSUBJECTIVE", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"))
+	public ArrayList<SubjectiveTask> getSubjectiveTasks() {
+		return subjectiveTasks;
+	}
+
+	public void setSubjectiveTasks(ArrayList<SubjectiveTask> subjectiveTasks) {
+		this.subjectiveTasks = subjectiveTasks;
 	}
 
 }

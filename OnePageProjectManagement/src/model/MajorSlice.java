@@ -2,20 +2,12 @@ package model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "MAJORSLICE")
 public class MajorSlice extends Slice {
-
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "MT_HAS", joinColumns = @JoinColumn(name = "MAJORSLICE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
-	
 	private boolean completed;
 	private boolean verified;
 
