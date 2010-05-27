@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+  "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <!-- ========== Form Bean Definitions ================= -->
+  <!-- Unused example
+  
+    <form-bean    name="feedbackForm" 
+                  type="com.seitti.tunnusx.web.FeedbackForm"/>
+  
+  -->
+  	<form-beans>
+   		<form-bean name="loginForm" 
+                  type="controller.form.LoginForm"/>
+                  
+        <form-bean name="observationForm" 
+                  type="seitti.web.ObservationForm"/>
+                  
+        <form-bean name="idForm" 
+                  type="seitti.web.IdForm"/>
+                  
+        <form-bean name="diaryForm" 
+                  type="seitti.web.EditDiaryForm"/>
+                  
+        <form-bean name="monthForm"
+        		  type="seitti.web.MonthForm"/>
+                  
+	</form-beans>
+
+  <global-forwards>
+    <forward name="generate"
+              path="/GenerateTestData.do"/>
+    
+    <forward name="diary"
+              path="/WeatherDiary.do"/>
+              
+    <forward name="editDiary"
+    		  path="/EditDiary.do"/>
+              
+    <forward name="add"
+              path="/EditObservation.do"/>  
+              
+    <forward name="login"
+              path="/Login.do"/>   
+              
+    <forward name="logout"
+    			path="/Logout.do"/>      
+  </global-forwards>
+  
+
+  <!-- ========== Action Mapping Definitions ============ -->
+  <action-mappings>
+    <!-- Unused example
+    <action   path="/sendFeedback"
+              type="com.seitti.tunnusx.web.SendFeedbackAction"
+              name="feedbackForm"
+              input="/feedback.jsp"
+              scope="request"
+              validate="true">
+	    <forward name="success" path="/thanks.jsp"/>
+    </action>
+	-->
+	
+    <action path="/GenerateTestData" 
+    		type="seitti.web.SetUpAction">
+    	<forward name="success" path="/hello.jsp" />
+    </action>
+    
+    <action path="/WeatherDiary" 
+    		type="seitti.web.DiaryAction"
+    		name="monthForm"
+    		scope="request"
+    		input="diary.jsp">
+    	<forward name="success" path="/diary.jsp" />
+    </action>
+        
+    <action path="/EditDiary"
+    		type="seitti.web.EditDiaryAction"
+    		name="diaryForm"
+    		scope="request"
+    		input="/editDiary.jsp"
+    		validate="false">
+    	<forward name="failure" path="/message.jsp"/>
+    </action>
+    
+    <action   path="/EditDiarySaver"
+              type="seitti.web.EditDiarySaverAction"
+              name="diaryForm"
+              scope="request"
+              input="/editDiary.jsp"
+              validate="true">
+	    <forward name="success" path="/WeatherDiary.do" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+    		
+    <action   path="/EditObservation"
+              type="seitti.web.EditObservationAction"
+              name="observationForm"
+              scope="request"
+              input="/editObservation.jsp"
+              validate="false">
+	    <forward name="failure" path="/editObservation.jsp"/>
+    </action>
+
+    <action   path="/EditObservationSaver"
+              type="seitti.web.EditObservationSaverAction"
+              name="observationForm"
+              scope="request"
+              input="/editObservation.jsp"
+              validate="true">
+	    <forward name="success" path="/WeatherDiary.do" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+
+    <action   path="/DeleteObservation"
+              type="seitti.web.DeleteObservationAction"
+              name="idForm">
+	    <forward name="success" path="/WeatherDiary.do" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+    
+    <action path="/Login"
+              type="controller.LoginAction"
+              name="loginForm"
+              input="/login.jsp"
+              scope="request">
+	    <forward name="success" path="/WeatherDiary.do"/>
+    </action>
+
+    <action path="/Logout"
+              type="controller.LogoutAction">
+              <forward name="success" path="/WeatherDiary.do"/>
+    </action>
+    
+    <action path="/Info"
+    		type="seitti.web.InfoAction">
+    		<forward name="success" path="/info.jsp"/>
+    </action>
+  </action-mappings>
+  
+  <message-resources parameter="seitti.MessageResources"/>
+
+</struts-config>
