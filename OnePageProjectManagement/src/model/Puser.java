@@ -3,8 +3,8 @@ package model;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,10 +20,12 @@ import exception.RemoveElementException;
 @Table(name = "PUSER")
 public class Puser {
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(targetEntity = Project.class, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE })
 	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	private long id;
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(targetEntity = MajorTask.class, cascade = {
+			CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "ASSIGNMET", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	private String userName;
 	private String nameSurname;
