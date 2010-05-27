@@ -45,6 +45,11 @@ public class Puser {
 		this.role = role;
 	}
 
+	@Override
+	public String toString() {
+		return this.nameSurname;
+	}
+
 	public void addAssignment(Assignment assgn) throws AddElementException {
 		if (this.assignments == null)
 			setAssignments(new ArrayList<Assignment>());
@@ -75,8 +80,8 @@ public class Puser {
 						"Specified prject cannot be removed!");
 	}
 
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name="USER_ID")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "USER_ID")
 	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
