@@ -11,7 +11,7 @@ private static final SessionFactory sessionFactory;
 
     static {
         try {
-            sessionFactory = new AnnotationConfiguration().configure("/hibernate.cfg.xml").buildSessionFactory();
+            sessionFactory = new AnnotationConfiguration().configure("/controller/hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             // Log exception!
         	ex.printStackTrace();

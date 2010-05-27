@@ -141,6 +141,6 @@
     </action>
   </action-mappings>
   
-  <message-resources parameter="seitti.MessageResources"/>
+  <message-resources parameter="resources.MessageResources"/>
 
 </struts-config>
