@@ -17,7 +17,7 @@ public class Project {
     @ManyToMany(
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             mappedBy = "projects",
-            targetEntity = User.class
+            targetEntity = Puser.class
         )
 	
 	
@@ -30,7 +30,7 @@ public class Project {
 	private ArrayList<Summary> summaries;
 	private ArrayList<Cost> costs;
 	private ArrayList<Objective> objectives;
-	private ArrayList<User> users;
+	private ArrayList<Puser> users;
 
 	public Project(long id, String name, Date startDate, Date finishDate,
 			long leader, String objective) {
@@ -43,14 +43,14 @@ public class Project {
 		this.objective = objective;
 	}
 
-	public void addUser(User usr) throws AddElementException {
+	public void addUser(Puser usr) throws AddElementException {
 		if (this.users == null)
-			setUsers(new ArrayList<User>());
+			setUsers(new ArrayList<Puser>());
 		if (!this.users.add(usr))
 			throw new AddElementException("Specified user cannot be added!");
 	}
 
-	public void removeUser(User usr) throws RemoveElementException {
+	public void removeUser(Puser usr) throws RemoveElementException {
 		if (this.users.size() > 0)
 			if (!this.users.remove(usr))
 				throw new RemoveElementException(
@@ -124,11 +124,11 @@ public class Project {
 		this.objectives = objectives;
 	}
 
-	public ArrayList<User> getUsers() {
+	public ArrayList<Puser> getUsers() {
 		return users;
 	}
 
-	public void setUsers(ArrayList<User> users) {
+	public void setUsers(ArrayList<Puser> users) {
 		this.users = users;
 	}
 
