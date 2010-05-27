@@ -17,7 +17,7 @@ import exception.RemoveElementException;
 @Entity
 @Table(name = "PROJECT")
 public class Project {
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "projects", targetEntity = Puser.class)
+
 	private long id;
 	private String name;
 	private Date startDate;
@@ -113,7 +113,6 @@ public class Project {
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "COST_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
-	
 	public ArrayList<Cost> getCosts() {
 		return costs;
 	}
@@ -132,6 +131,7 @@ public class Project {
 		this.objectives = objectives;
 	}
 
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "projects", targetEntity = Puser.class)
 	public ArrayList<Puser> getUsers() {
 		return users;
 	}
