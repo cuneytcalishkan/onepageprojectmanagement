@@ -9,10 +9,10 @@ import javax.persistence.Table;
 public class Assignment {
 
 	private char priority;
-	private User user;
+	private Puser user;
 	private Task task;
 
-	public Assignment(char priority, User user, Task task) {
+	public Assignment(char priority, Puser user, Task task) {
 		super();
 		this.priority = priority;
 		this.user = user;
@@ -27,11 +27,11 @@ public class Assignment {
 		this.priority = priority;
 	}
 
-	public User getUser() {
+	public Puser getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Puser user) {
 		this.user = user;
 	}
 
