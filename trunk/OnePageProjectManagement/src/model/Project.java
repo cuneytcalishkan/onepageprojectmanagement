@@ -5,7 +5,10 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import exception.AddElementException;
@@ -19,7 +22,7 @@ public class Project {
 	private String name;
 	private Date startDate;
 	private Date finishDate;
-	private long leader;
+	private Puser leader;
 	private String objective;
 	private ArrayList<Summary> summaries;
 	private ArrayList<Cost> costs;
@@ -31,7 +34,7 @@ public class Project {
 	}
 
 	public Project(long id, String name, Date startDate, Date finishDate,
-			long leader, String objective) {
+			Puser leader, String objective) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -98,6 +101,8 @@ public class Project {
 						"Specified summary cannot be removed!");
 	}
 
+	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "COMMENTED", joinColumns = @JoinColumn(name = "SUMMARY_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	public ArrayList<Summary> getSummaries() {
 		return summaries;
 	}
@@ -106,6 +111,9 @@ public class Project {
 		this.summaries = summaries;
 	}
 
+	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "COST_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	
 	public ArrayList<Cost> getCosts() {
 		return costs;
 	}
@@ -114,6 +122,8 @@ public class Project {
 		this.costs = costs;
 	}
 
+	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	public ArrayList<Objective> getObjectives() {
 		return objectives;
 	}
@@ -154,11 +164,11 @@ public class Project {
 		this.finishDate = finishDate;
 	}
 
-	public long getLeader() {
+	public Puser getLeader() {
 		return leader;
 	}
 
-	public void setLeader(long leader) {
+	public void setLeader(Puser leader) {
 		this.leader = leader;
 	}
 

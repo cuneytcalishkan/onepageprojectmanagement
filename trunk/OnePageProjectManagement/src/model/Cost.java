@@ -2,6 +2,14 @@ package model;
 
 import java.awt.Color;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "COST")
 public class Cost {
 
 	private long id;
@@ -45,6 +53,8 @@ public class Cost {
 		this.expense = expense;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}

@@ -2,11 +2,18 @@ package model;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import exception.AddElementException;
 import exception.RemoveElementException;
 
+@Entity
+@Table(name = "SUBJECTIVETASK")
 public class SubjectiveTask extends Task {
 
+	
+	
 	private ArrayList<SubjectiveSlice> subjectiveSlices;
 
 	public SubjectiveTask() {

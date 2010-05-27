@@ -2,12 +2,28 @@ package model;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import exception.AddElementException;
 import exception.RemoveElementException;
 
+@Entity
+@Table(name = "OBJECTIVE")
 public class Objective {
 
 	private long id;
+
+	@ManyToMany(targetEntity = MajorTask.class, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE })
+	@JoinTable(name = "HASTASK", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	private String name;
 	private ArrayList<Task> tasks;
 
@@ -51,6 +67,8 @@ public class Objective {
 		this.name = name;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
