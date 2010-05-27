@@ -1,12 +1,33 @@
 package model;
-
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import exception.AddElementException;
 
+
+
+@Entity
+@Table (name = "USERS")
 public class Users {
 
+	@ManyToMany(
+	        targetEntity=Project.class,
+	        cascade={CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+	        name="WORKSON",
+	        joinColumns=@JoinColumn(name="USER_ID"),
+	        inverseJoinColumns=@JoinColumn(name="PROJECT_ID"))
+	        
 	private long id;
 	private String userName;
 	private String nameSurname;
@@ -68,6 +89,7 @@ public class Users {
 		this.password = password;
 	}
 
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
