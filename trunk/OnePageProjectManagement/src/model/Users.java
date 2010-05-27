@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import exception.AddElementException;
 
-public class User {
+public class Users {
 
 	private long id;
 	private String userName;
@@ -13,7 +13,7 @@ public class User {
 	private String password;
 	private ArrayList<Assignment> assignments;
 
-	public User(long id,String userName, String nameSurname, String password) {
+	public Users(long id,String userName, String nameSurname, String password) {
 		super();
 		this.id = id;
 		this.userName = userName;

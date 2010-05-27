@@ -2,6 +2,14 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SUMMARY")
 public class Summary {
 
 	private long id;
@@ -14,6 +22,7 @@ public class Summary {
 		this.description = description;
 	}
 
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
