@@ -3,24 +3,37 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import exception.AddElementException;
 import exception.RemoveElementException;
 
+@Entity
+@Table(name = "PROJECT")
 public class Project {
-
+    @ManyToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            mappedBy = "projects",
+            targetEntity = User.class
+        )
+	
+	
 	private long id;
 	private String name;
 	private Date startDate;
 	private Date finishDate;
-	private String leader;
+	private long leader;
 	private String objective;
 	private ArrayList<Summary> summaries;
 	private ArrayList<Cost> costs;
 	private ArrayList<Objective> objectives;
-	private ArrayList<Users> users;
+	private ArrayList<User> users;
 
 	public Project(long id, String name, Date startDate, Date finishDate,
-			String leader, String objective) {
+			long leader, String objective) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -30,14 +43,14 @@ public class Project {
 		this.objective = objective;
 	}
 
-	public void addUser(Users usr) throws AddElementException {
+	public void addUser(User usr) throws AddElementException {
 		if (this.users == null)
-			setUsers(new ArrayList<Users>());
+			setUsers(new ArrayList<User>());
 		if (!this.users.add(usr))
 			throw new AddElementException("Specified user cannot be added!");
 	}
 
-	public void removeUser(Users usr) throws RemoveElementException {
+	public void removeUser(User usr) throws RemoveElementException {
 		if (this.users.size() > 0)
 			if (!this.users.remove(usr))
 				throw new RemoveElementException(
@@ -111,11 +124,11 @@ public class Project {
 		this.objectives = objectives;
 	}
 
-	public ArrayList<Users> getUsers() {
+	public ArrayList<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(ArrayList<Users> users) {
+	public void setUsers(ArrayList<User> users) {
 		this.users = users;
 	}
 
@@ -143,11 +156,11 @@ public class Project {
 		this.finishDate = finishDate;
 	}
 
-	public String getLeader() {
+	public long getLeader() {
 		return leader;
 	}
 
-	public void setLeader(String leader) {
+	public void setLeader(long leader) {
 		this.leader = leader;
 	}
 
