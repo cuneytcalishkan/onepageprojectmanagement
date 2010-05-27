@@ -28,6 +28,7 @@ public class Puser {
 	private String userName;
 	private String nameSurname;
 	private String password;
+	private String role;
 	private ArrayList<Assignment> assignments;
 	private ArrayList<Project> projects;
 
@@ -36,12 +37,14 @@ public class Puser {
 
 	}
 
-	public Puser(long id, String userName, String nameSurname, String password) {
+	public Puser(long id, String userName, String nameSurname, String password,
+			String role) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.nameSurname = nameSurname;
 		this.password = password;
+		this.role = role;
 	}
 
 	public void addAssignment(Assignment assgn) throws AddElementException {
@@ -122,6 +125,14 @@ public class Puser {
 
 	public void setProjects(ArrayList<Project> projects) {
 		this.projects = projects;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }
