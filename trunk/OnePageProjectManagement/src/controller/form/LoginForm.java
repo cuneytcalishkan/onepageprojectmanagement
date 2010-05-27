@@ -2,8 +2,10 @@ package controller.form;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 public class LoginForm extends ActionForm {
     
@@ -13,6 +15,18 @@ public class LoginForm extends ActionForm {
 	private static final long serialVersionUID = 1L;
 	private String username;
     private String password;
+    
+    public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
+        ActionErrors errors = new ActionErrors();
+
+        if(username == null || username.equals(""))
+	    	errors.add("city", new ActionMessage("username.invalid"));
+
+	    if(username == null || username.equals(""))
+	    	errors.add("owner", new ActionMessage("password.invalid"));
+	    
+        return errors;
+}
         
     /**
      * @return Returns the password.
