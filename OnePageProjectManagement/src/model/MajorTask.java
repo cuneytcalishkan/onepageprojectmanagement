@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -23,6 +26,14 @@ public class MajorTask extends Task {
 
 	public MajorTask(long id, String name) {
 		super(id, name);
+	}
+
+	@Override
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long getId() {
+		// TODO Auto-generated method stub
+		return super.getId();
 	}
 
 	public void addAssignment(Assignment assgn) throws AddElementException {

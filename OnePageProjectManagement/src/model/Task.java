@@ -59,8 +59,7 @@ public abstract class Task {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public long getId() {
 		return id;
 	}

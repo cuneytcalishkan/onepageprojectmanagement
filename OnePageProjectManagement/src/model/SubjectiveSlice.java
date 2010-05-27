@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +14,16 @@ import javax.persistence.Table;
 public class SubjectiveSlice extends Slice {
 
 	private Color color;
+	
+	
+
+	@Override
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long getId() {
+		// TODO Auto-generated method stub
+		return super.getId();
+	}
 
 	public SubjectiveSlice(Date sliceDate) {
 		super(sliceDate);

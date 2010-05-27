@@ -34,8 +34,6 @@ public abstract class Slice {
 		this.sliceDate = sliceDate;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
