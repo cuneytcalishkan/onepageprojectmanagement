@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import exception.AddElementException;
+import exception.RemoveElementException;
 
 
 
@@ -33,6 +34,7 @@ public class Users {
 	private String nameSurname;
 	private String password;
 	private ArrayList<Assignment> assignments;
+	private ArrayList<Project> projects;
 
 	public Users(long id,String userName, String nameSurname, String password) {
 		super();
@@ -56,7 +58,26 @@ public class Users {
 				throw new RemoteException(
 						"Specified assignment cannot be removed!");
 	}
+	
+	public void addProject(Project prj) throws AddElementException
+	{
+		if(this.projects == null)
+			setProjects(new ArrayList<Project>());
+		if(!this.projects.add(prj))
+		{
+			throw new AddElementException(
+					"Specified project cannot be added!");
+		}
+	}
 
+	public void removeProject(Project prj) throws RemoveElementException
+	{
+		if(this.projects.size() > 0)
+			if(!this.projects.remove(prj))
+				throw new RemoveElementException(
+						"Specified prject cannot be removed!");
+	}
+	
 	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
@@ -96,6 +117,14 @@ public class Users {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(ArrayList<Project> projects) {
+		this.projects = projects;
 	}
 
 }
