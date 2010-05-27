@@ -22,8 +22,6 @@ public class Puser {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
-
-	
 	private long id;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "ASSIGNMET", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
@@ -32,6 +30,11 @@ public class Puser {
 	private String password;
 	private ArrayList<Assignment> assignments;
 	private ArrayList<Project> projects;
+
+	public Puser() {
+		super();
+
+	}
 
 	public Puser(long id, String userName, String nameSurname, String password) {
 		super();
