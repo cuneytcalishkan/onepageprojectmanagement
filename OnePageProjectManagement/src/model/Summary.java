@@ -16,14 +16,15 @@ import javax.persistence.Table;
 @Table(name = "SUMMARY")
 public class Summary {
 
-    @ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
-    @JoinTable(name="COMMENTED",
-        joinColumns = @JoinColumn(name="SUMMARY_ID"),
-        inverseJoinColumns = @JoinColumn(name="PROJECT_ID"))
-	
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "COMMENTED", joinColumns = @JoinColumn(name = "SUMMARY_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	private long id;
 	private Date summaryDate;
 	private String description;
+
+	public Summary() {
+		super();
+	}
 
 	public Summary(Date summaryDate, String description) {
 		super();
@@ -31,7 +32,8 @@ public class Summary {
 		this.description = description;
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}

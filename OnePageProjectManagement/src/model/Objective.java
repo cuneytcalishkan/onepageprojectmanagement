@@ -11,6 +11,10 @@ public class Objective {
 	private String name;
 	private ArrayList<Task> tasks;
 
+	public Objective() {
+		super();
+	}
+
 	public Objective(long id, String name) {
 		super();
 		this.id = id;

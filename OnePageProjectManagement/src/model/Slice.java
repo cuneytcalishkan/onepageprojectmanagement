@@ -7,6 +7,10 @@ public abstract class Slice {
 	private long id;
 	private Date sliceDate;
 
+	public Slice() {
+		super();
+	}
+
 	public Slice(long id, Date sliceDate) {
 		super();
 		this.id = id;
