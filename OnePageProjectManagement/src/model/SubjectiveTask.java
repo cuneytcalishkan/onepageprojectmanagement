@@ -22,6 +22,10 @@ public class SubjectiveTask extends Task {
 		super();
 	}
 
+	public SubjectiveTask(String name) {
+		super(name);
+	}
+
 	public SubjectiveTask(long id, String name) {
 		super(id, name);
 	}

@@ -28,6 +28,11 @@ public class Objective {
 		super();
 	}
 
+	public Objective(String name) {
+		super();
+		this.name = name;
+	}
+
 	public Objective(long id, String name) {
 		super();
 		this.id = id;

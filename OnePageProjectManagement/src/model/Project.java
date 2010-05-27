@@ -33,6 +33,16 @@ public class Project {
 		super();
 	}
 
+	public Project(String name, Date startDate, Date finishDate, Puser leader,
+			String objective) {
+		super();
+		this.name = name;
+		this.startDate = startDate;
+		this.finishDate = finishDate;
+		this.leader = leader;
+		this.objective = objective;
+	}
+
 	public Project(long id, String name, Date startDate, Date finishDate,
 			Puser leader, String objective) {
 		super();
@@ -42,6 +52,10 @@ public class Project {
 		this.finishDate = finishDate;
 		this.leader = leader;
 		this.objective = objective;
+	}
+
+	public long getLeaderId() {
+		return this.leader.getId();
 	}
 
 	public void addUser(Puser usr) throws AddElementException {
