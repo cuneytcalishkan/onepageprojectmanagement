@@ -19,7 +19,7 @@ import exception.RemoveElementException;
 
 @Entity
 @Table (name = "USERS")
-public class Users {
+public class User {
 
 	@ManyToMany(
 	        targetEntity=Project.class,
@@ -36,7 +36,7 @@ public class Users {
 	private ArrayList<Assignment> assignments;
 	private ArrayList<Project> projects;
 
-	public Users(long id,String userName, String nameSurname, String password) {
+	public User(long id,String userName, String nameSurname, String password) {
 		super();
 		this.id = id;
 		this.userName = userName;
