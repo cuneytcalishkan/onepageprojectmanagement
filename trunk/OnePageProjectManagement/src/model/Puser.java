@@ -35,6 +35,15 @@ public class Puser {
 
 	}
 
+	public Puser(String userName, String nameSurname, String password,
+			String role) {
+		super();
+		this.userName = userName;
+		this.nameSurname = nameSurname;
+		this.password = password;
+		this.role = role;
+	}
+
 	public Puser(long id, String userName, String nameSurname, String password,
 			String role) {
 		super();

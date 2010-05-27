@@ -26,6 +26,13 @@ public class Summary {
 		this.description = description;
 	}
 
+	public Summary(long id, Date summaryDate, String description) {
+		super();
+		this.id = id;
+		this.summaryDate = summaryDate;
+		this.description = description;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {

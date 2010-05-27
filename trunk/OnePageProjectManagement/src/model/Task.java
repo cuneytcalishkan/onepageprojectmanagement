@@ -10,10 +10,14 @@ public abstract class Task {
 	private long id;
 	private String name;
 	private ArrayList<Slice> slices;
-	
 
 	public Task() {
 		super();
+	}
+
+	public Task(String name) {
+		super();
+		this.name = name;
 	}
 
 	public Task(long id, String name) {
@@ -21,8 +25,6 @@ public abstract class Task {
 		this.id = id;
 		this.name = name;
 	}
-
-
 
 	public void addSlice(Slice newSlice) throws AddElementException {
 		if (this.slices == null)

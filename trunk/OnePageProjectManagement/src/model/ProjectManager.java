@@ -7,4 +7,7 @@ public class ProjectManager extends Puser {
 		super(id, userName, nameSurname, password, "project manager");
 	}
 
+	public ProjectManager(String userName, String nameSurname, String password) {
+		super(userName, nameSurname, password, "project manager");
+	}
 }

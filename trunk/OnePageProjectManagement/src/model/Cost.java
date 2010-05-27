@@ -21,6 +21,13 @@ public class Cost {
 		super();
 	}
 
+	public Cost(Color color, float budget, float expense) {
+		super();
+		this.color = color;
+		this.budget = budget;
+		this.expense = expense;
+	}
+
 	public Cost(long id, Color color, float budget, float expense) {
 		super();
 		this.id = id;

@@ -11,6 +11,11 @@ public abstract class Slice {
 		super();
 	}
 
+	public Slice(Date sliceDate) {
+		super();
+		this.sliceDate = sliceDate;
+	}
+
 	public Slice(long id, Date sliceDate) {
 		super();
 		this.id = id;
