@@ -16,17 +16,6 @@ public class LoginForm extends ActionForm {
 	private String username;
     private String password;
     
-    public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
-        ActionErrors errors = new ActionErrors();
-
-        if(username.equals(""))
-	    	errors.add("username", new ActionMessage("username.empty"));
-
-	    if(password.equals(""))
-	    	errors.add("password", new ActionMessage("password.empty"));
-	    
-        return errors;
-    }
         
     /**
      * @return Returns the password.
