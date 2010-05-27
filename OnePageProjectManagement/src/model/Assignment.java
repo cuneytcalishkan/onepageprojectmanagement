@@ -1,6 +1,11 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name="ASSIGNMENT")
 public class Assignment {
 
 	private char priority;
