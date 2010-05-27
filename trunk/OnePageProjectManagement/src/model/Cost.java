@@ -9,6 +9,10 @@ public class Cost {
 	private float budget;
 	private float expense;
 
+	public Cost() {
+		super();
+	}
+
 	public Cost(long id, Color color, float budget, float expense) {
 		super();
 		this.id = id;

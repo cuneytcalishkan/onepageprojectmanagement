@@ -14,13 +14,7 @@ import exception.RemoveElementException;
 @Entity
 @Table(name = "PROJECT")
 public class Project {
-    @ManyToMany(
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            mappedBy = "projects",
-            targetEntity = Puser.class
-        )
-	
-	
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "projects", targetEntity = Puser.class)
 	private long id;
 	private String name;
 	private Date startDate;
@@ -31,6 +25,10 @@ public class Project {
 	private ArrayList<Cost> costs;
 	private ArrayList<Objective> objectives;
 	private ArrayList<Puser> users;
+
+	public Project() {
+		super();
+	}
 
 	public Project(long id, String name, Date startDate, Date finishDate,
 			long leader, String objective) {

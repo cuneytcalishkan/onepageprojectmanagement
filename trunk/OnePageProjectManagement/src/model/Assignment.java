@@ -3,14 +3,17 @@ package model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="ASSIGNMENT")
+@Table(name = "ASSIGNMENT")
 public class Assignment {
 
 	private char priority;
 	private Puser user;
 	private Task task;
+
+	public Assignment() {
+		super();
+	}
 
 	public Assignment(char priority, Puser user, Task task) {
 		super();

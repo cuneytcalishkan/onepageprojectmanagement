@@ -9,6 +9,10 @@ public class SubjectiveTask extends Task {
 
 	private ArrayList<SubjectiveSlice> subjectiveSlices;
 
+	public SubjectiveTask() {
+		super();
+	}
+
 	public SubjectiveTask(long id, String name) {
 		super(id, name);
 	}
