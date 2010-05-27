@@ -20,7 +20,7 @@
                   type="controller.form.ProjectForm"/>
                   
         <form-bean name="idForm" 
-                  type="seitti.web.IdForm"/>
+                  type="controller.form.IdForm"/>
                   
         <form-bean name="diaryForm" 
                   type="seitti.web.EditDiaryForm"/>
@@ -141,6 +141,13 @@
     		input="/editProject.jsp"
     		scope="request">
     		<forward name="success" path="/index.jsp"/>
+    </action>
+    
+    <action path="/DeleteProject"
+              type="controllerDeleteProjectAction"
+              name="idForm">
+	    <forward name="success" path="/index.jsp" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
     </action>
   </action-mappings>
   
