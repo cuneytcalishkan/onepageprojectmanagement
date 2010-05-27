@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Users;
+import model.Puser;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
@@ -42,15 +42,14 @@ public class LoginAction extends Action {
         Session hibernateSession = HibernateUtil.getSession();
     	Transaction ta = hibernateSession.beginTransaction();
 		
-    	Users user = (Users) hibernateSession.createCriteria(Users.class)
-    		.add( Restrictions.eq("username", username ) ).uniqueResult();
+    	Puser user = (Puser) hibernateSession.createCriteria(Puser.class)
+    		.add(Restrictions.eq("userName", username)).uniqueResult();
         ta.commit();
         hibernateSession.close();
         
-        
         if(user != null && password.equals(user.getPassword())) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("isAdminUser", new Boolean(true));
+            session.setAttribute("role", user.getRole());
             
             ActionMessages actionMessages = new ActionMessages();
             actionMessages.add(ActionMessages.GLOBAL_MESSAGE,

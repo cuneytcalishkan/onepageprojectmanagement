@@ -16,8 +16,8 @@
    		<form-bean name="loginForm" 
                   type="controller.form.LoginForm"/>
                   
-        <form-bean name="observationForm" 
-                  type="seitti.web.ObservationForm"/>
+        <form-bean name="projectForm" 
+                  type="controller.form.ProjectForm"/>
                   
         <form-bean name="idForm" 
                   type="seitti.web.IdForm"/>
@@ -40,8 +40,8 @@
     <forward name="editDiary"
     		  path="/EditDiary.do"/>
               
-    <forward name="add"
-              path="/EditObservation.do"/>  
+    <forward name="editProject"
+              path="/EditProject.do"/>  
               
     <forward name="login"
               path="/Login.do"/>   
@@ -127,20 +127,23 @@
               name="loginForm"
               input="/login.jsp"
               scope="request">
-	    <forward name="success" path="/WeatherDiary.do"/>
+	    <forward name="success" path="/EditProject.do"/>
     </action>
 
     <action path="/Logout"
               type="controller.LogoutAction">
-              <forward name="success" path="/WeatherDiary.do"/>
+              <forward name="success" path="/Login.do"/>
     </action>
     
-    <action path="/Info"
-    		type="seitti.web.InfoAction">
-    		<forward name="success" path="/info.jsp"/>
+    <action path="/EditProject"
+    		type="controller.EditProject"
+    		name="projectForm"
+    		input="/editProject.jsp"
+    		scope="request">
+    		<forward name="success" path="/index.jsp"/>
     </action>
   </action-mappings>
   
-  <message-resources parameter="resources.MessageResources"/>
+  <message-resources parameter="controller.MessageResources"/>
 
 </struts-config>
