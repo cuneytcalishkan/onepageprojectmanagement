@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -39,6 +40,8 @@ public class MajorTask extends Task {
 						"Specified assignment cannot be removed!");
 	}
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "MAJORTASK_ID")
 	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
