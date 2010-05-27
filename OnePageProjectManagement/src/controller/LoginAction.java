@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Users;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -11,6 +13,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import controller.form.LoginForm;
 
@@ -34,7 +39,16 @@ public class LoginAction extends Action {
             return mapping.getInputForward();
         }
         
-        if("admin".equals(username) && "secret".equals(password)) {
+        Session hibernateSession = HibernateUtil.getSession();
+    	Transaction ta = hibernateSession.beginTransaction();
+		
+    	Users user = (Users) hibernateSession.createCriteria(Users.class)
+    		.add( Restrictions.eq("username", username ) ).uniqueResult();
+        ta.commit();
+        hibernateSession.close();
+        
+        
+        if(user != null && password.equals(user.getPassword())) {
             HttpSession session = request.getSession(true);
             session.setAttribute("isAdminUser", new Boolean(true));
             
