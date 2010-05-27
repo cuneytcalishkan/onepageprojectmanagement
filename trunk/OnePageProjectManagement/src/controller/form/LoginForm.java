@@ -19,14 +19,14 @@ public class LoginForm extends ActionForm {
     public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
         ActionErrors errors = new ActionErrors();
 
-        if(username == null || username.equals(""))
-	    	errors.add("username", new ActionMessage("username.invalid"));
+        if(username.equals(""))
+	    	errors.add("username", new ActionMessage("username.empty"));
 
-	    if(username == null || username.equals(""))
-	    	errors.add("password", new ActionMessage("password.invalid"));
+	    if(password.equals(""))
+	    	errors.add("password", new ActionMessage("password.empty"));
 	    
         return errors;
-}
+    }
         
     /**
      * @return Returns the password.
