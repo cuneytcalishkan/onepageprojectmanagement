@@ -4,12 +4,14 @@ import java.awt.Color;
 
 public class Cost {
 
+	private long id;
 	private Color color;
 	private float budget;
 	private float expense;
 
-	public Cost(Color color, float budget, float expense) {
+	public Cost(long id, Color color, float budget, float expense) {
 		super();
+		this.id = id;
 		this.color = color;
 		this.budget = budget;
 		this.expense = expense;
@@ -37,6 +39,14 @@ public class Cost {
 
 	public void setExpense(float expense) {
 		this.expense = expense;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

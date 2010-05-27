@@ -7,11 +7,11 @@ public class Assignment {
 	private User user;
 	private Task task;
 
-	public Assignment(char priority, User users, Task tasks) {
+	public Assignment(char priority, User user, Task task) {
 		super();
 		this.priority = priority;
-		this.user = users;
-		this.task = tasks;
+		this.user = user;
+		this.task = task;
 	}
 
 	public char getPriority() {

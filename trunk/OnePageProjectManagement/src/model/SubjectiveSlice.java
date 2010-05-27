@@ -7,8 +7,8 @@ public class SubjectiveSlice extends Slice {
 
 	private Color color;
 
-	public SubjectiveSlice(Date sliceDate) {
-		super(sliceDate);
+	public SubjectiveSlice(long id, Date sliceDate) {
+		super(id, sliceDate);
 	}
 
 	public Color getColor() {

@@ -7,8 +7,8 @@ public class MajorSlice extends Slice {
 	private boolean completed;
 	private boolean verified;
 
-	public MajorSlice(Date sliceDate) {
-		super(sliceDate);
+	public MajorSlice(long id, Date sliceDate) {
+		super(id, sliceDate);
 	}
 
 	public boolean isCompleted() {

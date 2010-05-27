@@ -9,8 +9,8 @@ public class SubjectiveTask extends Task {
 
 	private ArrayList<SubjectiveSlice> subjectiveSlices;
 
-	public SubjectiveTask(String name) {
-		super(name);
+	public SubjectiveTask(long id, String name) {
+		super(id, name);
 	}
 
 	public void addSubjectiveSlice(SubjectiveSlice ss)
@@ -22,7 +22,8 @@ public class SubjectiveTask extends Task {
 					"Specified subjective task cannot be added!");
 	}
 
-	public void removeSubjectiveSlice(SubjectiveSlice ss) throws RemoveElementException {
+	public void removeSubjectiveSlice(SubjectiveSlice ss)
+			throws RemoveElementException {
 		if (this.subjectiveSlices.size() > 0)
 			if (!this.subjectiveSlices.remove(ss))
 				throw new RemoveElementException(
