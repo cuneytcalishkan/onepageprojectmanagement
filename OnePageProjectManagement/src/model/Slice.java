@@ -2,6 +2,10 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public abstract class Slice {
 
 	private long id;
@@ -30,6 +34,8 @@ public abstract class Slice {
 		this.sliceDate = sliceDate;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
