@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -28,6 +31,14 @@ public class SubjectiveTask extends Task {
 
 	public SubjectiveTask(long id, String name) {
 		super(id, name);
+	}
+
+	@Override
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long getId() {
+		// TODO Auto-generated method stub
+		return super.getId();
 	}
 
 	public void addSubjectiveSlice(SubjectiveSlice ss)
