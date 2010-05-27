@@ -9,13 +9,13 @@ public class Assignment {
 
 	private char priority;
 	private Puser user;
-	private Task task;
+	private MajorTask task;
 
 	public Assignment() {
 		super();
 	}
 
-	public Assignment(char priority, Puser user, Task task) {
+	public Assignment(char priority, Puser user, MajorTask task) {
 		super();
 		this.priority = priority;
 		this.user = user;
@@ -38,11 +38,11 @@ public class Assignment {
 		this.user = user;
 	}
 
-	public Task getTask() {
+	public MajorTask getTask() {
 		return task;
 	}
 
-	public void setTask(Task task) {
+	public void setTask(MajorTask task) {
 		this.task = task;
 	}
 
