@@ -15,7 +15,7 @@
 		<property name="hibernate.connection.pool_size">5</property>
 		<property name="show_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- <property name="hibernate.hbm2ddl.auto">update</property>-->
 
 		<mapping class="model.Cost" />
 		<mapping class="model.MajorSlice" />
