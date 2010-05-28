@@ -19,7 +19,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
-import controller.form.ProjectForm;
+import controller.form.ProjectHeaderForm;
 
 /**
  * @author tile
@@ -36,7 +36,7 @@ public class EditProjectHeaderAction extends DispatchAction {
         	throw new RuntimeException("You are not unauthorized to execute this action.");
         }
         
-        ProjectForm projectForm = (ProjectForm) form;
+        ProjectHeaderForm projectForm = (ProjectHeaderForm) form;
         Transaction ta = null;
         Session hibernateSession = HibernateUtil.getSession();
         try {
