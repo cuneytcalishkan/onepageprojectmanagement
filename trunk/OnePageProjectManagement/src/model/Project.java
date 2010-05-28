@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,7 +27,7 @@ public class Project {
 	private String name;
 	private Date startDate;
 	private Date finishDate;
-	//private Puser leader;
+	private Puser leader;
 	private String objective;
 	private List<Summary> summaries;
 	private List<Cost> costs;
@@ -43,7 +44,7 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
-		//this.leader = leader;
+		// this.leader = leader;
 		this.objective = objective;
 	}
 
@@ -54,17 +55,17 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
-		//this.leader = leader;
+		// this.leader = leader;
 		this.objective = objective;
 	}
 
-//	public long getLeaderId() {
-//		return this.leader.getId();
-//	}
-//
-//	public void setLeaderId(long newId) {
-//		this.leader.setId(newId);
-//	}
+	public long getLeaderId() {
+		return this.leader.getId();
+	}
+
+	public void setLeaderId(long newId) {
+		this.leader.setId(newId);
+	}
 
 	public void addUser(Puser usr) throws AddElementException {
 		if (this.users == null)
@@ -153,7 +154,8 @@ public class Project {
 		this.objectives = objectives;
 	}
 
-	@ManyToMany(targetEntity = Puser.class, cascade = { CascadeType.PERSIST , CascadeType.MERGE})
+	@ManyToMany(targetEntity = Puser.class, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE })
 	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID"))
 	public List<Puser> getUsers() {
 		return users;
@@ -187,13 +189,15 @@ public class Project {
 		this.finishDate = finishDate;
 	}
 
-//	public Puser getLeader() {
-//		return leader;
-//	}
-//
-//	public void setLeader(Puser leader) {
-//		this.leader = leader;
-//	}
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "LEADERID")
+	public Puser getLeader() {
+		return leader;
+	}
+
+	public void setLeader(Puser leader) {
+		this.leader = leader;
+	}
 
 	public String getObjective() {
 		return objective;
