@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,6 +26,7 @@ public class MajorTask extends Task {
 
 	private List<Assignment> assignments;
 	private List<MajorSlice> majorSlices;
+	private List<Objective> objectives;
 
 	public MajorTask(long id, String name) {
 		super(id, name);
@@ -56,10 +59,6 @@ public class MajorTask extends Task {
 		return assignments;
 	}
 
-	public void setAssignments(ArrayList<Assignment> assignments) {
-		this.assignments = assignments;
-	}
-
 	public void addMajorSlice(MajorSlice ms) throws AddElementException {
 		if (this.majorSlices == null)
 			setMajorSlices(new ArrayList<MajorSlice>());
@@ -82,6 +81,23 @@ public class MajorTask extends Task {
 	}
 
 	public void setMajorSlices(ArrayList<MajorSlice> majorSlices) {
+		this.majorSlices = majorSlices;
+	}
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "majorTasks", targetEntity = Objective.class)
+	public List<Objective> getObjectives() {
+		return objectives;
+	}
+
+	public void setObjectives(List<Objective> objectives) {
+		this.objectives = objectives;
+	}
+
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
+	}
+
+	public void setMajorSlices(List<MajorSlice> majorSlices) {
 		this.majorSlices = majorSlices;
 	}
 
