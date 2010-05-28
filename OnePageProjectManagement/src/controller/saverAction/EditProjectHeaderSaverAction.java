@@ -49,7 +49,7 @@ public class EditProjectHeaderSaverAction extends DispatchAction {
 			project = new Project();
 		project.setName(projectForm.getName());
 		project.setObjective(projectForm.getObjective());
-		project.setLeader(user);
+		//project.setLeader(user);
 		try {
 			project.setStartDate(DateFormat.getDateInstance().parse(projectForm.getStartDate()));
 			project.setFinishDate(DateFormat.getDateInstance().parse(projectForm.getFinishDate()));
