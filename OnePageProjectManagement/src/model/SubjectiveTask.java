@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -59,8 +58,8 @@ public class SubjectiveTask extends Task {
 						"Specified subjective task cannot be removed!");
 	}
 
-	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"))
+	@OneToMany(mappedBy="task")
+	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"))
 	public List<SubjectiveSlice> getSubjectiveSlices() {
 		return subjectiveSlices;
 	}

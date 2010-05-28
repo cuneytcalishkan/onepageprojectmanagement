@@ -12,7 +12,7 @@ public class Assignment {
 
 	private char priority;
 	private Puser user;
-	private MajorTask task;
+	private MajorTask majorTask;
 
 	public Assignment() {
 		super();
@@ -22,7 +22,7 @@ public class Assignment {
 		super();
 		this.priority = priority;
 		this.user = user;
-		this.task = task;
+		this.majorTask = task;
 	}
 	public char getPriority() {
 		return priority;
@@ -45,11 +45,11 @@ public class Assignment {
 	@ManyToOne
     @JoinColumn(name="MAJORTASK_ID")
 	public MajorTask getTask() {
-		return task;
+		return majorTask;
 	}
 
 	public void setTask(MajorTask task) {
-		this.task = task;
+		this.majorTask = task;
 	}
 
 }
