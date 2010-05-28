@@ -122,7 +122,7 @@ public class Puser {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	public long getId() {
 		return id;
 	}
