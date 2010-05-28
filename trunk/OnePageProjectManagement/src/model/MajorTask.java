@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import exception.RemoveElementException;
 
 @Entity
 @Table(name = "MAJORTASK")
+@Embeddable
 public class MajorTask extends Task {
 
 	private ArrayList<Assignment> assignments;
