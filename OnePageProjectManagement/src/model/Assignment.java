@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,6 @@ public class Assignment {
 		this.user = user;
 		this.task = task;
 	}
-
 	public char getPriority() {
 		return priority;
 	}
@@ -29,7 +29,7 @@ public class Assignment {
 	public void setPriority(char priority) {
 		this.priority = priority;
 	}
-
+	@Id
 	public Puser getUser() {
 		return user;
 	}
@@ -37,7 +37,7 @@ public class Assignment {
 	public void setUser(Puser user) {
 		this.user = user;
 	}
-
+	@Id
 	public MajorTask getTask() {
 		return task;
 	}
