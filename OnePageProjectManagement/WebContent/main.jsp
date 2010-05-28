@@ -5,14 +5,14 @@
 
 <p>
 <c:if test="${user.role=='manager'}">
-<html:link forward="editUser">Add a New User</html:link>
+<html:link forward="editUser">Add New User</html:link>
 </c:if>
 </p>
 
 
 <p>
 <c:if test="${user.role=='project manager'}">
-<html:link forward="editProject">Add a New Project</html:link>
+<html:link forward="editProject">Add New Project</html:link>
 </c:if>
 </p>
 
