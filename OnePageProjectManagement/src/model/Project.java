@@ -122,7 +122,7 @@ public class Project {
 		return summaries;
 	}
 
-	public void setSummaries(ArrayList<Summary> summaries) {
+	public void setSummaries(List<Summary> summaries) {
 		this.summaries = summaries;
 	}
 
@@ -132,7 +132,7 @@ public class Project {
 		return costs;
 	}
 
-	public void setCosts(ArrayList<Cost> costs) {
+	public void setCosts(List<Cost> costs) {
 		this.costs = costs;
 	}
 
@@ -142,7 +142,7 @@ public class Project {
 		return objectives;
 	}
 
-	public void setObjectives(ArrayList<Objective> objectives) {
+	public void setObjectives(List<Objective> objectives) {
 		this.objectives = objectives;
 	}
 
@@ -153,7 +153,7 @@ public class Project {
 		return users;
 	}
 
-	public void setUsers(ArrayList<Puser> users) {
+	public void setUsers(List<Puser> users) {
 		this.users = users;
 	}
 
