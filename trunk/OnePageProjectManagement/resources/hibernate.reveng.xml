@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-name="ASSIGNMENT"/>
+  <table-filter match-name="COMMENTED"/>
+  <table-filter match-name="CONSISTOF"/>
+  <table-filter match-name="COST"/>
+  <table-filter match-name="HASSUBJECTIVE"/>
+  <table-filter match-name="HASTASK"/>
+  <table-filter match-name="MAJORSLICE"/>
+  <table-filter match-name="MAJORTASK"/>
+  <table-filter match-name="MT_HAS"/>
+  <table-filter match-name="OBJECTIVE"/>
+  <table-filter match-name="PROJECT"/>
+  <table-filter match-name="PROJECT_HAS"/>
+  <table-filter match-name="PUSER"/>
+  <table-filter match-name="ST_HAS"/>
+  <table-filter match-name="SUBJECTIVESLICE"/>
+  <table-filter match-name="SUBJECTIVETASK"/>
+  <table-filter match-name="SUMMARY"/>
+  <table-filter match-name="WORKSON"/>
+</hibernate-reverse-engineering>
