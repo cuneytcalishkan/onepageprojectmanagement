@@ -1,4 +1,4 @@
-package controller;
+package controller.editAction;
 
 import java.util.Date;
 
@@ -18,36 +18,36 @@ import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import controller.form.UserForm;
+import controller.HibernateUtil;
+import controller.form.ProjectForm;
 
 /**
  * @author tile
  */
-public class EditUserAction extends DispatchAction {
+public class EditProjectHeaderAction extends DispatchAction {
     
 	public ActionForward execute(ActionMapping mapping,
             ActionForm form,
             HttpServletRequest request,
             HttpServletResponse response) {
     	HttpSession session = request.getSession(true);
-    	UserForm userForm = (UserForm) form;
     	Puser user = (Puser) session.getAttribute("user");
-        if( user == null ||  (!user.getRole().equals("manager") &&
-        		!(user.getId() == userForm.getId())))  {
+        if( user == null || ! user.getRole().equals("project manager"))  {
         	throw new RuntimeException("You are not unauthorized to execute this action.");
         }
         
-        
+        ProjectForm projectForm = (ProjectForm) form;
         Transaction ta = null;
         Session hibernateSession = HibernateUtil.getSession();
         try {
             ta = hibernateSession.beginTransaction();
             
-            Puser pUser = (Puser) hibernateSession.get(Puser.class, userForm.getId());
-            userForm.setUserName(pUser.getUserName());
-			userForm.setNameSurname(pUser.getNameSurname());
-			userForm.setPassword(pUser.getPassword()); 
-			userForm.setRole(pUser.getRole());
+            Project project = (Project) hibernateSession.get(Project.class, projectForm.getId());
+			projectForm.setName(project.getName());
+			projectForm.setLeader(user.getNameSurname()); 
+			projectForm.setObjective(project.getObjective());
+			projectForm.setStartDate(project.getStartDate());
+			projectForm.setFinishDate(project.getFinishDate());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
@@ -56,9 +56,10 @@ public class EditUserAction extends DispatchAction {
 				ta.rollback();
 				hibernateSession.close();
 			}
+        	projectForm.setStartDate(new Date());
 	        ActionMessages actionMessages = new ActionMessages();
 	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-	        	new ActionMessage("user.notFound"));
+	        	new ActionMessage("project.notFound"));
 	        saveMessages(request,actionMessages);
 	        return mapping.findForward("failure");
         }

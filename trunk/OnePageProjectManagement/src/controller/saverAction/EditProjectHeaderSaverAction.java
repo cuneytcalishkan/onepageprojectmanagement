@@ -1,4 +1,4 @@
-package controller;
+package controller.saverAction;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,12 +17,13 @@ import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import controller.form.UserForm;
+import controller.HibernateUtil;
+import controller.form.ProjectForm;
 
 /**
  * @author tile
  */
-public class EditUserSaverAction extends DispatchAction {
+public class EditProjectHeaderSaverAction extends DispatchAction {
     
     public ActionForward execute(ActionMapping mapping,
             ActionForm form,
@@ -30,25 +31,33 @@ public class EditUserSaverAction extends DispatchAction {
             HttpServletResponse response) {
 
         HttpSession session = request.getSession(true);
-        UserForm userForm = (UserForm) form;
-    	Puser user = (Puser) session.getAttribute("user");
-        if( user == null ||  (!user.getRole().equals("manager") &&
-        		!(user.getId() == userForm.getId())))  {
+        Puser user = (Puser) session.getAttribute("user");
+        if( user == null || ! user.getRole().equals("project manager"))  {
         	throw new RuntimeException("You are not unauthorized to execute this action.");
         }
+
+        ProjectForm projectForm = (ProjectForm) form;
+
+        
         Session hibernateSession = HibernateUtil.getSession();
     	Transaction ta = hibernateSession.beginTransaction();
-    	Long id = userForm.getId();
-    	Puser pUser;
+    	Long id = projectForm.getId();
+    	Project project;
 		if(id != null || id != 0)
-			pUser = (Puser) hibernateSession.get(Puser.class, id);
+			project = (Project) hibernateSession.get(Project.class, id);
 		else
-			pUser = new Puser();
-		pUser.setUserName(userForm.getUserName());
-		pUser.setNameSurname(userForm.getNameSurname());
-		pUser.setPassword(userForm.getPassword());
-		pUser.setRole(userForm.getRole());
-        hibernateSession.saveOrUpdate(pUser);
+			project = new Project();
+		project.setName(projectForm.getName());
+		project.setObjective(projectForm.getObjective());
+		project.setLeader(user);
+		try {
+			project.setStartDate(DateFormat.getDateInstance().parse(projectForm.getStartDate()));
+			project.setFinishDate(DateFormat.getDateInstance().parse(projectForm.getFinishDate()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        hibernateSession.saveOrUpdate(project);
         ta.commit();
         hibernateSession.close();
         return mapping.findForward("success");

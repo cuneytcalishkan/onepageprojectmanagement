@@ -1,4 +1,4 @@
-package controller;
+package controller.deleteAction;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMessages;
 import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 
+import controller.HibernateUtil;
 import controller.form.IdForm;
 
 /**
