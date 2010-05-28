@@ -2,10 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import exception.AddElementException;
 import exception.RemoveElementException;
 
