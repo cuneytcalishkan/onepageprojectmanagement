@@ -129,8 +129,10 @@
     		type="controller.editAction.EditUserAction"
     		name="userForm"
     		input="/editUser.jsp"
-    		scope="request">
-    		<forward name="success" path="/index.jsp"/>
+    		scope="request"
+    		validate="false">
+    		<forward name="success" path="/editUser.jsp"/>
+    		<forward name="failure" path="/editUser.jsp"/>
     </action>
     
     <action path="/EditUserSaver"
