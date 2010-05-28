@@ -4,7 +4,7 @@
   <%-- condition?a:b below means that if "condition" is true, then a else b --%>
   <td>
   <c:choose>
-    <c:when test="${not user}">
+    <c:when test="${user==null}">
       <html:link forward="login">Login</html:link>
     </c:when>
     <c:otherwise>
