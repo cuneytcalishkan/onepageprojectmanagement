@@ -18,9 +18,12 @@
                   
 		<form-bean name="userForm"
 				  type="controller.form.UserForm"/>
+        
+        <form-bean name="summaryForm"
+				  type="controller.form.SummaryForm"/>
                   
         <form-bean name="projectForm" 
-                  type="controller.form.ProjectForm"/>
+                  type="controller.form.ProjectHeaderForm"/>
                   
         <form-bean name="idForm" 
                   type="controller.form.IdForm"/>    
@@ -68,25 +71,7 @@
     		input="main.jsp">
     	<forward name="success" path="/main.jsp" />
     </action>
-    
-    <action path="/EditProject"
-    		type="controller.editAction.EditProjectAction"
-    		name="projectForm"
-    		input="/editProject.jsp"
-    		scope="request">
-    		<forward name="success" path="/index.jsp"/>
-    </action>
-    
-    <action   path="/EditProjectSaver"
-              type="controller.saverAction.EditProjectSaverAction"
-              name="projectForm"
-              scope="request"
-              input="/editProject.jsp"
-              validate="true">
-	    <forward name="success" path="/index.jsps" redirect="true"/>
-	    <forward name="failure" path="/message.jsp"/>
-    </action>
-    
+   
     <action path="/EditProjectHeader"
     		type="controller.editAction.EditProjectHeaderAction"
     		name="projectHeaderForm"
@@ -95,7 +80,7 @@
     		<forward name="success" path="/index.jsp"/>
     </action>
     
-    <action   path="/EditProjectHeaderSaver"
+    <action path="/EditProjectHeaderSaver"
               type="controller.saverAction.EditProjectHeaderSaverAction"
               name="projectHeaderForm"
               scope="request"
@@ -112,6 +97,31 @@
 	    <forward name="failure" path="/message.jsp"/>
     </action>
     
+    <action path="/EditSummary"
+    		type="controller.editAction.EditSummaryAction"
+    		name="summaryForm"
+    		input="/editSummary.jsp"
+    		scope="request">
+    		<forward name="success" path="/index.jsp"/>
+    </action>
+    
+    <action path="/EditSummarySaver"
+              type="controller.saverAction.EditSummarySaverAction"
+              name="summaryForm"
+              scope="request"
+              input="/editSummary.jsp"
+              validate="true">
+	    <forward name="success" path="/index.jsps" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+    
+    <action path="/DeleteSummary"
+              type="controller.deleteAction.DeleteSummaryAction"
+              name="idForm">
+	    <forward name="success" path="/index.jsp" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+    
     <action path="/EditUser"
     		type="controller.editAction.EditUserAction"
     		name="userForm"
@@ -120,7 +130,7 @@
     		<forward name="success" path="/index.jsp"/>
     </action>
     
-    <action   path="/EditUserSaver"
+    <action path="/EditUserSaver"
               type="controller.saverAction.EditUserSaverAction"
               name="userForm"
               scope="request"
