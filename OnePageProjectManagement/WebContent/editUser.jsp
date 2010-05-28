@@ -37,7 +37,7 @@
 
 		<tr>
 			<td>Role&nbsp;:</td>
-			<td><html:select property="role">
+			<td><html:select property="role" disabled="${user.role=='project manager' }">
 				<html:option value="manager">Manager</html:option>
 				<html:option value="project manager">Project Manager</html:option>
 				<html:option value="project member">Project Member</html:option>
@@ -46,8 +46,8 @@
 
 		<tr>
 			<td>&nbsp;</td>
-			<td><html:submit>Save</html:submit> <c:if
-				test="${not empty userForm.id}">
+			<td><html:submit>Save</html:submit> 
+			<c:if test="${(not empty userForm.id) && (user.role=='manager' )}">
 
 				<a href="javascript:Popup()" alt="" width="8" height="10" border="0" />
 				Delete User</a>
