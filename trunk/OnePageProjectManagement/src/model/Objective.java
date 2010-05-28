@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,8 +22,8 @@ public class Objective {
 
 	private long id;
 	private String name;
-	private ArrayList<MajorTask> majorTasks;
-	private ArrayList<SubjectiveTask> subjectiveTasks;
+	private List<MajorTask> majorTasks;
+	private List<SubjectiveTask> subjectiveTasks;
 
 	public Objective() {
 		super();
@@ -90,7 +91,7 @@ public class Objective {
 	@ManyToMany(targetEntity = MajorTask.class, cascade = {
 			CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "HASTASK", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
-	public ArrayList<MajorTask> getMajorTasks() {
+	public List<MajorTask> getMajorTasks() {
 		return majorTasks;
 	}
 
@@ -101,7 +102,7 @@ public class Objective {
 	@ManyToMany(targetEntity = SubjectiveTask.class, cascade = {
 			CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "HASSUBJECTIVE", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"))
-	public ArrayList<SubjectiveTask> getSubjectiveTasks() {
+	public List<SubjectiveTask> getSubjectiveTasks() {
 		return subjectiveTasks;
 	}
 

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import exception.RemoveElementException;
 @Table(name = "SUBJECTIVETASK")
 public class SubjectiveTask extends Task {
 
-	private ArrayList<SubjectiveSlice> subjectiveSlices;
+	private List<SubjectiveSlice> subjectiveSlices;
 
 	public SubjectiveTask() {
 		super();
@@ -60,7 +61,7 @@ public class SubjectiveTask extends Task {
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"))
-	public ArrayList<SubjectiveSlice> getSubjectiveSlices() {
+	public List<SubjectiveSlice> getSubjectiveSlices() {
 		return subjectiveSlices;
 	}
 

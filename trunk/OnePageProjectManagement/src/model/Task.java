@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import exception.AddElementException;
 import exception.RemoveElementException;
@@ -9,7 +10,7 @@ public abstract class Task {
 
 	private long id;
 	private String name;
-	private ArrayList<Slice> slices;
+	private List<Slice> slices;
 
 	public Task() {
 		super();
@@ -40,7 +41,7 @@ public abstract class Task {
 						"Specified slice cannot be removed!");
 	}
 
-	public ArrayList<Slice> getSlices() {
+	public List<Slice> getSlices() {
 		return slices;
 	}
 
