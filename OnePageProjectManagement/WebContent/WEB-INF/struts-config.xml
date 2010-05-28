@@ -130,7 +130,7 @@
     		name="userForm"
     		input="/editUser.jsp"
     		scope="request">
-    		<forward name="success" path="/index.jsp"/>
+    		<forward name="success" path="/MainPage.do"/>
     </action>
     
     <action path="/EditUserSaver"
