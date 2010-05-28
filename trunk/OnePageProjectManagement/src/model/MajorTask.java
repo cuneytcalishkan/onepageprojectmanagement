@@ -24,7 +24,7 @@ import exception.RemoveElementException;
 @Embeddable
 public class MajorTask extends Task {
 
-	private List<Assignment> assignments;
+	//private List<Assignment> assignments;
 	private List<MajorSlice> majorSlices;
 	private List<Objective> objectives;
 
@@ -39,25 +39,25 @@ public class MajorTask extends Task {
 		return super.getId();
 	}
 
-	public void addAssignment(Assignment assgn) throws AddElementException {
-		if (this.assignments == null)
-			setAssignments(new ArrayList<Assignment>());
-		if (!this.assignments.add(assgn))
-			throw new AddElementException(
-					"Specified assignment cannot be added!");
-	}
-
-	public void removeAssignment(Assignment assgn) throws RemoteException {
-		if (this.assignments.size() > 0)
-			if (!this.assignments.remove(assgn))
-				throw new RemoteException(
-						"Specified assignment cannot be removed!");
-	}
-
-	@OneToMany(mappedBy = "majorTask")
-	public List<Assignment> getAssignments() {
-		return assignments;
-	}
+//	public void addAssignment(Assignment assgn) throws AddElementException {
+//		if (this.assignments == null)
+//			setAssignments(new ArrayList<Assignment>());
+//		if (!this.assignments.add(assgn))
+//			throw new AddElementException(
+//					"Specified assignment cannot be added!");
+//	}
+//
+//	public void removeAssignment(Assignment assgn) throws RemoteException {
+//		if (this.assignments.size() > 0)
+//			if (!this.assignments.remove(assgn))
+//				throw new RemoteException(
+//						"Specified assignment cannot be removed!");
+//	}
+//
+//	@OneToMany(mappedBy = "majorTask")
+//	public List<Assignment> getAssignments() {
+//		return assignments;
+//	}
 
 	public void addMajorSlice(MajorSlice ms) throws AddElementException {
 		if (this.majorSlices == null)
@@ -93,9 +93,9 @@ public class MajorTask extends Task {
 		this.objectives = objectives;
 	}
 
-	public void setAssignments(List<Assignment> assignments) {
-		this.assignments = assignments;
-	}
+//	public void setAssignments(List<Assignment> assignments) {
+//		this.assignments = assignments;
+//	}
 
 	public void setMajorSlices(List<MajorSlice> majorSlices) {
 		this.majorSlices = majorSlices;
