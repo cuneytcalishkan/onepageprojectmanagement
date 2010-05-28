@@ -91,14 +91,14 @@
               scope="request"
               input="/editProjectHeader.jsp"
               validate="true">
-	    <forward name="success" path="/index.jsps" redirect="true"/>
+	    <forward name="success" path="/main.jsp" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
     </action>
     
     <action path="/DeleteProject"
               type="controller.deleteAction.DeleteProjectAction"
               name="idForm">
-	    <forward name="success" path="/index.jsp" redirect="true"/>
+	    <forward name="success" path="/main.jsp" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
     </action>
     
@@ -107,7 +107,7 @@
     		name="summaryForm"
     		input="/editSummary.jsp"
     		scope="request">
-    		<forward name="success" path="/index.jsp"/>
+    		<forward name="success" path="/main.jsp"/>
     </action>
     
     <action path="/EditSummarySaver"
@@ -116,14 +116,14 @@
               scope="request"
               input="/editSummary.jsp"
               validate="true">
-	    <forward name="success" path="/index.jsps" redirect="true"/>
+	    <forward name="success" path="/main.jsp" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
     </action>
     
     <action path="/DeleteSummary"
               type="controller.deleteAction.DeleteSummaryAction"
               name="idForm">
-	    <forward name="success" path="/index.jsp" redirect="true"/>
+	    <forward name="success" path="/main.jsp" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
     </action>
     
@@ -150,7 +150,7 @@
     <action path="/DeleteUser"
               type="controller.deleteAction.DeleteUserAction"
               name="idForm">
-	    <forward name="success" path="/index.jsp" redirect="true"/>
+	    <forward name="success" path="/main.jsp" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
     </action>
   </action-mappings>

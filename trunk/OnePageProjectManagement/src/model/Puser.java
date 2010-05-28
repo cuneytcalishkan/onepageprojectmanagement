@@ -31,6 +31,7 @@ public class Puser {
 
 	public Puser() {
 		super();
+		this.projects = new ArrayList<Project>();
 
 	}
 
@@ -41,6 +42,7 @@ public class Puser {
 		this.nameSurname = nameSurname;
 		this.password = password;
 		this.role = role;
+		this.projects = new ArrayList<Project>();
 	}
 
 	public Puser(long id, String userName, String nameSurname, String password,
@@ -51,6 +53,7 @@ public class Puser {
 		this.nameSurname = nameSurname;
 		this.password = password;
 		this.role = role;
+		this.projects = new ArrayList<Project>();
 	}
 
 	@Override

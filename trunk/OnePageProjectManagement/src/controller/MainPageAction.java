@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 public class MainPageAction extends Action {
     
@@ -31,8 +32,13 @@ public class MainPageAction extends Action {
     	if(user.getRole().equals("manager")){
     		projects = ses.createQuery("from Project").list();
     	}
-    	else{
+    	else if (user.getRole().equals("project member")){
     		projects = user.getProjects();
+    	}
+    	else
+    	{
+    		projects =(List<Project>) ses.createCriteria(Project.class).add(
+    				Restrictions.eq("leader", user)).list();
     	}
     	
     	request.setAttribute("projects", projects);
