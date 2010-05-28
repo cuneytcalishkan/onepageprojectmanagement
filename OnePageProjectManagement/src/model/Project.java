@@ -153,7 +153,7 @@ public class Project {
 		this.objectives = objectives;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "projects", targetEntity = Puser.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST }, mappedBy = "projects", targetEntity = Puser.class)
 	public List<Puser> getUsers() {
 		return users;
 	}

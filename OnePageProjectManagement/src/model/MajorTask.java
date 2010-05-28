@@ -1,6 +1,5 @@
 package model;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +83,7 @@ public class MajorTask extends Task {
 		this.majorSlices = majorSlices;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "majorTasks", targetEntity = Objective.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST }, mappedBy = "majorTasks", targetEntity = Objective.class)
 	public List<Objective> getObjectives() {
 		return objectives;
 	}
