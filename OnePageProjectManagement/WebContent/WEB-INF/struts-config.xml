@@ -20,25 +20,11 @@
                   type="controller.form.ProjectForm"/>
                   
         <form-bean name="idForm" 
-                  type="controller.form.IdForm"/>
-                  
-        <form-bean name="diaryForm" 
-                  type="seitti.web.EditDiaryForm"/>
-                  
-        <form-bean name="monthForm"
-        		  type="seitti.web.MonthForm"/>
+                  type="controller.form.IdForm"/>    
                   
 	</form-beans>
 
   <global-forwards>
-    <forward name="generate"
-              path="/GenerateTestData.do"/>
-    
-    <forward name="diary"
-              path="/WeatherDiary.do"/>
-              
-    <forward name="editDiary"
-    		  path="/EditDiary.do"/>
               
     <forward name="editProject"
               path="/EditProject.do"/>  
@@ -53,74 +39,6 @@
 
   <!-- ========== Action Mapping Definitions ============ -->
   <action-mappings>
-    <!-- Unused example
-    <action   path="/sendFeedback"
-              type="com.seitti.tunnusx.web.SendFeedbackAction"
-              name="feedbackForm"
-              input="/feedback.jsp"
-              scope="request"
-              validate="true">
-	    <forward name="success" path="/thanks.jsp"/>
-    </action>
-	-->
-	
-    <action path="/GenerateTestData" 
-    		type="seitti.web.SetUpAction">
-    	<forward name="success" path="/hello.jsp" />
-    </action>
-    
-    <action path="/WeatherDiary" 
-    		type="seitti.web.DiaryAction"
-    		name="monthForm"
-    		scope="request"
-    		input="diary.jsp">
-    	<forward name="success" path="/diary.jsp" />
-    </action>
-        
-    <action path="/EditDiary"
-    		type="seitti.web.EditDiaryAction"
-    		name="diaryForm"
-    		scope="request"
-    		input="/editDiary.jsp"
-    		validate="false">
-    	<forward name="failure" path="/message.jsp"/>
-    </action>
-    
-    <action   path="/EditDiarySaver"
-              type="seitti.web.EditDiarySaverAction"
-              name="diaryForm"
-              scope="request"
-              input="/editDiary.jsp"
-              validate="true">
-	    <forward name="success" path="/WeatherDiary.do" redirect="true"/>
-	    <forward name="failure" path="/message.jsp"/>
-    </action>
-    		
-    <action   path="/EditObservation"
-              type="seitti.web.EditObservationAction"
-              name="observationForm"
-              scope="request"
-              input="/editObservation.jsp"
-              validate="false">
-	    <forward name="failure" path="/editObservation.jsp"/>
-    </action>
-
-    <action   path="/EditObservationSaver"
-              type="seitti.web.EditObservationSaverAction"
-              name="observationForm"
-              scope="request"
-              input="/editObservation.jsp"
-              validate="true">
-	    <forward name="success" path="/WeatherDiary.do" redirect="true"/>
-	    <forward name="failure" path="/message.jsp"/>
-    </action>
-
-    <action   path="/DeleteObservation"
-              type="seitti.web.DeleteObservationAction"
-              name="idForm">
-	    <forward name="success" path="/WeatherDiary.do" redirect="true"/>
-	    <forward name="failure" path="/message.jsp"/>
-    </action>
     
     <action path="/Login"
               type="controller.LoginAction"
@@ -141,6 +59,16 @@
     		input="/editProject.jsp"
     		scope="request">
     		<forward name="success" path="/index.jsp"/>
+    </action>
+    
+    <action   path="/EditProjectSaver"
+              type="controller.EditProjectSaverAction"
+              name="projectForm"
+              scope="request"
+              input="/editProject.jsp"
+              validate="true">
+	    <forward name="success" path="/index.jsps" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
     </action>
     
     <action path="/DeleteProject"

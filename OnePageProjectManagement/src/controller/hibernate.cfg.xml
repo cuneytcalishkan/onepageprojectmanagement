@@ -17,12 +17,12 @@
 		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<!-- <mapping class="model.Assignment" /> -->
+		<mapping class="model.Assignment" />
 		<mapping class="model.Cost" />
 		<mapping class="model.MajorSlice" />
-		<!-- <mapping class="model.MajorTask" /> -->
+		<mapping class="model.MajorTask" />
 		<mapping class="model.Manager" />
-		<!--<mapping class="model.Objective" /> -->
+		<mapping class="model.Objective" /> 
 		<mapping class="model.Project" />
 		<mapping class="model.Puser" />
 		<mapping class="model.SubjectiveSlice" />
