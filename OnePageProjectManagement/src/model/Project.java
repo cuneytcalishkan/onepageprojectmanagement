@@ -119,7 +119,7 @@ public class Project {
 	}
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "COMMENTED", joinColumns = @JoinColumn(name = "SUMMARY_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	@JoinTable(name = "COMMENTED", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "SUMMARY_ID"))
 	public ArrayList<Summary> getSummaries() {
 		return summaries;
 	}
@@ -129,7 +129,7 @@ public class Project {
 	}
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "COST_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "COST_ID"))
 	public ArrayList<Cost> getCosts() {
 		return costs;
 	}
@@ -139,7 +139,7 @@ public class Project {
 	}
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "OBJECTIVE_ID"))
 	public ArrayList<Objective> getObjectives() {
 		return objectives;
 	}
