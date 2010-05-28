@@ -42,7 +42,7 @@
               path="/EditUser.do"/> 
               
     <forward name="editProject"
-              path="/EditProject.do"/>  
+              path="/EditProjectHeader.do"/>  
               
     <forward name="login"
               path="/Login.do"/>   
