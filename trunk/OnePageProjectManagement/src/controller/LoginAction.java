@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -43,7 +40,9 @@ public class LoginAction extends Action {
 		Transaction ta = hibernateSession.beginTransaction();
 
 		Puser user = (Puser) hibernateSession.createCriteria(Puser.class).add(
-				Restrictions.eq("userName", username)).uniqueResult();
+				Restrictions.and(Restrictions.eq("userName", username),
+						Restrictions.eq("password", password))).
+						uniqueResult();
 		ta.commit();
 		hibernateSession.close();
 
