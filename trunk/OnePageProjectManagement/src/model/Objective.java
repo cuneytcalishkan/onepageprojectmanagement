@@ -90,19 +90,19 @@ public class Objective {
 		this.id = id;
 	}
 
-	@ManyToMany(targetEntity = MajorTask.class, cascade = { CascadeType.PERSIST })
+	@ManyToMany(targetEntity = MajorTask.class, cascade = { CascadeType.PERSIST , CascadeType.MERGE})
 	@JoinTable(name = "HASTASK", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	public List<MajorTask> getMajorTasks() {
 		return majorTasks;
 	}
 
-	@ManyToMany(targetEntity = SubjectiveTask.class, cascade = { CascadeType.PERSIST })
+	@ManyToMany(targetEntity = SubjectiveTask.class, cascade = { CascadeType.PERSIST , CascadeType.MERGE})
 	@JoinTable(name = "HASSUBJECTIVE", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"))
 	public List<SubjectiveTask> getSubjectiveTasks() {
 		return subjectiveTasks;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST })
+	@ManyToOne(cascade = { CascadeType.PERSIST , CascadeType.MERGE})
 	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	public Project getProject() {
 		return project;

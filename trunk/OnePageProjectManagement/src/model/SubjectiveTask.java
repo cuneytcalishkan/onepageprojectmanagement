@@ -80,7 +80,7 @@ public class SubjectiveTask {
 		return subjectiveSlices;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST }, mappedBy = "subjectiveTasks", targetEntity = Objective.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST , CascadeType.MERGE}, mappedBy = "subjectiveTasks", targetEntity = Objective.class)
 	public List<Objective> getObjectives() {
 		return objectives;
 	}
