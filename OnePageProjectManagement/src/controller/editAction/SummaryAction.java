@@ -1,7 +1,5 @@
 package controller.editAction;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,35 +17,34 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
-import controller.form.ProjectForm;
+import controller.form.SummaryForm;
 
 /**
  * @author tile
  */
-public class EditProjectAction extends DispatchAction {
+public class SummaryAction extends DispatchAction {
     
 	public ActionForward execute(ActionMapping mapping,
             ActionForm form,
             HttpServletRequest request,
             HttpServletResponse response) {
     	HttpSession session = request.getSession(true);
+    	SummaryForm summaryForm = (SummaryForm) form;
     	Puser user = (Puser) session.getAttribute("user");
-        if( user == null || ! user.getRole().equals("project manager"))  {
-        	throw new RuntimeException("You are not unauthorized to execute this action.");
-        }
         
-        ProjectForm projectForm = (ProjectForm) form;
         Transaction ta = null;
         Session hibernateSession = HibernateUtil.getSession();
         try {
             ta = hibernateSession.beginTransaction();
+            Project pr = (Project) hibernateSession.get(Project.class, summaryForm.getProjectId());
             
-            Project project = (Project) hibernateSession.get(Project.class, projectForm.getId());
-			projectForm.setName(project.getName());
-			projectForm.setLeader(user.getNameSurname()); 
-			projectForm.setObjective(project.getObjective());
-			projectForm.setStartDate(project.getStartDate());
-			projectForm.setFinishDate(project.getFinishDate());
+            if( user == null || pr == null || !(user == pr.getLeader() ))  {
+            	throw new RuntimeException("You are not unauthorized to execute this action.");
+            }
+            
+            /*Summary pUser = (Puser) hibernateSession.get(Puser.class, summaryForm.getId());
+            summaryForm.setUserName(pUser.getUserName());*/
+			
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
@@ -56,10 +53,9 @@ public class EditProjectAction extends DispatchAction {
 				ta.rollback();
 				hibernateSession.close();
 			}
-        	projectForm.setStartDate(new Date());
 	        ActionMessages actionMessages = new ActionMessages();
 	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-	        	new ActionMessage("project.notFound"));
+	        	new ActionMessage("exception"));
 	        saveMessages(request,actionMessages);
 	        return mapping.findForward("failure");
         }
