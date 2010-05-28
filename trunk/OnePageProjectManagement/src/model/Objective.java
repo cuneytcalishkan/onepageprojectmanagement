@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import exception.AddElementException;
@@ -22,6 +23,7 @@ public class Objective {
 
 	private long id;
 	private String name;
+	private Project project;
 	private List<MajorTask> majorTasks;
 	private List<SubjectiveTask> subjectiveTasks;
 
@@ -95,10 +97,6 @@ public class Objective {
 		return majorTasks;
 	}
 
-	public void setMajorTasks(ArrayList<MajorTask> majorTasks) {
-		this.majorTasks = majorTasks;
-	}
-
 	@ManyToMany(targetEntity = SubjectiveTask.class, cascade = {
 			CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "HASSUBJECTIVE", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"))
@@ -106,7 +104,21 @@ public class Objective {
 		return subjectiveTasks;
 	}
 
-	public void setSubjectiveTasks(ArrayList<SubjectiveTask> subjectiveTasks) {
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public void setMajorTasks(List<MajorTask> majorTasks) {
+		this.majorTasks = majorTasks;
+	}
+
+	public void setSubjectiveTasks(List<SubjectiveTask> subjectiveTasks) {
 		this.subjectiveTasks = subjectiveTasks;
 	}
 

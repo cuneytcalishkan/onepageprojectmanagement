@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +33,6 @@ public class MajorTask extends Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
-		// TODO Auto-generated method stub
 		return super.getId();
 	}
 
@@ -53,7 +51,7 @@ public class MajorTask extends Task {
 						"Specified assignment cannot be removed!");
 	}
 
-	@OneToMany(mappedBy = "task")
+	@OneToMany(mappedBy = "majorTask")
 	public List<Assignment> getAssignments() {
 		return assignments;
 	}
@@ -77,7 +75,7 @@ public class MajorTask extends Task {
 						"Specified major task cannot be removed!");
 	}
 
-	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@OneToMany(mappedBy = "majorTask")
 	@JoinTable(name = "MT_HAS", joinColumns = @JoinColumn(name = "MAJORTASK_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORSLICE_ID"))
 	public List<MajorSlice> getMajorSlices() {
 		return majorSlices;
