@@ -9,7 +9,15 @@
 <head>
   <html:base/>
   <title>One Page Project Management</title>
-  <h2><html:link forward="main">One Page Project Management</html:link></h2>
+  <h2>
+  	<html:link forward="main" style="text-decoration:none">
+  		<font color = #666666>
+  			<center>
+  				One Page Project Management
+  			</center>
+  		</font>
+  	</html:link>
+  </h2>
 </head>
 
 
