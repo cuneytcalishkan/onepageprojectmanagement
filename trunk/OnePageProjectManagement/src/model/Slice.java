@@ -2,10 +2,6 @@ package model;
 
 import java.util.Date;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public abstract class Slice {
 
 	private long id;
