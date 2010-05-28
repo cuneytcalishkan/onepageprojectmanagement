@@ -97,7 +97,7 @@ public class MajorTask {
 		this.majorSlices = majorSlices;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST , CascadeType.MERGE}, mappedBy = "majorTasks", targetEntity = Objective.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "majorTasks", targetEntity = Objective.class)
 	public List<Objective> getObjectives() {
 		return objectives;
 	}
