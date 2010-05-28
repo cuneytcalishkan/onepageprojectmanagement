@@ -44,7 +44,7 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
-		// this.leader = leader;
+		this.leader = leader;
 		this.objective = objective;
 	}
 
@@ -55,7 +55,7 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
-		// this.leader = leader;
+		this.leader = leader;
 		this.objective = objective;
 	}
 
