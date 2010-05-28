@@ -21,6 +21,9 @@
         
         <form-bean name="summaryForm"
 				  type="controller.form.SummaryForm"/>
+        
+        <form-bean name="costForm"
+				  type="controller.form.CostForm"/>
                   
         <form-bean name="projectForm" 
                   type="controller.form.ProjectHeaderForm"/>
@@ -57,7 +60,7 @@
               name="loginForm"
               input="/login.jsp"
               scope="request">
-	    <forward name="success" path="/EditProject.do"/>
+	    <forward name="success" path="/MainPage.do"/>
     </action>
 
     <action path="/Logout"
