@@ -12,21 +12,21 @@
 		</property>
 		<property name="hibernate.connection.username">CENG432</property>
 		<property name="hibernate.connection.password">CENG</property>
-		<property name="hibernate.connection.pool_size">10</property>
+		<property name="hibernate.connection.pool_size">5</property>
 		<property name="show_sql">true</property>
-		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<mapping class="model.Assignment" />
 		<mapping class="model.Cost" />
 		<mapping class="model.MajorSlice" />
 		<mapping class="model.MajorTask" />
 		<mapping class="model.Manager" />
-		<mapping class="model.Objective" /> 
+		<mapping class="model.Objective" />
 		<mapping class="model.Project" />
 		<mapping class="model.Puser" />
 		<mapping class="model.SubjectiveSlice" />
 		<mapping class="model.SubjectiveTask" />
 		<mapping class="model.Summary" />
+		<mapping class="model.Assignment" />
 	</session-factory>
 </hibernate-configuration>
