@@ -25,7 +25,7 @@
         <form-bean name="costForm"
 				  type="controller.form.CostForm"/>
                   
-        <form-bean name="projectForm" 
+        <form-bean name="projectHeaderForm" 
                   type="controller.form.ProjectHeaderForm"/>
                   
         <form-bean name="idForm" 
@@ -79,8 +79,10 @@
     		type="controller.editAction.EditProjectHeaderAction"
     		name="projectHeaderForm"
     		input="/editProjectHeader.jsp"
-    		scope="request">
-    		<forward name="success" path="/index.jsp"/>
+    		scope="request"
+    		validate="false">
+    		<forward name="success" path="/editProjectHeader.jsp"/>
+    		<forward name="failure" path="/editProjectHeader.jsp"/>
     </action>
     
     <action path="/EditProjectHeaderSaver"

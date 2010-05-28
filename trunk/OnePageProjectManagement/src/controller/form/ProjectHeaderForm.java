@@ -47,8 +47,6 @@ public class ProjectHeaderForm extends ActionForm {
 		this.id = id;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
@@ -81,7 +79,6 @@ public class ProjectHeaderForm extends ActionForm {
 		}
 	}
 	
-
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}

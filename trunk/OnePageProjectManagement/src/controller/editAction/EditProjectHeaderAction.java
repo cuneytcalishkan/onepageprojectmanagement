@@ -56,7 +56,7 @@ public class EditProjectHeaderAction extends DispatchAction {
 				ta.rollback();
 				hibernateSession.close();
 			}
-        	projectForm.setStartDate(new Date());
+        	//projectForm.setStartDate(new Date());
 	        ActionMessages actionMessages = new ActionMessages();
 	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
 	        	new ActionMessage("project.notFound"));
