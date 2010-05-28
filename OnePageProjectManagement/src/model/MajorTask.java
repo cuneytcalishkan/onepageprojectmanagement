@@ -21,42 +21,56 @@ import exception.RemoveElementException;
 @Entity
 @Table(name = "MAJORTASK")
 @Embeddable
-public class MajorTask extends Task {
+public class MajorTask {
 
-	//private List<Assignment> assignments;
+	// private List<Assignment> assignments;
 	private List<MajorSlice> majorSlices;
 	private List<Objective> objectives;
+	private long id;
+	private String name;
 
 	public MajorTask(long id, String name) {
-		super(id, name);
+		this.id = id;
+		this.name = name;
 	}
 
-	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
-		return super.getId();
+		return id;
 	}
 
-//	public void addAssignment(Assignment assgn) throws AddElementException {
-//		if (this.assignments == null)
-//			setAssignments(new ArrayList<Assignment>());
-//		if (!this.assignments.add(assgn))
-//			throw new AddElementException(
-//					"Specified assignment cannot be added!");
-//	}
-//
-//	public void removeAssignment(Assignment assgn) throws RemoteException {
-//		if (this.assignments.size() > 0)
-//			if (!this.assignments.remove(assgn))
-//				throw new RemoteException(
-//						"Specified assignment cannot be removed!");
-//	}
-//
-//	@OneToMany(mappedBy = "majorTask")
-//	public List<Assignment> getAssignments() {
-//		return assignments;
-//	}
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	// public void addAssignment(Assignment assgn) throws AddElementException {
+	// if (this.assignments == null)
+	// setAssignments(new ArrayList<Assignment>());
+	// if (!this.assignments.add(assgn))
+	// throw new AddElementException(
+	// "Specified assignment cannot be added!");
+	// }
+	//
+	// public void removeAssignment(Assignment assgn) throws RemoteException {
+	// if (this.assignments.size() > 0)
+	// if (!this.assignments.remove(assgn))
+	// throw new RemoteException(
+	// "Specified assignment cannot be removed!");
+	// }
+	//
+	// @OneToMany(mappedBy = "majorTask")
+	// public List<Assignment> getAssignments() {
+	// return assignments;
+	// }
 
 	public void addMajorSlice(MajorSlice ms) throws AddElementException {
 		if (this.majorSlices == null)
@@ -92,9 +106,9 @@ public class MajorTask extends Task {
 		this.objectives = objectives;
 	}
 
-//	public void setAssignments(List<Assignment> assignments) {
-//		this.assignments = assignments;
-//	}
+	// public void setAssignments(List<Assignment> assignments) {
+	// this.assignments = assignments;
+	// }
 
 	public void setMajorSlices(List<MajorSlice> majorSlices) {
 		this.majorSlices = majorSlices;

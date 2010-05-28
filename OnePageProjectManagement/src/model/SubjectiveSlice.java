@@ -15,25 +15,38 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "SUBJECTIVESLICE")
-public class SubjectiveSlice extends Slice {
+public class SubjectiveSlice {
 
+	private long id;
+	private Date sliceDate;
 	private Color color;
 	private SubjectiveTask task;
 
-	@Override
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
-		// TODO Auto-generated method stub
-		return super.getId();
-	}
-
 	public SubjectiveSlice(Date sliceDate) {
-		super(sliceDate);
+		this.sliceDate = sliceDate;
 	}
 
 	public SubjectiveSlice(long id, Date sliceDate) {
-		super(id, sliceDate);
+		this.id = id;
+		this.sliceDate = sliceDate;
+	}
+
+	public Date getSliceDate() {
+		return sliceDate;
+	}
+
+	public void setSliceDate(Date sliceDate) {
+		this.sliceDate = sliceDate;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Color getColor() {

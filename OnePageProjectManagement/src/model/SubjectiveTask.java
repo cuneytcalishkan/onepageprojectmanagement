@@ -19,8 +19,10 @@ import exception.RemoveElementException;
 
 @Entity
 @Table(name = "SUBJECTIVETASK")
-public class SubjectiveTask extends Task {
+public class SubjectiveTask {
 
+	private long id;
+	private String name;
 	private List<SubjectiveSlice> subjectiveSlices;
 	private List<Objective> objectives;
 
@@ -29,19 +31,30 @@ public class SubjectiveTask extends Task {
 	}
 
 	public SubjectiveTask(String name) {
-		super(name);
+		this.name = name;
 	}
 
 	public SubjectiveTask(long id, String name) {
-		super(id, name);
+		this.id = id;
+		this.name = name;
 	}
 
-	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
-		// TODO Auto-generated method stub
-		return super.getId();
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public void addSubjectiveSlice(SubjectiveSlice ss)
