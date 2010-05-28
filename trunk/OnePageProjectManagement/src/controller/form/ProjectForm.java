@@ -17,17 +17,17 @@ public class ProjectForm extends ActionForm {
 	private String name;
 	private Date startDate;
 	private Date finishDate;
-	private Long leader;
+	private String leader;
 	private String objective;
 	
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
         ActionErrors errors = new ActionErrors();
 
         if(name.equals(""))
-	    	errors.add("name", new ActionMessage("name.empty"));
+	    	errors.add("name", new ActionMessage("empty"));
 
 	    if(startDate == null || finishDate == null)
-	    	errors.add("date", new ActionMessage("date.empty"));
+	    	errors.add("date", new ActionMessage("empty"));
 	    
 	    // set id to null if not specified
         if(id != null && id.intValue() == 0) {
@@ -90,11 +90,11 @@ public class ProjectForm extends ActionForm {
 		this.finishDate = finishDate;
 	}
 
-	public Long getLeader() {
+	public String getLeader() {
 		return leader;
 	}
 
-	public void setLeader(Long leader) {
+	public void setLeader(String leader) {
 		this.leader = leader;
 	}
 

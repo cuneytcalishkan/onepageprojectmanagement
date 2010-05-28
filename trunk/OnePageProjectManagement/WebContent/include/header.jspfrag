@@ -8,8 +8,8 @@
 <html>
 <head>
   <html:base/>
-  <title>Weather Diary</title>
-  <h2><html:link forward="diary">Weather Diary</html:link></h2>
+  <title>One Page Project Management</title>
+  <h2><html:link forward="main">One Page Project Management</html:link></h2>
 </head>
 
 

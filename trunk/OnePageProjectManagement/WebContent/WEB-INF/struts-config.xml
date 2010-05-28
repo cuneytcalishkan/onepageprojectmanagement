@@ -16,6 +16,9 @@
    		<form-bean name="loginForm" 
                   type="controller.form.LoginForm"/>
                   
+		<form-bean name="userForm"
+				  type="controller.form.UserForm"/>
+                  
         <form-bean name="projectForm" 
                   type="controller.form.ProjectForm"/>
                   
@@ -25,6 +28,12 @@
 	</form-beans>
 
   <global-forwards>
+  
+  	<forward name="main"
+              path="/MainPage.do"/>  
+              
+	<forward name="editUser"
+              path="/EditUser.do"/> 
               
     <forward name="editProject"
               path="/EditProject.do"/>  
@@ -53,8 +62,15 @@
               <forward name="success" path="/Login.do"/>
     </action>
     
+    <action path="/MainPage" 
+    		type="controller.MainPageAction"
+    		scope="request"
+    		input="main.jsp">
+    	<forward name="success" path="/main.jsp" />
+    </action>
+    
     <action path="/EditProject"
-    		type="controller.EditProject"
+    		type="controller.EditProjectAction"
     		name="projectForm"
     		input="/editProject.jsp"
     		scope="request">
@@ -73,6 +89,31 @@
     
     <action path="/DeleteProject"
               type="controllerDeleteProjectAction"
+              name="idForm">
+	    <forward name="success" path="/index.jsp" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+    
+    <action path="/EditUser"
+    		type="controller.EditUserAction"
+    		name="userForm"
+    		input="/editUser.jsp"
+    		scope="request">
+    		<forward name="success" path="/index.jsp"/>
+    </action>
+    
+    <action   path="/EditUserSaver"
+              type="controller.EditUserSaverAction"
+              name="userForm"
+              scope="request"
+              input="/editUser.jsp"
+              validate="true">
+	    <forward name="success" path="/index.jsps" redirect="true"/>
+	    <forward name="failure" path="/message.jsp"/>
+    </action>
+    
+    <action path="/DeleteUser"
+              type="controllerDeleteUserAction"
               name="idForm">
 	    <forward name="success" path="/index.jsp" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
