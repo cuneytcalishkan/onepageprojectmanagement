@@ -60,7 +60,7 @@ public class MajorSlice {
 		this.verified = verified;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "MT_HAS", joinColumns = @JoinColumn(name = "MAJORSLICE_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORTASK_ID"))
 	public MajorTask getMajorTask() {
 		return majorTask;

@@ -153,7 +153,7 @@ public class Project {
 		this.objectives = objectives;
 	}
 
-	@ManyToMany(targetEntity = Puser.class, cascade = { CascadeType.PERSIST })
+	@ManyToMany(targetEntity = Puser.class, cascade = { CascadeType.PERSIST , CascadeType.MERGE})
 	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID"))
 	public List<Puser> getUsers() {
 		return users;
