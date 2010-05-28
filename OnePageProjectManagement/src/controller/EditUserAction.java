@@ -30,12 +30,14 @@ public class EditUserAction extends DispatchAction {
             HttpServletRequest request,
             HttpServletResponse response) {
     	HttpSession session = request.getSession(true);
+    	UserForm userForm = (UserForm) form;
     	Puser user = (Puser) session.getAttribute("user");
-        if( user == null || ! user.getRole().equals("manager"))  {
+        if( user == null ||  (!user.getRole().equals("manager") &&
+        		!(user.getId() == userForm.getId())))  {
         	throw new RuntimeException("You are not unauthorized to execute this action.");
         }
         
-        UserForm userForm = (UserForm) form;
+        
         Transaction ta = null;
         Session hibernateSession = HibernateUtil.getSession();
         try {
