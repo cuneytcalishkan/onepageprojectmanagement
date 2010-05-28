@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,10 +28,10 @@ public class Project {
 	private Date finishDate;
 	private Puser leader;
 	private String objective;
-	private ArrayList<Summary> summaries;
-	private ArrayList<Cost> costs;
-	private ArrayList<Objective> objectives;
-	private ArrayList<Puser> users;
+	private List<Summary> summaries;
+	private List<Cost> costs;
+	private List<Objective> objectives;
+	private List<Puser> users;
 
 	public Project() {
 		super();
@@ -120,7 +121,7 @@ public class Project {
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "COMMENTED", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "SUMMARY_ID"))
-	public ArrayList<Summary> getSummaries() {
+	public List<Summary> getSummaries() {
 		return summaries;
 	}
 
@@ -130,7 +131,7 @@ public class Project {
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "COST_ID"))
-	public ArrayList<Cost> getCosts() {
+	public List<Cost> getCosts() {
 		return costs;
 	}
 
@@ -140,7 +141,7 @@ public class Project {
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "OBJECTIVE_ID"))
-	public ArrayList<Objective> getObjectives() {
+	public List<Objective> getObjectives() {
 		return objectives;
 	}
 
@@ -149,7 +150,7 @@ public class Project {
 	}
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "projects", targetEntity = Puser.class)
-	public ArrayList<Puser> getUsers() {
+	public List<Puser> getUsers() {
 		return users;
 	}
 

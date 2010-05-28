@@ -2,6 +2,7 @@ package model;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -22,8 +23,8 @@ import exception.RemoveElementException;
 @Embeddable
 public class MajorTask extends Task {
 
-	private ArrayList<Assignment> assignments;
-	private ArrayList<MajorSlice> majorSlices;
+	private List<Assignment> assignments;
+	private List<MajorSlice> majorSlices;
 
 	public MajorTask(long id, String name) {
 		super(id, name);
@@ -53,7 +54,7 @@ public class MajorTask extends Task {
 	}
 
 	@OneToMany(mappedBy = "task")
-	public ArrayList<Assignment> getAssignments() {
+	public List<Assignment> getAssignments() {
 		return assignments;
 	}
 
@@ -78,7 +79,7 @@ public class MajorTask extends Task {
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "MT_HAS", joinColumns = @JoinColumn(name = "MAJORTASK_ID"), inverseJoinColumns = @JoinColumn(name = "MAJORSLICE_ID"))
-	public ArrayList<MajorSlice> getMajorSlices() {
+	public List<MajorSlice> getMajorSlices() {
 		return majorSlices;
 	}
 

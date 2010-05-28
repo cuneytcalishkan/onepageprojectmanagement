@@ -2,6 +2,7 @@ package model;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -28,8 +29,8 @@ public class Puser {
 	private String nameSurname;
 	private String password;
 	private String role;
-	private ArrayList<Assignment> assignments;
-	private ArrayList<Project> projects;
+	private List<Assignment> assignments;
+	private List<Project> projects;
 
 	public Puser() {
 		super();
@@ -90,12 +91,12 @@ public class Puser {
 						"Specified prject cannot be removed!");
 	}
 
-	@OneToMany(mappedBy="user")
-	public ArrayList<Assignment> getAssignments() {
+	@OneToMany(mappedBy = "user")
+	public List<Assignment> getAssignments() {
 		return assignments;
 	}
 
-	public void setAssignments(ArrayList<Assignment> assignments) {
+	public void setAssignments(List<Assignment> assignments) {
 		this.assignments = assignments;
 	}
 
@@ -136,7 +137,7 @@ public class Puser {
 	@ManyToMany(targetEntity = Project.class, cascade = { CascadeType.PERSIST,
 			CascadeType.MERGE })
 	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
-	public ArrayList<Project> getProjects() {
+	public List<Project> getProjects() {
 		return projects;
 	}
 
