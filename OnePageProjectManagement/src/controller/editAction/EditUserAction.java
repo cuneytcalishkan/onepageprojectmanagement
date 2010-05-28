@@ -1,12 +1,9 @@
 package controller.editAction;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Project;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
@@ -35,7 +32,7 @@ public class EditUserAction extends DispatchAction {
     	Puser user = (Puser) session.getAttribute("user");
         if( user == null ||  (!user.getRole().equals("manager") &&
         		!(user.getId() == userForm.getId())))  {
-        	throw new RuntimeException("You are not unauthorized to execute this action.");
+        	throw new RuntimeException("You are not authorized to execute this action.");
         }
         
         
