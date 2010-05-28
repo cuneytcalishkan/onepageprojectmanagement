@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -91,8 +90,7 @@ public class Puser {
 						"Specified prject cannot be removed!");
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "USER_ID")
+	@OneToMany(mappedBy="user")
 	public ArrayList<Assignment> getAssignments() {
 		return assignments;
 	}
