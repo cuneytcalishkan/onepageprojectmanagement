@@ -24,12 +24,12 @@
 	<td>    Date Interval : <c:out value="${project.startDate}"/> - <c:out value="${project.finishDate}"/></td>
     
     <c:if test="${user.role=='project manager'}">
-      <td><html:link action="/EditProject" paramId="id" paramName="project" paramProperty="id">
+      <td><html:link action="/EditProjectHeader" paramId="id" paramName="project" paramProperty="id">
 	    EDIT</html:link>
       </td>
     </c:if>
 	</br>
-	<td>Objective : <c:out value="${project.objective}"/> °C, </td>
+	<td>Objective : <c:out value="${project.objective}"/> </td>
 	</br>
 	</br>
 	</tr>
