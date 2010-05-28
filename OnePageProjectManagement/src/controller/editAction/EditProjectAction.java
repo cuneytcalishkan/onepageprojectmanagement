@@ -1,4 +1,4 @@
-package controller;
+package controller.editAction;
 
 import java.util.Date;
 
@@ -18,6 +18,7 @@ import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import controller.HibernateUtil;
 import controller.form.ProjectForm;
 
 /**

@@ -1,4 +1,4 @@
-package controller;
+package controller.saverAction;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,6 +17,7 @@ import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import controller.HibernateUtil;
 import controller.form.ProjectForm;
 
 /**
