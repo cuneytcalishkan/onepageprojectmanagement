@@ -33,7 +33,7 @@ public class EditProjectHeaderAction extends DispatchAction {
     	HttpSession session = request.getSession(true);
     	Puser user = (Puser) session.getAttribute("user");
         if( user == null || ! user.getRole().equals("project manager"))  {
-        	throw new RuntimeException("You are not unauthorized to execute this action.");
+        	throw new RuntimeException("You are not authorized to execute this action.");
         }
         
         ProjectHeaderForm projectForm = (ProjectHeaderForm) form;
@@ -56,7 +56,10 @@ public class EditProjectHeaderAction extends DispatchAction {
 				ta.rollback();
 				hibernateSession.close();
 			}
-        	//projectForm.setStartDate(new Date());
+        	Date today = new Date();
+        	projectForm.setStartDate(today);
+        	projectForm.setFinishDate(today);
+        	projectForm.setLeader(user.getNameSurname());
 	        ActionMessages actionMessages = new ActionMessages();
 	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
 	        	new ActionMessage("project.notFound"));

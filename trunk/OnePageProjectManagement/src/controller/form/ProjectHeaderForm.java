@@ -1,8 +1,9 @@
 package controller.form;
 
-import java.text.DateFormat;
-import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
+import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,36 +13,61 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 public class ProjectHeaderForm extends ActionForm {
-	
+
 	private Long id;
 	private String name;
-	private Date startDate;
-	private Date finishDate;
+	private int startDateDay;
+	private int startDateMonth;
+	private int startDateYear;
+	private int finishDateDay;
+	private int finishDateMonth;
+	private int finishDateYear;
 	private String leader;
 	private String objective;
-	
+
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
-        ActionErrors errors = new ActionErrors();
+		ActionErrors errors = new ActionErrors();
 
-        if(name.equals(""))
-	    	errors.add("name", new ActionMessage("empty"));
+		if (name.equals(""))
+			errors.add("name", new ActionMessage("empty"));
 
-	    if(startDate == null || finishDate == null)
-	    	errors.add("date", new ActionMessage("empty"));
-	    
-	    // set id to null if not specified
-        if(id != null && id.intValue() == 0) {
-            id = null;
-        }
-	    
-        return errors;
-    }
-	
+		// set id to null if not specified
+		if (id != null && id.intValue() == 0) {
+			id = null;
+		}
+
+		return errors;
+	}
+
+	public Date getStartDate() {
+		Calendar cal = new GregorianCalendar(startDateYear, startDateMonth, startDateDay);
+		return cal.getTime();
+	}
+
+	public Date getFinishDate() {
+		Calendar cal = new GregorianCalendar(finishDateYear, finishDateMonth, finishDateDay);
+		return cal.getTime();
+	}
+
+	public void setStartDate(Date stDate) {
+		Calendar cal = new GregorianCalendar();
+		cal.setTime(stDate);
+		startDateYear = cal.get(Calendar.YEAR);
+		startDateMonth = cal.get(Calendar.MONTH) + 1;
+		startDateDay = cal.get(Calendar.DAY_OF_MONTH);
+	}
+
+	public void setFinishDate(Date fnDate) {
+		Calendar cal = new GregorianCalendar();
+		cal.setTime(fnDate);
+		finishDateYear = cal.get(Calendar.YEAR);
+		finishDateMonth = cal.get(Calendar.MONTH) + 1;
+		finishDateDay = cal.get(Calendar.DAY_OF_MONTH);
+	}
+
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public void setId(Long id) {
 		this.id = id;
@@ -55,40 +81,56 @@ public class ProjectHeaderForm extends ActionForm {
 		this.name = name;
 	}
 
-	public String getStartDate() {
-		return DateFormat.getDateInstance().format(startDate);
-	}
-
-	public void setStartDate(String startDate) {
-		try {
-			this.startDate = DateFormat.getDateInstance().parse(startDate);
-		} catch (ParseException e) {
-			this.startDate = null;
-		}
-	}
-
-	public String getFinishDate() {
-		return DateFormat.getDateInstance().format(finishDate);
-	}
-
-	public void setFinishDate(String finishDate) {
-		try {
-			this.finishDate = DateFormat.getDateInstance().parse(finishDate);
-		} catch (ParseException e) {
-			this.finishDate = null;
-		}
-	}
-	
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public void setFinishDate(Date finishDate) {
-		this.finishDate = finishDate;
-	}
-
 	public String getLeader() {
 		return leader;
+	}
+
+	public int getStartDateDay() {
+		return startDateDay;
+	}
+
+	public void setStartDateDay(int startDateDay) {
+		this.startDateDay = startDateDay;
+	}
+
+	public int getStartDateMonth() {
+		return startDateMonth;
+	}
+
+	public void setStartDateMonth(int startDateMonth) {
+		this.startDateMonth = startDateMonth;
+	}
+
+	public int getStartDateYear() {
+		return startDateYear;
+	}
+
+	public void setStartDateYear(int startDateYear) {
+		this.startDateYear = startDateYear;
+	}
+
+	public int getFinishDateDay() {
+		return finishDateDay;
+	}
+
+	public void setFinishDateDay(int finishDateDay) {
+		this.finishDateDay = finishDateDay;
+	}
+
+	public int getFinishDateMonth() {
+		return finishDateMonth;
+	}
+
+	public void setFinishDateMonth(int finishDateMonth) {
+		this.finishDateMonth = finishDateMonth;
+	}
+
+	public int getFinishDateYear() {
+		return finishDateYear;
+	}
+
+	public void setFinishDateYear(int finishDateYear) {
+		this.finishDateYear = finishDateYear;
 	}
 
 	public void setLeader(String leader) {
@@ -102,7 +144,5 @@ public class ProjectHeaderForm extends ActionForm {
 	public void setObjective(String objective) {
 		this.objective = objective;
 	}
-	
-	
 
 }

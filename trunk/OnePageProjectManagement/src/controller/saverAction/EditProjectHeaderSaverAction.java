@@ -1,8 +1,5 @@
 package controller.saverAction;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -43,20 +40,15 @@ public class EditProjectHeaderSaverAction extends DispatchAction {
     	Transaction ta = hibernateSession.beginTransaction();
     	Long id = projectForm.getId();
     	Project project;
-		if(id != null || id != 0)
+		if(id != null && id != 0)
 			project = (Project) hibernateSession.get(Project.class, id);
 		else
 			project = new Project();
 		project.setName(projectForm.getName());
 		project.setObjective(projectForm.getObjective());
-		//project.setLeader(user);
-		try {
-			project.setStartDate(DateFormat.getDateInstance().parse(projectForm.getStartDate()));
-			project.setFinishDate(DateFormat.getDateInstance().parse(projectForm.getFinishDate()));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		project.setLeader(user);
+		project.setStartDate(projectForm.getStartDate());
+		project.setFinishDate(projectForm.getFinishDate());
         hibernateSession.saveOrUpdate(project);
         ta.commit();
         hibernateSession.close();

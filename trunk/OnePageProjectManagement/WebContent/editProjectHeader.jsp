@@ -2,16 +2,14 @@
 <center>
 <h2>Project Operations</h2>
 
-<%-- either add or edit based on id --%> 
-<c:choose>
+<%-- either add or edit based on id --%> <c:choose>
 	<c:when test="${not empty projectForm.id}">
 		<h2>Edit Project</h2>
 	</c:when>
 	<c:otherwise>
 		<h2>Add a Project</h2>
 	</c:otherwise>
-</c:choose> 
-<html:form action="/EditProjectHeaderSaver">
+</c:choose> <html:form action="/EditProjectHeaderSaver">
 
 	<html:hidden property="id" />
 
@@ -35,14 +33,69 @@
 
 		<tr>
 			<td>Start Date&nbsp;:</td>
-			<td><html:text property="startDate" /></td>
-			<td>&nbsp;-></td>
+			<td><html:select property="startDateDay">
+				<%
+					for (int i = 1; i < 31; i++) {
+				%>
+				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+				</html:option>
+				<%
+					}
+				%>
+			</html:select> <html:select property="startDateMonth">
+				<%
+					for (int i = 1; i < 13; i++) {
+				%>
+				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+				</html:option>
+				<%
+					}
+				%>
+			</html:select>
+			<html:select property="startDateYear">
+				<%
+					for (int i = 2010; i < 2015; i++) {
+				%>
+				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+				</html:option>
+				<%
+					}
+				%>
+			</html:select></td>
+			<td>&nbsp;</td>
 
 			<td>Finish Date&nbsp;:</td>
-			<td><html:text property="finishDate" /></td>
+			<td><html:select property="finishDateDay">
+				<%
+					for (int i = 1; i < 31; i++) {
+				%>
+				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+				</html:option>
+				<%
+					}
+				%>
+			</html:select> <html:select property="finishDateMonth">
+				<%
+					for (int i = 1; i < 13; i++) {
+				%>
+				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+				</html:option>
+				<%
+					}
+				%>
+			</html:select>
+			<html:select property="finishDateYear">
+				<%
+					for (int i = 2010; i < 2015; i++) {
+				%>
+				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+				</html:option>
+				<%
+					}
+				%>
+			</html:select></td>
 		</tr>
 		<tr>
-			Format : DD-MM-YYYY
 			<html:errors property="date" />
 		</tr>
 
