@@ -26,7 +26,7 @@ public class Project {
 	private String name;
 	private Date startDate;
 	private Date finishDate;
-	private Puser leader;
+	//private Puser leader;
 	private String objective;
 	private List<Summary> summaries;
 	private List<Cost> costs;
@@ -43,7 +43,7 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
-		this.leader = leader;
+		//this.leader = leader;
 		this.objective = objective;
 	}
 
@@ -54,17 +54,17 @@ public class Project {
 		this.name = name;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
-		this.leader = leader;
+		//this.leader = leader;
 		this.objective = objective;
 	}
 
-	public long getLeaderId() {
-		return this.leader.getId();
-	}
-
-	public void setLeaderId(long newId) {
-		this.leader.setId(newId);
-	}
+//	public long getLeaderId() {
+//		return this.leader.getId();
+//	}
+//
+//	public void setLeaderId(long newId) {
+//		this.leader.setId(newId);
+//	}
 
 	public void addUser(Puser usr) throws AddElementException {
 		if (this.users == null)
@@ -153,7 +153,8 @@ public class Project {
 		this.objectives = objectives;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST }, mappedBy = "projects", targetEntity = Puser.class)
+	@ManyToMany(targetEntity = Puser.class, cascade = { CascadeType.PERSIST })
+	@JoinTable(name = "WORKSON", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID"))
 	public List<Puser> getUsers() {
 		return users;
 	}
@@ -186,13 +187,13 @@ public class Project {
 		this.finishDate = finishDate;
 	}
 
-	public Puser getLeader() {
-		return leader;
-	}
-
-	public void setLeader(Puser leader) {
-		this.leader = leader;
-	}
+//	public Puser getLeader() {
+//		return leader;
+//	}
+//
+//	public void setLeader(Puser leader) {
+//		this.leader = leader;
+//	}
 
 	public String getObjective() {
 		return objective;
