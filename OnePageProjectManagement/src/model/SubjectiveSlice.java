@@ -57,7 +57,7 @@ public class SubjectiveSlice {
 		this.color = color;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST , CascadeType.MERGE})
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"))
 	public SubjectiveTask getTask() {
 		return task;
