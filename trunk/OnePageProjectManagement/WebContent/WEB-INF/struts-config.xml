@@ -130,7 +130,7 @@
     		name="userForm"
     		input="/editUser.jsp"
     		scope="request">
-    		<forward name="success" path="/MainPage.do"/>
+    		<forward name="success" path="/index.jsp"/>
     </action>
     
     <action path="/EditUserSaver"
@@ -139,7 +139,7 @@
               scope="request"
               input="/editUser.jsp"
               validate="true">
-	    <forward name="success" path="/index.jsps" redirect="true"/>
+	    <forward name="success" path="/MainPage.do" redirect="true"/>
 	    <forward name="failure" path="/message.jsp"/>
     </action>
     
