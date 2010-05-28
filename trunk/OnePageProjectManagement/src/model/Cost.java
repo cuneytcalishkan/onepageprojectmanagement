@@ -75,8 +75,8 @@ public class Cost {
 		this.id = id;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "PROJECTHAS", joinColumns = @JoinColumn(name = "COST_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	@ManyToOne(cascade = { CascadeType.PERSIST })
+	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "COST_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
 	public Project getProject() {
 		return project;
 	}
