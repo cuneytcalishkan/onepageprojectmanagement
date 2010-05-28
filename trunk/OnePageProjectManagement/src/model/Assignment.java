@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +32,8 @@ public class Assignment {
 		this.priority = priority;
 	}
 	@Id
+	@ManyToOne
+    @JoinColumn(name="USER_ID")
 	public Puser getUser() {
 		return user;
 	}
@@ -38,6 +42,8 @@ public class Assignment {
 		this.user = user;
 	}
 	@Id
+	@ManyToOne
+    @JoinColumn(name="MAJORTASK_ID")
 	public MajorTask getTask() {
 		return task;
 	}
