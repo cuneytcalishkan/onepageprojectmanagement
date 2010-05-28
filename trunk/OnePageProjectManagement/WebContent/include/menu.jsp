@@ -8,6 +8,9 @@
       <html:link forward="login">Login</html:link>
     </c:when>
     <c:otherwise>
+    <html:link action="/EditUser" paramId="id" paramName="user" paramProperty="id">
+    
+    </html:link>
       <c:out value="${user.nameSurname}"/> <br/>
       <html:link forward="logout">Logout</html:link>
     </c:otherwise>
