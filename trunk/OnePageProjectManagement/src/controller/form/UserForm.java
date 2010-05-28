@@ -18,11 +18,11 @@ public class UserForm extends ActionForm {
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
         ActionErrors errors = new ActionErrors();
 
-        if(userName.equals(""))
+        if(userName != null && userName.equals(""))
 	    	errors.add("userName", new ActionMessage("empty"));
-        if(nameSurname.equals(""))
+        if(nameSurname!= null && nameSurname.equals(""))
 	    	errors.add("nameSurname", new ActionMessage("empty"));
-        if(password.equals(""))
+        if(password != null && password.equals(""))
 	    	errors.add("password", new ActionMessage("empty"));
         
         return errors;
