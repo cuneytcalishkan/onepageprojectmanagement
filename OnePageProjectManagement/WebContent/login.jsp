@@ -1,6 +1,7 @@
 <%@ include file="/include/header.jspfrag"%>
+<center>
 <html:errors />
-<center><html:form action="/Login.do">
+<html:form action="/Login.do">
 	<table height=125 background="images/login.png"
 		style="background-repeat: no-repeat">
 		<tr>

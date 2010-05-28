@@ -14,7 +14,7 @@
 		<property name="hibernate.connection.password">CENG</property>
 		<property name="hibernate.connection.pool_size">5</property>
 		<property name="show_sql">true</property>
-		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<mapping class="model.Cost" />
@@ -27,6 +27,6 @@
 		<mapping class="model.SubjectiveSlice" />
 		<mapping class="model.SubjectiveTask" />
 		<mapping class="model.Summary" />
-		<mapping class="model.Assignment" />
+		<!-- <mapping class="model.Assignment" /> -->
 	</session-factory>
 </hibernate-configuration>
