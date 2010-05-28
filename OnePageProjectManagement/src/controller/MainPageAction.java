@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +13,6 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.util.LabelValueBean;
 import org.hibernate.Session;
 
 public class MainPageAction extends Action {
