@@ -40,12 +40,12 @@ public class ProjectHeaderForm extends ActionForm {
 	}
 
 	public Date getStartDate() {
-		Calendar cal = new GregorianCalendar(startDateYear, startDateMonth, startDateDay);
+		Calendar cal = new GregorianCalendar(startDateYear, startDateMonth-1, startDateDay);
 		return cal.getTime();
 	}
 
 	public Date getFinishDate() {
-		Calendar cal = new GregorianCalendar(finishDateYear, finishDateMonth, finishDateDay);
+		Calendar cal = new GregorianCalendar(finishDateYear, finishDateMonth-1, finishDateDay);
 		return cal.getTime();
 	}
 
