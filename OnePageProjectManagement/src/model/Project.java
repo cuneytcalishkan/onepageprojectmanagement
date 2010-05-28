@@ -59,14 +59,6 @@ public class Project {
 		this.objective = objective;
 	}
 
-	public long getLeaderId() {
-		return this.leader.getId();
-	}
-
-	public void setLeaderId(long newId) {
-		this.leader.setId(newId);
-	}
-
 	public void addUser(Puser usr) throws AddElementException {
 		if (this.users == null)
 			setUsers(new ArrayList<Puser>());
