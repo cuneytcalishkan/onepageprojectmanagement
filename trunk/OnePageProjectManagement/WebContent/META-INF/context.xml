@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Context>
-      <Resource name="jdbc/weatherds" auth="Container" type="javax.sql.DataSource"
+      <Resource name="jdbc/DefaultDS" auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="10000" 
                username="CENG432" password="CENG" 
                driverClassName="oracle.jdbc.driver.OracleDriver "
