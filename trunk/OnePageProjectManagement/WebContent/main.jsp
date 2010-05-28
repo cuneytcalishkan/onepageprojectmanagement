@@ -25,7 +25,7 @@
     
     <c:if test="${user.role=='project manager'}">
       <td><html:link action="/EditProject" paramId="id" paramName="project" paramProperty="id">
-	    edit</html:link>
+	    EDIT</html:link>
       </td>
     </c:if>
 	</br>
