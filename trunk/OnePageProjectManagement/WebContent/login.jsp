@@ -1,25 +1,26 @@
-<%@ include file="/include/header.jspfrag" %>
+<%@ include file="/include/header.jspfrag"%>
+<html:errors />
+<center><html:form action="/Login.do">
+	<table width=200 height=135 background="images/login.png"
+		style="background-repeat: no-repeat">
+		<tr>
 
-<h2>login:</h2> <html:errors/>
+			<td><font color=#FF0000>USERNAME&nbsp;:</font></td>
 
-<html:form action="/Login.do">
+			<td><html:text property="username" />
+		</tr>
+		<tr>
 
-<tr>
-<td>username:</td>
-<td><html:text property="username"/>
-</tr>
-<br></br>
-<tr>
-<td>password:</td>
-<td><html:password property="password"/>
-</tr>
-<br></br>
-<tr>
-<td>&nbsp;</td>
-<td><html:submit>login</html:submit></td>
-</tr>
+			<td><font color=#FF0000>PASSWORD&nbsp;:</font></td>
 
+			<td><html:password property="password" />
+		</tr>
 
-</html:form>
+		<tr>
+			<td>&nbsp;</td>
+			<td><html:submit>LOGIN</html:submit></td>
+		</tr>
 
-<%@ include file="/include/footer.jspfrag" %>
+	</table>
+</html:form></center>
+<%@ include file="/include/footer.jspfrag"%>
