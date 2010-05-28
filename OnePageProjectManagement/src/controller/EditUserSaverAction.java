@@ -17,12 +17,12 @@ import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import controller.form.ProjectForm;
+import controller.form.UserForm;
 
 /**
  * @author tile
  */
-public class EditProjectSaverAction extends DispatchAction {
+public class EditUserSaverAction extends DispatchAction {
     
     public ActionForward execute(ActionMapping mapping,
             ActionForm form,
@@ -31,32 +31,24 @@ public class EditProjectSaverAction extends DispatchAction {
 
         HttpSession session = request.getSession(true);
         Puser user = (Puser) session.getAttribute("user");
-        if( user == null || ! user.getRole().equals("project manager"))  {
+        if( user == null || ! user.getRole().equals("manager"))  {
         	throw new RuntimeException("You are not unauthorized to execute this action.");
         }
 
-        ProjectForm projectForm = (ProjectForm) form;
-
-        
+        UserForm userForm = (UserForm) form;
         Session hibernateSession = HibernateUtil.getSession();
     	Transaction ta = hibernateSession.beginTransaction();
-    	Long id = projectForm.getId();
-    	Project project;
+    	Long id = userForm.getId();
+    	Puser pUser;
 		if(id != null || id != 0)
-			project = (Project) hibernateSession.get(Project.class, id);
+			pUser = (Puser) hibernateSession.get(Puser.class, id);
 		else
-			project = new Project();
-		project.setName(projectForm.getName());
-		project.setObjective(projectForm.getObjective());
-		project.setLeader(user);
-		try {
-			project.setStartDate(DateFormat.getDateInstance().parse(projectForm.getStartDate()));
-			project.setFinishDate(DateFormat.getDateInstance().parse(projectForm.getFinishDate()));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        hibernateSession.saveOrUpdate(project);
+			pUser = new Puser();
+		pUser.setUserName(userForm.getUserName());
+		pUser.setNameSurname(userForm.getNameSurname());
+		pUser.setPassword(userForm.getPassword());
+		pUser.setRole(userForm.getRole());
+        hibernateSession.saveOrUpdate(pUser);
         ta.commit();
         hibernateSession.close();
         return mapping.findForward("success");

@@ -4,11 +4,12 @@
   <%-- condition?a:b below means that if "condition" is true, then a else b --%>
   <td>
   <c:choose>
-    <c:when test="${not isAdminUser}">
-      <html:link forward="login">login</html:link>
+    <c:when test="${not user}">
+      <html:link forward="login">Login</html:link>
     </c:when>
     <c:otherwise>
-      <html:link forward="logout">logout</html:link>
+      <c:out value="${user.nameSurname}"/> <br/>
+      <html:link forward="logout">Logout</html:link>
     </c:otherwise>
   </c:choose>
   </td>

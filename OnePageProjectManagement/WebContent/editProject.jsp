@@ -28,11 +28,7 @@
 <tr>
 <td>Project Leader : </td>
 <td>
-<select name="leader">
-<c:forEach items='${leaders}' var='leader'>
-<option value="leader.id"><c:out value="${leader.toString()}"/></option>
-</c:forEach>
-</select>
+<html:text property="leader" disabled="true"/>
 </td>
 </tr>
 

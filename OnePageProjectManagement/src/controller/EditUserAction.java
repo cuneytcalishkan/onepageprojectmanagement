@@ -18,12 +18,12 @@ import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import controller.form.ProjectForm;
+import controller.form.UserForm;
 
 /**
  * @author tile
  */
-public class EditProjectAction extends DispatchAction {
+public class EditUserAction extends DispatchAction {
     
 	public ActionForward execute(ActionMapping mapping,
             ActionForm form,
@@ -31,22 +31,21 @@ public class EditProjectAction extends DispatchAction {
             HttpServletResponse response) {
     	HttpSession session = request.getSession(true);
     	Puser user = (Puser) session.getAttribute("user");
-        if( user == null || ! user.getRole().equals("project manager"))  {
+        if( user == null || ! user.getRole().equals("manager"))  {
         	throw new RuntimeException("You are not unauthorized to execute this action.");
         }
         
-        ProjectForm projectForm = (ProjectForm) form;
+        UserForm userForm = (UserForm) form;
         Transaction ta = null;
         Session hibernateSession = HibernateUtil.getSession();
         try {
             ta = hibernateSession.beginTransaction();
             
-            Project project = (Project) hibernateSession.get(Project.class, projectForm.getId());
-			projectForm.setName(project.getName());
-			projectForm.setLeader(user.getNameSurname()); 
-			projectForm.setObjective(project.getObjective());
-			projectForm.setStartDate(project.getStartDate());
-			projectForm.setFinishDate(project.getFinishDate());
+            Puser pUser = (Puser) hibernateSession.get(Puser.class, userForm.getId());
+            userForm.setUserName(pUser.getUserName());
+			userForm.setNameSurname(pUser.getNameSurname());
+			userForm.setPassword(pUser.getPassword()); 
+			userForm.setRole(pUser.getRole());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
@@ -55,10 +54,9 @@ public class EditProjectAction extends DispatchAction {
 				ta.rollback();
 				hibernateSession.close();
 			}
-        	projectForm.setStartDate(new Date());
 	        ActionMessages actionMessages = new ActionMessages();
 	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-	        	new ActionMessage("project.notFound"));
+	        	new ActionMessage("user.notFound"));
 	        saveMessages(request,actionMessages);
 	        return mapping.findForward("failure");
         }

@@ -49,7 +49,7 @@ public class LoginAction extends Action {
         
         if(user != null && password.equals(user.getPassword())) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("role", user.getRole());
+            session.setAttribute("user", user);
             
             ActionMessages actionMessages = new ActionMessages();
             actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
