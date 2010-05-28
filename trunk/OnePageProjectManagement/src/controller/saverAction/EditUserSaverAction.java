@@ -20,24 +20,24 @@ import controller.form.UserForm;
  * @author tile
  */
 public class EditUserSaverAction extends DispatchAction {
-    
-    public ActionForward execute(ActionMapping mapping,
-            ActionForm form,
-            HttpServletRequest request,
-            HttpServletResponse response) {
 
-        HttpSession session = request.getSession(true);
-        UserForm userForm = (UserForm) form;
-    	Puser user = (Puser) session.getAttribute("user");
-        if( user == null ||  (!user.getRole().equals("manager") &&
-        		!(user.getId() == userForm.getId())))  {
-        	throw new RuntimeException("You are not unauthorized to execute this action.");
-        }
-        Session hibernateSession = HibernateUtil.getSession();
-    	Transaction ta = hibernateSession.beginTransaction();
-    	Long id = userForm.getId();
-    	Puser pUser;
-		if(id != null || id != 0)
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
+
+		HttpSession session = request.getSession(true);
+		UserForm userForm = (UserForm) form;
+		Puser user = (Puser) session.getAttribute("user");
+		if (user == null
+				|| (!user.getRole().equals("manager") && !(user.getId() == userForm
+						.getId()))) {
+			throw new RuntimeException(
+					"You are not authorized to execute this action.");
+		}
+		Session hibernateSession = HibernateUtil.getSession();
+		Transaction ta = hibernateSession.beginTransaction();
+		Long id = userForm.getId();
+		Puser pUser;
+		if (id != null && id != 0)
 			pUser = (Puser) hibernateSession.get(Puser.class, id);
 		else
 			pUser = new Puser();
@@ -45,10 +45,10 @@ public class EditUserSaverAction extends DispatchAction {
 		pUser.setNameSurname(userForm.getNameSurname());
 		pUser.setPassword(userForm.getPassword());
 		pUser.setRole(userForm.getRole());
-        hibernateSession.saveOrUpdate(pUser);
-        ta.commit();
-        hibernateSession.close();
-        return mapping.findForward("success");
-    }
-    
+		hibernateSession.saveOrUpdate(pUser);
+		ta.commit();
+		hibernateSession.close();
+		return mapping.findForward("success");
+	}
+
 }
