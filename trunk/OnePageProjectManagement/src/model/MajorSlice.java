@@ -14,20 +14,34 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MAJORSLICE")
-public class MajorSlice extends Slice {
+public class MajorSlice {
+	private long id;
+	private Date sliceDate;
 	private boolean completed;
 	private boolean verified;
 	private MajorTask majorTask;
 
-	@Override
+	public MajorSlice(long id, Date sliceDate) {
+		this.id = id;
+		this.sliceDate = sliceDate;
+	}
+
+	public Date getSliceDate() {
+		return sliceDate;
+	}
+
+	public void setSliceDate(Date sliceDate) {
+		this.sliceDate = sliceDate;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
-		return super.getId();
+		return id;
 	}
 
-	public MajorSlice(long id, Date sliceDate) {
-		super(id, sliceDate);
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public boolean isCompleted() {
