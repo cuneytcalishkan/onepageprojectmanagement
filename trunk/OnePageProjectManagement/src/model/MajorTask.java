@@ -26,6 +26,10 @@ public class MajorTask {
 	private long id;
 	private String name;
 
+	public MajorTask() {
+		super();
+	}
+
 	public MajorTask(long id, String name) {
 		this.id = id;
 		this.name = name;
