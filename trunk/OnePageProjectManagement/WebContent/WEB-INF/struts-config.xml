@@ -39,7 +39,7 @@
 
 		<forward name="editObjective" path="/EditObjective.do" />
 
-		<forward name="editSubjective" path="/EditSubjective.do" />
+		<forward name="editSubjectiveTask" path="/EditSubjectiveTask.do" />
 		
 		<forward name="editCost" path="/EditCost.do" />
 
