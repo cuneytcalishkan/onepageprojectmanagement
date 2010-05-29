@@ -2,7 +2,8 @@
 <%@ include file="/include/menu.jsp"%>
 
 
-<center>
+
+<%@page import="controller.Utilizer"%><center>
 <p><c:if test="${user.role=='manager'}">
 	<html:link forward="editUser">Add New User</html:link>
 </c:if></p>
@@ -25,12 +26,12 @@
 		<c:set var="even" value="${!even}" />
 		<tr align="center" class="${even?'bglo':'bghi'}">
 			<td><html:link action="/OnePageProject" paramId="id"
-					paramName="project" paramProperty="id">
-			<c:out value="${project.name}" />
+				paramName="project" paramProperty="id">
+				<c:out value="${project.name}" />
 			</html:link></td>
 			<td><c:out value="${project.leader.nameSurname}" /></td>
-			<td><c:out value="${project.startDate}" />&nbsp;&nbsp;-&nbsp;&nbsp;<c:out
-				value="${project.finishDate}" /></td>
+			<td><c:out value="${project.startDateAsString}" />&nbsp;&nbsp;-&nbsp;&nbsp;<c:out
+				value="${project.finishDateAsString}" /></td>
 			<c:if test="${user.role=='project manager'}">
 				<td><html:link action="/EditProjectHeader" paramId="id"
 					paramName="project" paramProperty="id">
