@@ -100,7 +100,7 @@
 							Add Objective
 						</html:link></td>
 		<c:forEach items='${project.objectives}' var='objective'>
-		<td><c:out value="${objective.name }"/></td>
+		<td rowspan="3"><c:out value="${objective.name }"/></td>
 		</c:forEach>
 		<td rowspan="2">Objectives</td>
 		<td>Target Dates</td>
