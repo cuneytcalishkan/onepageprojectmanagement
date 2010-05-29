@@ -11,8 +11,6 @@
 		type="com.seitti.tunnusx.web.FeedbackForm"/>
 	-->
 	<form-beans>
-		<form-bean name="costForm" type="controller.form.CostForm" />
-	
 		<form-bean name="subjectiveTaskForm" type="controller.form.SubjectiveTaskForm" />
 
 		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
@@ -133,7 +131,7 @@
 		</action>
 
 		<action path="/EditCostSaver" type="controller.saverAction.EditCostSaverAction"
-			name="subjectiveForm" scope="request" input="/editSubjective.jsp"
+			name="costForm" scope="request" input="/editCost.jsp"
 			validate="true">
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
