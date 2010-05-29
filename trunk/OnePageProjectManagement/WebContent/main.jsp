@@ -25,7 +25,7 @@
 		<c:set var="even" value="${!even}" />
 		<tr align="center" class="${even?'bglo':'bghi'}">
 			<td><c:out value="${project.name}" /></td>
-			<td><c:out value="${user.nameSurname}" /></td>
+			<td><c:out value="${project.leader.nameSurname}" /></td>
 			<td><c:out value="${project.startDate}" />&nbsp;&nbsp;-&nbsp;&nbsp;<c:out
 				value="${project.finishDate}" /></td>
 			<c:if test="${user.role=='project manager'}">
