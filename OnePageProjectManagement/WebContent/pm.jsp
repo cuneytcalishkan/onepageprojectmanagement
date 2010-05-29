@@ -4,7 +4,8 @@
 <table border="1">
 <tr>
 <th colspan="3"> ONE PAGE </th>
-<th colspan="18"> Project Leader : <c:out value="${project.leader.nameSurname}" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Project : <c:out value="${project.name}" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Date: <c:out value="${project.startDate}" />
+<th colspan="18"> Project Leader : <c:out value="${project.leader.nameSurname}" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+Project : <c:out value="${project.name}" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Date: <%= new Date() %> />
 <br>Project Objective: <c:out value="${project.objective}" /> </th>
 </tr>
 <tr >
