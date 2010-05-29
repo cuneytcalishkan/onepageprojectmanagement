@@ -95,7 +95,7 @@
 	</tr>
 
 	<tr>
-		<td rowspan="3"><html:link action="/EditObjective" paramId="id"
+		<td rowspan="3"><html:link action="/EditObjective" paramId="projectId"
 							paramName="project" paramProperty="id">
 							Add Objective
 						</html:link></td>
@@ -134,10 +134,10 @@
 	</tr>
 	<tr>
 		<td colspan="2">Summary and Forecasts</td>
-		<td colspan="14"><html:link action="/EditSummary" paramId="id"
+		<td colspan="14"><html:link action="/EditSummary" paramId="projectId"
 							paramName="project" paramProperty="id">
 							Add Summary
-						</html:link></td>
+		</html:link></td>
 	</tr>
 </table>
 <%@ include file="/include/footer.jspfrag"%>
