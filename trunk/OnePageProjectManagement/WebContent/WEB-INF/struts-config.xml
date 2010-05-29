@@ -82,7 +82,7 @@
 		<action path="/EditObjectiveSaver"
 			type="controller.saverAction.EditObjectiveSaverAction" name="objectiveForm"
 			scope="request" input="/editObjective.jsp" validate="true">
-			<forward name="success" path="/OnePageProject.do" redirect="true" />
+			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -113,7 +113,7 @@
 
 		<action path="/EditSummarySaver" type="controller.saverAction.EditSummarySaverAction"
 			name="summaryForm" scope="request" input="/editSummary.jsp" validate="true">
-			<forward name="success" path="/OnePageProject.do" redirect="true" />
+			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
