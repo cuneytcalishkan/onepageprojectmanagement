@@ -4,8 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Objective;
-import model.Project;
+import model.MajorTask;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
@@ -16,15 +15,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
-import controller.form.ObjectiveForm;
+import controller.form.MajorTaskForm;
 
-public class EditObjectiveSaverAction extends DispatchAction {
+public class EditMajorTaskSaverAction extends DispatchAction{
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession(true);
-		ObjectiveForm objectiveForm = (ObjectiveForm) form;
+		MajorTaskForm majorTaskForm = (MajorTaskForm) form;
 		Puser user = (Puser) session.getAttribute("user");
 		if (user == null || (!user.getRole().equals("project manager"))) {
 			throw new RuntimeException(
@@ -32,19 +31,19 @@ public class EditObjectiveSaverAction extends DispatchAction {
 		}
 		Session hibernateSession = HibernateUtil.getSession();
 		Transaction ta = hibernateSession.beginTransaction();
-		Long id = objectiveForm.getId();
-		Objective objective;
+		Long id = majorTaskForm.getId();
+		MajorTask majorTask;
 		if (id != null && id != 0)
-			objective = (Objective) hibernateSession.get(Objective.class, id);
+			majorTask = (MajorTask) hibernateSession.get(MajorTask.class, id);
 		else
-			objective = new Objective();
-		Project project = (Project) hibernateSession.get(Project.class, objectiveForm.getProjectId());
-		objective.setName(objectiveForm.getName());
-		objective.setProject(project);
-		hibernateSession.saveOrUpdate(objective);
+			majorTask = new MajorTask();
+		
+		majorTask.setName(majorTaskForm.getName());
+		
+		hibernateSession.saveOrUpdate(majorTask);
 		ta.commit();
 		hibernateSession.close();
 		return mapping.findForward("success");
 	}
-
+	
 }
