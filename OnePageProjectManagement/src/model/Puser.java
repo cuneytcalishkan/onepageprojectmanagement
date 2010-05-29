@@ -26,6 +26,7 @@ public class Puser {
 	private String password;
 	private String role;
 	private List<Assignment> assignments;
+	private List<SubjectiveAssignment> subjectiveAssignments;
 	private List<Project> projects;
 
 	public Puser() {
@@ -149,6 +150,16 @@ public class Puser {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	@OneToMany(mappedBy = "puser")
+	public List<SubjectiveAssignment> getSubjectiveAssignments() {
+		return subjectiveAssignments;
+	}
+
+	public void setSubjectiveAssignments(
+			List<SubjectiveAssignment> subjectiveAssignments) {
+		this.subjectiveAssignments = subjectiveAssignments;
 	}
 
 }

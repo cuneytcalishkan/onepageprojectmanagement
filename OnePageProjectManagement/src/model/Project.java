@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import exception.AddElementException;
 import exception.RemoveElementException;
@@ -58,6 +61,25 @@ public class Project {
 		this.finishDate = finishDate;
 		this.leader = leader;
 		this.objective = objective;
+	}
+
+	@Transient
+	public int getSliceQuantity() {
+
+		int stY, fnY, stM, fnM, result;
+		Calendar stCal = new GregorianCalendar();
+		stCal.setTime(startDate);
+		stY = stCal.get(Calendar.YEAR);
+		stM = stCal.get(Calendar.MONTH) + 1;
+		Calendar fnCal = new GregorianCalendar();
+		stCal.setTime(finishDate);
+		fnY = fnCal.get(Calendar.YEAR);
+		fnM = fnCal.get(Calendar.MONTH) + 1;
+
+		result = (fnY - stY) * 12;
+		result += fnM - stM;
+		return ++result;
+
 	}
 
 	public void addUser(Puser usr) throws AddElementException {
