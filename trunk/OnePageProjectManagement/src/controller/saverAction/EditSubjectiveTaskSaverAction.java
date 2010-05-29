@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Objective;
-import model.Project;
 import model.Puser;
+import model.SubjectiveTask;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -17,8 +17,9 @@ import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
 import controller.form.SubjectiveTaskForm;
+import exception.AddElementException;
 
-public class EditSubjectiveTaskSaverAction extends DispatchAction {
+public class EditSubjectiveTaskSaverAction extends DispatchAction{
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
@@ -33,19 +34,29 @@ public class EditSubjectiveTaskSaverAction extends DispatchAction {
 		Session hibernateSession = HibernateUtil.getSession();
 		Transaction ta = hibernateSession.beginTransaction();
 		Long id = subjectiveTaskForm.getId();
-		Objective objective;
+		SubjectiveTask subjectiveTask;
 		if (id != null && id != 0)
-			objective = (Objective) hibernateSession.get(Objective.class, id);
+			subjectiveTask = (SubjectiveTask) hibernateSession.get(SubjectiveTask.class, id);
 		else
-			objective = new Objective();
-		Project project = (Project) hibernateSession.get(Project.class,
-				subjectiveTaskForm.getProjectId());
-		objective.setName(subjectiveTaskForm.getName());
-		objective.setProject(project);
-		hibernateSession.saveOrUpdate(objective);
+			subjectiveTask = new SubjectiveTask();
+		
+		subjectiveTask.setName(subjectiveTaskForm.getName());
+		String[] objectives = subjectiveTaskForm.getObjectivesList();
+		for(int i = 0; i< objectives.length; i++){
+			Objective obj = (Objective) hibernateSession.get(Objective.class, Long.parseLong(objectives[i]));
+			subjectiveTask.addObjective(obj);
+			try {
+				obj.addSubjectiveTask(subjectiveTask);
+			} catch (AddElementException e) {
+				e.printStackTrace();
+			}
+			hibernateSession.saveOrUpdate(obj);
+		}
+		
+		hibernateSession.saveOrUpdate(subjectiveTask);
 		ta.commit();
 		hibernateSession.close();
 		return mapping.findForward("success");
 	}
-
+	
 }
