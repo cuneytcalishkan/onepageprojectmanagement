@@ -12,6 +12,7 @@ public class SummaryForm extends ActionForm {
 	private static final long serialVersionUID = 1L;
 	private Long projectId;
 	private String description;
+	private long id;
 
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
 		ActionErrors errors = new ActionErrors();
@@ -38,6 +39,14 @@ public class SummaryForm extends ActionForm {
 
 	public void setProjectId(Long projectId) {
 		this.projectId = projectId;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }
