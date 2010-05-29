@@ -14,19 +14,19 @@ public class MajorTaskForm extends ActionForm {
 	private long id;
 	private String name;
 	private long projectId;
+	private String[] objectivesList;
 
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
 		ActionErrors errors = new ActionErrors();
 
 		if (name != null && name.equals(""))
 			errors.add("name", new ActionMessage("empty"));
-		if (projectId == 0)
-			errors.add("project", new ActionMessage("project.empty"));
 		return errors;
 	}
 
 	public void reset(ActionMapping arg0, HttpServletRequest arg1) {
 		name = null;
+		id = 0;
 		projectId = 0;
 	}
 
@@ -52,6 +52,14 @@ public class MajorTaskForm extends ActionForm {
 
 	public void setProjectId(long projectId) {
 		this.projectId = projectId;
+	}
+
+	public String[] getObjectivesList() {
+		return objectivesList;
+	}
+
+	public void setObjectivesList(String[] objectivesList) {
+		this.objectivesList = objectivesList;
 	}
 
 }

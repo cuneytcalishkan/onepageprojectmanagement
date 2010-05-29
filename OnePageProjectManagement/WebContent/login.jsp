@@ -8,13 +8,13 @@
 
 			<td>USERNAME&nbsp;:</td>
 
-			<td><html:text property="username" />
+			<td><html:text property="username" value="natan"/>
 		</tr>
 		<tr>
 
 			<td>PASSWORD&nbsp;:</td>
 
-			<td><html:password property="password" />
+			<td><html:password property="password" value="1234"/>
 		</tr>
 
 		<tr>
