@@ -1,49 +1,72 @@
 <%@ include file="/include/header.jspfrag"%>
 <%@ include file="/include/menu.jsp"%>
 
-
-
-<%@page import="controller.Utilizer"%><center>
-<p><c:if test="${user.role=='manager'}">
-	<html:link forward="editUser">Add New User</html:link>
-</c:if></p>
-
+<%@page import="controller.Utilizer"%>
 
 <p><c:if test="${user.role=='project manager'}">
 	<html:link forward="editProject">Add New Project</html:link>
 </c:if></p>
-<table border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="2">
-	<tr align="center">
-		<td><b>Project Name</b></td>
-		<td><b>Project Leader</b></td>
-		<td><b>Date Interval</b></td>
-		<c:if test="${user.role=='project manager'}">
-			<td><b>Edit</b></td>
+<table>
+	<tr>
+		<c:if test="${user.role=='manager'}">
+			<td align="center">
+			<p><html:link forward="editUser">Add New User</html:link></p>
+			<table border="1" bordercolor="#ECECEC" cellspacing="0"
+				cellpadding="2">
+				<th>Name Surname</th>
+				<th>Role</th>
+				<c:forEach items='${users}' var='user'>
+					<tr>
+						<td><html:link action="/EditUser" paramId="id"
+							paramName="user" paramProperty="id">
+							<c:out value="${user.nameSurname}" />
+						</html:link></td>
+						<td><c:out value="${user.role}" /></td>
+					</tr>
+				</c:forEach>
+
+
+			</table>
+
+			</td>
 		</c:if>
-		<td><b>Objective</b></td>
-	</tr>
-	<c:forEach items='${projects}' var='project'>
-		<c:set var="even" value="${!even}" />
-		<tr align="center" class="${even?'bglo':'bghi'}">
-			<td><html:link action="/OnePageProject" paramId="id"
-				paramName="project" paramProperty="id">
-				<c:out value="${project.name}" />
-			</html:link></td>
-			<td><c:out value="${project.leader.nameSurname}" /></td>
-			<td><c:out value="${project.startDateAsString}" />&nbsp;&nbsp;-&nbsp;&nbsp;<c:out
-				value="${project.finishDateAsString}" /></td>
+
+		<td align="center">
+		<p><b>LIST OF THE PROJECTS</b></p>
+		<table border="1" bordercolor="#ECECEC" cellspacing="0"
+			cellpadding="2">
+			<th>Project Name</th>
+			<th>Project Leader</th>
+			<th>Date Interval</th>
 			<c:if test="${user.role=='project manager'}">
-				<td><html:link action="/EditProjectHeader" paramId="id"
-					paramName="project" paramProperty="id">
-	    EDIT</html:link></td>
+				<th>Edit</th>
 			</c:if>
-			<td><c:out value="${project.objective}" /></td>
-		</tr>
-	</c:forEach>
+			<th>Objective</th>
+			<c:forEach items='${projects}' var='project'>
+				<c:set var="even" value="${!even}" />
+				<tr align="center" class="${even?'bglo':'bghi'}">
+					<td><html:link action="/OnePageProject" paramId="id"
+						paramName="project" paramProperty="id">
+						<c:out value="${project.name}" />
+					</html:link></td>
+					<td><c:out value="${project.leader.nameSurname}" /></td>
+					<td><c:out value="${project.startDateAsString}" />&nbsp;&nbsp;-&nbsp;&nbsp;<c:out
+						value="${project.finishDateAsString}" /></td>
+					<c:if test="${user.role=='project manager'}">
+						<td><html:link action="/EditProjectHeader" paramId="id"
+							paramName="project" paramProperty="id">
+	    EDIT</html:link></td>
+					</c:if>
+					<td><c:out value="${project.objective}" /></td>
+				</tr>
+			</c:forEach>
+		</table>
+		</td>
+	</tr>
 </table>
 <c:if test="${empty projects}">
 	<td>No Project exists.</td>
-</c:if></center>
+</c:if>
 
 <%@ include file="/include/footer.jspfrag"%>
 
