@@ -5,6 +5,7 @@
 <html:form action="/EditCostSaver">
 
 	<html:hidden property="id" />
+	<html:hidden property="projectId" />
 
 	<table border='0'>
 

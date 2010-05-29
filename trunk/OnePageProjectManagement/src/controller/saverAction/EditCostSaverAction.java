@@ -17,6 +17,7 @@ import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
 import controller.form.CostForm;
+import exception.AddElementException;
 
 public class EditCostSaverAction extends DispatchAction {
 
@@ -46,7 +47,15 @@ public class EditCostSaverAction extends DispatchAction {
 		cost.setBudget(costForm.getBudget());
 		cost.setExpense(costForm.getExpense());
 		cost.setProject(project);
+		System.out.println(costForm.getProjectId());
+		try {
+			project.addCost(cost);
+		} catch (AddElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		hibernateSession.saveOrUpdate(project);
 		hibernateSession.saveOrUpdate(cost);
 		ta.commit();
 		hibernateSession.close();

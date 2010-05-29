@@ -135,6 +135,11 @@
 				paramProperty="id">
 							Add Cost
 						</html:link>
+			<c:forEach items='${project.costs}' var='cost'>
+			<td colspan="${cost.budget }">
+			<td colspan="${cost.expense}" color="${cost.color}"></td>
+			</td>
+	</c:forEach>
 		</td>
 	<tr>
 		<td colspan="2">Summary and Forecasts</td>
