@@ -24,7 +24,10 @@
 	<c:forEach items='${projects}' var='project'>
 		<c:set var="even" value="${!even}" />
 		<tr align="center" class="${even?'bglo':'bghi'}">
-			<td><c:out value="${project.name}" /></td>
+			<td><html:link action="/OnePageProject" paramId="id"
+					paramName="project" paramProperty="id">
+			<c:out value="${project.name}" />
+			</html:link></td>
 			<td><c:out value="${project.leader.nameSurname}" /></td>
 			<td><c:out value="${project.startDate}" />&nbsp;&nbsp;-&nbsp;&nbsp;<c:out
 				value="${project.finishDate}" /></td>

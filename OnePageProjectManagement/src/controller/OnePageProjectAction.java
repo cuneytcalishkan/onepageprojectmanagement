@@ -25,27 +25,15 @@ public class OnePageProjectAction extends Action {
             ActionForm form,
             HttpServletRequest request,
             HttpServletResponse response) {
-    	HttpSession session = request.getSession(true);
-    	Puser user = (Puser) session.getAttribute("user");
+    	/*HttpSession session = request.getSession(true);
+    	Puser user = (Puser) session.getAttribute("user");*/
     	IdForm idForm = (IdForm) form;
         Long id = idForm.getId();
     	
     	Session ses = HibernateUtil.getSession();
-        
-    	List<Project> projects;
-    	if(user.getRole().equals("manager")){
-    		projects = ses.createQuery("from Project").list();
-    	}
-    	else if (user.getRole().equals("project member")){
-    		projects = user.getProjects();
-    	}
-    	else
-    	{
-    		projects =(List<Project>) ses.createCriteria(Project.class).add(
-    				Restrictions.eq("leader", user)).list();
-    	}
+        Project project = (Project) ses.get(Project.class, id);
+        request.setAttribute("project", project);
     	
-    	request.setAttribute("projects", projects);
 		return (mapping.findForward("success"));
 	}
 
