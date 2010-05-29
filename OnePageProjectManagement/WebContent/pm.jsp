@@ -20,12 +20,17 @@
 			value="${project.finishDateAsString}" /></td>
 		<td colspan="4" align="center">Owner/ Priority</td>
 	</tr>
+	<c:forEach items='${mTasks}' var='mTask'>
 	<tr>
+	
+		
+		
+		
 		<td>*</td>
 		<td>&nbsp;</td>
 		<td>*</td>
 		<td>1</td>
-		<td>Award Contracts</td>
+		<td><c:out value="${mTask.name }"/></td>
 		<%
 					for (int i = 1; i <= project.getSliceQuantity() ; i++) {
 		%>
@@ -38,7 +43,7 @@
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 	</tr>
-
+	</c:forEach>
 
 	<tr bordercolordark="#000000">
 		<td>&nbsp;</td>
@@ -122,6 +127,9 @@
 						}
 					}
 		%>
+		<c:forEach items='${project.users}' var='user'>
+		<td><c:out value="${user.nameSurname }"/></td>
+		</c:forEach>
 	</tr>
 
 
