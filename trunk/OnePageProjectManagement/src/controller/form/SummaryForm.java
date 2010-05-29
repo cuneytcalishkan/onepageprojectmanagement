@@ -8,20 +8,20 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 public class SummaryForm extends ActionForm {
-	
-	private long id;
+
+	private static final long serialVersionUID = 1L;
 	private Long projectId;
 	private String description;
-	
-	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
-        ActionErrors errors = new ActionErrors();
 
-        if(description != null && description.equals(""))
-	    	errors.add("comment", new ActionMessage("empty"));
-        if (projectId == 0)
+	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
+		ActionErrors errors = new ActionErrors();
+
+		if (description != null && description.equals(""))
+			errors.add("comment", new ActionMessage("empty"));
+		if (projectId == 0)
 			errors.add("project", new ActionMessage("project.empty"));
-        
-        return errors;
+
+		return errors;
 	}
 
 	public String getDescription() {
@@ -40,14 +40,4 @@ public class SummaryForm extends ActionForm {
 		this.projectId = projectId;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	
-	
 }
