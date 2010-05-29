@@ -30,10 +30,12 @@
 			<td>Objective&nbsp;:</td>
 			<td><html:text property="objective" /></td>
 		</tr>
-		
+		<tr>
+			<td colspan="2">Months will be divided by this amount</td>
+		</tr>
 		<tr>
 			<td>Slice Amount&nbsp;:</td>
-			<td><html:text property="sliceAmount" /></td> Months will be divided by this amount
+			<td><html:text property="sliceAmount" /></td>
 			<html:errors property="sliceAmount" />
 		</tr>
 
@@ -57,8 +59,7 @@
 				<%
 					}
 				%>
-			</html:select>
-			<html:select property="startDateYear">
+			</html:select> <html:select property="startDateYear">
 				<%
 					for (int i = 2010; i < 2015; i++) {
 				%>
@@ -69,37 +70,36 @@
 				%>
 			</html:select></td>
 			<tr>
-			
-			<td>Finish Date&nbsp;:</td>
-			<td><html:select property="finishDateDay">
-				<%
-					for (int i = 1; i < 31; i++) {
-				%>
-				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
-				</html:option>
-				<%
-					}
-				%>
-			</html:select> <html:select property="finishDateMonth">
-				<%
-					for (int i = 1; i < 13; i++) {
-				%>
-				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
-				</html:option>
-				<%
-					}
-				%>
-			</html:select>
-			<html:select property="finishDateYear">
-				<%
-					for (int i = 2010; i < 2015; i++) {
-				%>
-				<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
-				</html:option>
-				<%
-					}
-				%>
-			</html:select></td>
+
+				<td>Finish Date&nbsp;:</td>
+				<td><html:select property="finishDateDay">
+					<%
+						for (int i = 1; i < 31; i++) {
+					%>
+					<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+					</html:option>
+					<%
+						}
+					%>
+				</html:select> <html:select property="finishDateMonth">
+					<%
+						for (int i = 1; i < 13; i++) {
+					%>
+					<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+					</html:option>
+					<%
+						}
+					%>
+				</html:select> <html:select property="finishDateYear">
+					<%
+						for (int i = 2010; i < 2015; i++) {
+					%>
+					<html:option value="<%= String.valueOf(i) %>"><%=String.valueOf(i)%>
+					</html:option>
+					<%
+						}
+					%>
+				</html:select></td>
 			</tr>
 		</tr>
 		<tr>
