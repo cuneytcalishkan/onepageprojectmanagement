@@ -101,7 +101,7 @@ public class MajorTask {
 	}
 
 	public void addObjective(Objective obj) {
-		objectives.add(obj);	
+		objectives.add(obj);
 	}
 
 }
