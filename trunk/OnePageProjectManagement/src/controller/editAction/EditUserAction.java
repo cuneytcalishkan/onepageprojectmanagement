@@ -22,45 +22,44 @@ import controller.form.UserForm;
  * @author tile
  */
 public class EditUserAction extends DispatchAction {
-    
-	public ActionForward execute(ActionMapping mapping,
-            ActionForm form,
-            HttpServletRequest request,
-            HttpServletResponse response) {
-    	HttpSession session = request.getSession(true);
-    	UserForm userForm = (UserForm) form;
-    	Puser user = (Puser) session.getAttribute("user");
-        if( user == null ||  (!user.getRole().equals("manager") &&
-        		!(user.getId() == userForm.getId())))  {
-        	throw new RuntimeException("You are not authorized to execute this action.");
-        }
-        
-        
-        Transaction ta = null;
-        Session hibernateSession = HibernateUtil.getSession();
-        try {
-            ta = hibernateSession.beginTransaction();
-            
-            Puser pUser = (Puser) hibernateSession.get(Puser.class, userForm.getId());
-            userForm.setUserName(pUser.getUserName());
+
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession(true);
+		UserForm userForm = (UserForm) form;
+		Puser user = (Puser) session.getAttribute("user");
+		if (user == null
+				|| (!user.getRole().equals("manager") && !(user.getId() == userForm
+						.getId()))) {
+			throw new RuntimeException(
+					"You are not authorized to execute this action.");
+		}
+
+		Transaction ta = null;
+		Session hibernateSession = HibernateUtil.getSession();
+		try {
+			ta = hibernateSession.beginTransaction();
+			Puser pUser = null;
+			pUser = (Puser) hibernateSession.get(Puser.class, userForm.getId());
+			userForm.setUserName(pUser.getUserName());
 			userForm.setNameSurname(pUser.getNameSurname());
-			userForm.setPassword(pUser.getPassword()); 
+			userForm.setPassword(pUser.getPassword());
 			userForm.setRole(pUser.getRole());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
-        } catch(Exception e) {
-        	if (ta != null) {
+		} catch (Exception e) {
+			if (ta != null) {
 				ta.rollback();
 				hibernateSession.close();
 			}
-	        ActionMessages actionMessages = new ActionMessages();
-	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-	        	new ActionMessage("user.notFound"));
-	        saveMessages(request,actionMessages);
-	        return mapping.findForward("failure");
-        }
-        
-    }
-    
+			ActionMessages actionMessages = new ActionMessages();
+			actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+					new ActionMessage("user.notFound"));
+			saveMessages(request, actionMessages);
+			return mapping.findForward("failure");
+		}
+
+	}
+
 }
