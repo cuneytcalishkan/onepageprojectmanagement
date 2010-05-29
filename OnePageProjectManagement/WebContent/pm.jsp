@@ -33,12 +33,10 @@
 
 			<td>&nbsp;</td>
 			<c:forEach items='${project.objectives}' var='objective'>
-			<td>
-			<c:choose>
-			<c:when test='${fn:contains(objective.majorTasks,mTask)}'> * </c:when>
-			<c:otherwise> &nbsp;</c:otherwise>
-			</c:choose>
-			</td>
+				<td><c:choose>
+					<c:when test='${fn:contains(objective.majorTasks,mTask)}'> * </c:when>
+					<c:otherwise> &nbsp;</c:otherwise>
+				</c:choose></td>
 			</c:forEach>
 			<td><c:out value="${mTask.id}" /></td>
 			<td><c:out value="${mTask.name}" /></td>
@@ -67,12 +65,10 @@
 
 			<td>&nbsp;</td>
 			<c:forEach items='${project.objectives}' var='objective'>
-			<td>
-			<c:choose>
-			<c:when test='${fn:contains(objective.subjectiveTasks,sTask)}'> * </c:when>
-			<c:otherwise> &nbsp;</c:otherwise>
-			</c:choose>
-			</td>
+				<td><c:choose>
+					<c:when test='${fn:contains(objective.subjectiveTasks,sTask)}'> * </c:when>
+					<c:otherwise> &nbsp;</c:otherwise>
+				</c:choose></td>
 			</c:forEach>
 			<td><c:out value="${sTask.id}" /></td>
 			<td><c:out value="${sTask.name}" /></td>
@@ -134,17 +130,31 @@
 
 	<tr>
 		<td height="70">Costs</td>
-	</tr>
+		<td>
+			<html:link action="/EditCost" paramId="projectId" paramName="project"
+				paramProperty="id">
+							Add Cost
+						</html:link>
+		</td>
 	<tr>
 		<td colspan="2">Summary and Forecasts</td>
-		<td colspan="14"><html:link action="/EditSummary"
-			paramId="projectId" paramName="project" paramProperty="id">
+		<td colspan="14">
+		<TABLE border="1" > <tr>
+			<html:link action="/EditSummary" paramId="projectId"
+				paramName="project" paramProperty="id">
 							Add Summary
-		</html:link></td>
-		<c:forEach items='${project.summaries}' var='summary'>
-			<td colspan="15"><c:out value="${summary.description}" /></td>
-		</c:forEach>
+		</html:link>
 	</tr>
+	<c:forEach items='${project.summaries}' var='summary'>
+		<tr colspan="15">
+			<c:out value="${summary.description}" />
+		</tr>
+	</c:forEach>
+		<TABLE>
+		</td>
+</TABLE>
+</td>
+</tr>
 </table>
 <%@ include file="/include/footer.jspfrag"%>
 
