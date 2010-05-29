@@ -84,7 +84,7 @@ public class Project {
 		stY = stCal.get(Calendar.YEAR);
 		stM = stCal.get(Calendar.MONTH) + 1;
 		Calendar fnCal = new GregorianCalendar();
-		stCal.setTime(finishDate);
+		fnCal.setTime(finishDate);
 		fnY = fnCal.get(Calendar.YEAR);
 		fnM = fnCal.get(Calendar.MONTH) + 1;
 
