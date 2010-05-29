@@ -26,15 +26,18 @@ public class SubjectiveTask {
 
 	public SubjectiveTask() {
 		super();
+		objectives = new ArrayList<Objective>();
 	}
 
 	public SubjectiveTask(String name) {
 		this.name = name;
+		objectives = new ArrayList<Objective>();
 	}
 
 	public SubjectiveTask(long id, String name) {
 		this.id = id;
 		this.name = name;
+		objectives = new ArrayList<Objective>();
 	}
 
 	public String getName() {
@@ -72,12 +75,16 @@ public class SubjectiveTask {
 						"Specified subjective task cannot be removed!");
 	}
 
+	public void addObjective(Objective obj) {
+		this.objectives.add(obj);
+	}
+
 	@OneToMany(mappedBy = "task")
 	public List<SubjectiveSlice> getSubjectiveSlices() {
 		return subjectiveSlices;
 	}
 
-	@ManyToMany(cascade = { CascadeType.PERSIST , CascadeType.MERGE}, mappedBy = "subjectiveTasks", targetEntity = Objective.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "subjectiveTasks", targetEntity = Objective.class)
 	public List<Objective> getObjectives() {
 		return objectives;
 	}
