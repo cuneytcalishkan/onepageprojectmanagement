@@ -3,13 +3,11 @@ package model;
 import java.awt.Color;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -57,8 +55,8 @@ public class SubjectiveSlice {
 		this.color = color;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"))
+	@ManyToOne
+    @JoinColumn(name="subjectiveSliceId")
 	public SubjectiveTask getTask() {
 		return task;
 	}

@@ -118,7 +118,6 @@ public class Project {
 	}
 
 	@OneToMany(mappedBy = "project")
-	@JoinTable(name = "COMMENTED", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "SUMMARY_ID"))
 	public List<Summary> getSummaries() {
 		return summaries;
 	}
@@ -128,7 +127,6 @@ public class Project {
 	}
 
 	@OneToMany(mappedBy = "project")
-	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "COST_ID"))
 	public List<Cost> getCosts() {
 		return costs;
 	}
@@ -138,7 +136,6 @@ public class Project {
 	}
 
 	@OneToMany(mappedBy = "project")
-	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "PROJECT_ID"), inverseJoinColumns = @JoinColumn(name = "OBJECTIVE_ID"))
 	public List<Objective> getObjectives() {
 		return objectives;
 	}

@@ -104,8 +104,8 @@ public class Objective {
 		return subjectiveTasks;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "CONSISTOF", joinColumns = @JoinColumn(name = "OBJECTIVE_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	@ManyToOne
+    @JoinColumn(name="projectId")
 	public Project getProject() {
 		return project;
 	}
