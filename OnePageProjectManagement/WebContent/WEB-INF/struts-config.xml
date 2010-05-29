@@ -11,6 +11,8 @@
 		type="com.seitti.tunnusx.web.FeedbackForm"/>
 	-->
 	<form-beans>
+		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
+
 		<form-bean name="objectiveForm" type="controller.form.ObjectiveForm" />
 
 		<form-bean name="loginForm" type="controller.form.LoginForm" />
@@ -32,6 +34,8 @@
 		<forward name="main" path="/MainPage.do" />
 
 		<forward name="editObjective" path="/EditObjective.do" />
+
+		<forward name="editMajorTask" path="/EditMajorTask.do" />
 
 		<forward name="editUser" path="/EditUser.do" />
 
@@ -78,10 +82,31 @@
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
-		
-		<action path="/EditObjectiveSaver"
-			type="controller.saverAction.EditObjectiveSaverAction" name="objectiveForm"
-			scope="request" input="/editObjective.jsp" validate="true">
+
+		<action path="/EditObjectiveSaver" type="controller.saverAction.EditObjectiveSaverAction"
+			name="objectiveForm" scope="request" input="/editObjective.jsp"
+			validate="true">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+
+		<action path="/EditMajorTask" type="controller.editAction.EditMajorTaskAction"
+			name="majorTaskForm" input="/editMajorTask.jsp" scope="request"
+			validate="false">
+			<forward name="success" path="/editMajorTask.jsp" />
+			<forward name="failure" path="/editMajorTask.jsp" />
+		</action>
+
+		<action path="/DeleteMajorTask" type="controller.deleteAction.DeleteMajorTaskAction"
+			name="idForm">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/EditMajorTaskSaver" type="controller.saverAction.EditMajorTaskSaverAction"
+			name="majorTaskForm" scope="request" input="/editMajorTask.jsp"
+			validate="true">
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
