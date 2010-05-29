@@ -138,6 +138,9 @@
 							paramName="project" paramProperty="id">
 							Add Summary
 		</html:link></td>
+		<c:forEach items='${project.summaries}' var='summary'>
+		<td colspan="15"><c:out value="${summary.description}"/></td>
+		</c:forEach>
 	</tr>
 </table>
 <%@ include file="/include/footer.jspfrag"%>

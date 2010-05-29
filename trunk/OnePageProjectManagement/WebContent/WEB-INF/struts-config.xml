@@ -107,8 +107,9 @@
 		</action>
 
 		<action path="/EditSummary" type="controller.editAction.EditSummaryAction"
-			name="summaryForm" input="/editSummary.jsp" scope="request">
-			<forward name="success" path="/MainPage.do" />
+			name="summaryForm" input="/editSummary.jsp" scope="request" validate="false">
+			<forward name="success" path="/editSummary.jsp" />
+			<forward name="failure" path="/editSummary.jsp" />
 		</action>
 
 		<action path="/EditSummarySaver" type="controller.saverAction.EditSummarySaverAction"
