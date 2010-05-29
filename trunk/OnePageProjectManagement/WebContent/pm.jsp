@@ -20,6 +20,12 @@
 			value="${project.finishDateAsString}" /></td>
 		<td colspan="4" align="center">Owner/ Priority</td>
 	</tr>
+	<tr><td colspan="15">
+	<html:link action="/EditMajorTask" paramId="projectId"
+							paramName="project" paramProperty="id">
+							Add Major Task
+						</html:link>
+	</td></tr>
 	<c:forEach items='${mTasks}' var='mTask'>
 	<tr>
 	

@@ -26,8 +26,6 @@ public class MajorTaskForm extends ActionForm {
 
 	public void reset(ActionMapping arg0, HttpServletRequest arg1) {
 		name = null;
-		id = 0;
-		projectId = 0;
 	}
 
 	public long getId() {

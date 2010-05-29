@@ -28,6 +28,7 @@ public class MajorTask {
 
 	public MajorTask() {
 		super();
+		objectives = new ArrayList<Objective>();
 	}
 
 	public MajorTask(long id, String name) {
@@ -97,6 +98,10 @@ public class MajorTask {
 
 	public void setMajorSlices(List<MajorSlice> majorSlices) {
 		this.majorSlices = majorSlices;
+	}
+
+	public void addObjective(Objective obj) {
+		objectives.add(obj);	
 	}
 
 }

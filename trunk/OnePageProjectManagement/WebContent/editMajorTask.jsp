@@ -22,7 +22,7 @@
 		<tr>
 			<td><html:select property="objectivesList" multiple="true">
 			<c:forEach items='${objectives}' var='objective'>
-			<html:option value="<c:out value='${objective.id }'/>">
+			<html:option value='${objective.id }'>
 			<c:out value='${objective.name }'/></html:option>
 			</c:forEach>
 			</html:select></td>
