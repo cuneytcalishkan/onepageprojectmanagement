@@ -30,6 +30,12 @@
 			<td>Objective&nbsp;:</td>
 			<td><html:text property="objective" /></td>
 		</tr>
+		
+		<tr>
+			<td>Slice Amount&nbsp;:</td>
+			<td><html:text property="sliceAmount" /></td> Months will be divided by this amount
+			<html:errors property="sliceAmount" />
+		</tr>
 
 		<tr>
 			<td>Start Date&nbsp;:</td>

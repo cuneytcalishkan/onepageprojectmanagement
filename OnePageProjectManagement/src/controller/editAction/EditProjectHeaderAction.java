@@ -46,6 +46,7 @@ public class EditProjectHeaderAction extends DispatchAction {
 			projectForm.setName(project.getName());
 			projectForm.setLeader(user.getNameSurname()); 
 			projectForm.setObjective(project.getObjective());
+			projectForm.setSliceAmount(project.getSliceAmount());
 			projectForm.setStartDate(project.getStartDate());
 			projectForm.setFinishDate(project.getFinishDate());
 			ta.commit();
@@ -60,6 +61,7 @@ public class EditProjectHeaderAction extends DispatchAction {
         	projectForm.setStartDate(today);
         	projectForm.setFinishDate(today);
         	projectForm.setLeader(user.getNameSurname());
+        	projectForm.setSliceAmount(1);
 	        ActionMessages actionMessages = new ActionMessages();
 	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
 	        	new ActionMessage("project.notFound"));
