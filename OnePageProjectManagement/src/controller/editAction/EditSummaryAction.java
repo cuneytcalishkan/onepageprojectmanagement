@@ -22,7 +22,7 @@ import controller.form.SummaryForm;
 /**
  * @author tile
  */
-public class SummaryAction extends DispatchAction {
+public class EditSummaryAction extends DispatchAction {
     
 	public ActionForward execute(ActionMapping mapping,
             ActionForm form,
@@ -37,7 +37,7 @@ public class SummaryAction extends DispatchAction {
         try {
             ta = hibernateSession.beginTransaction();
             Project pr = (Project) hibernateSession.get(Project.class, summaryForm.getProjectId());
-            
+            System.out.println("hebele");
             if( user == null || pr == null || !(user == pr.getLeader() ))  {
             	throw new RuntimeException("You are not unauthorized to execute this action.");
             }
