@@ -2,7 +2,6 @@ package controller.form;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +13,7 @@ import org.apache.struts.action.ActionMessage;
 
 public class ProjectHeaderForm extends ActionForm {
 
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private int startDateDay;
@@ -31,8 +31,8 @@ public class ProjectHeaderForm extends ActionForm {
 
 		if (name.equals(""))
 			errors.add("name", new ActionMessage("empty"));
-		
-		if(sliceAmount < 1)
+
+		if (sliceAmount < 1)
 			errors.add("sliceAmount", new ActionMessage("slice.invalid"));
 
 		// set id to null if not specified
@@ -44,12 +44,14 @@ public class ProjectHeaderForm extends ActionForm {
 	}
 
 	public Date getStartDate() {
-		Calendar cal = new GregorianCalendar(startDateYear, startDateMonth-1, startDateDay);
+		Calendar cal = new GregorianCalendar(startDateYear, startDateMonth - 1,
+				startDateDay);
 		return cal.getTime();
 	}
 
 	public Date getFinishDate() {
-		Calendar cal = new GregorianCalendar(finishDateYear, finishDateMonth-1, finishDateDay);
+		Calendar cal = new GregorianCalendar(finishDateYear,
+				finishDateMonth - 1, finishDateDay);
 		return cal.getTime();
 	}
 
@@ -156,6 +158,5 @@ public class ProjectHeaderForm extends ActionForm {
 	public void setSliceAmount(int sliceAmount) {
 		this.sliceAmount = sliceAmount;
 	}
-	
 
 }
