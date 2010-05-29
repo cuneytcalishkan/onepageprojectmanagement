@@ -11,14 +11,16 @@
 	<c:otherwise>
 		<h2>Add an Objective</h2>
 	</c:otherwise>
-</c:choose> <html:form action="/EditObjectiveSaver">
-	<html:hidden property="projectId"/>
+</c:choose> 
+
+<html:form action="/EditObjectiveSaver">
 	<html:hidden property="id"/>
 	<tr>
 		<td>Objective Name&nbsp;:</td>
 		<td><html:text property="name"></html:text><html:errors
 			property="name"></html:errors></td>
 	</tr>
+	<html:hidden property="projectId"/>
 	<tr>
 		<td>&nbsp;</td>
 		<td><html:submit>Save</html:submit> <c:if

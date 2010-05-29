@@ -23,8 +23,8 @@ public class ObjectiveForm extends ActionForm {
 
 		if (name != null && name.equals(""))
 			errors.add("name", new ActionMessage("empty"));
-		if (projectId != 0)
-			errors.add("project", new ActionMessage("empty"));
+		if (projectId == 0)
+			errors.add("project", new ActionMessage("project.empty"));
 		return errors;
 	}
 
