@@ -111,7 +111,7 @@
 				test="${not empty projectForm.id}">
 
 				<a href="javascript:Popup()" alt="" width="8" height="10" border="0" />
-				Delete observation</a>
+				Delete Project</a>
 			</c:if></td>
 		</tr>
 	</table>

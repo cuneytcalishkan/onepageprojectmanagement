@@ -46,6 +46,8 @@ public class EditUserSaverAction extends DispatchAction {
 		pUser.setPassword(userForm.getPassword());
 		if(user.getRole().equals("manager"))
 				pUser.setRole(userForm.getRole());
+		else
+			session.setAttribute("user", pUser);
 		hibernateSession.saveOrUpdate(pUser);
 		ta.commit();
 		hibernateSession.close();
