@@ -28,7 +28,6 @@
 							Add Major Task
 						</html:link></td>
 	</tr>
-	<% java.util.List<model.Objective> objectives = project.getObjectives(); %>
 	<c:forEach items='${mTasks}' var='mTask'>
 		<tr>
 
@@ -57,50 +56,39 @@
 		</tr>
 	</c:forEach>
 
-	<tr bordercolordark="#000000">
-		<td>&nbsp;</td>
-		<td>A</td>
-		<td>Internal Software Operational</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>A</td>
-		<td>A</td>
-		<td>A</td>
-		<td>A</td>
-	</tr>
-
-
 	<tr>
-		<td>&nbsp;</td>
-		<td>B</td>
-		<td>External Software Operational</td>
-		<td>&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#00FF00">&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td bgcolor="#FFFF00">&nbsp;</td>
-		<td>A</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>B</td>
+		<td colspan="15"><html:link action="/EditSubjectiveTask"
+			paramId="projectId" paramName="project" paramProperty="id">
+							Add Subjective Task
+						</html:link></td>
 	</tr>
+	<c:forEach items='${sTasks}' var='sTask'>
+		<tr>
+
+			<td>&nbsp;</td>
+			<c:forEach items='${project.objectives}' var='objective'>
+			<td>
+			<c:choose>
+			<c:when test='${fn:contains(objective.subjectiveTasks,sTask)}'> * </c:when>
+			<c:otherwise> &nbsp;</c:otherwise>
+			</c:choose>
+			</td>
+			</c:forEach>
+			<td><c:out value="${sTask.id}" /></td>
+			<td><c:out value="${sTask.name}" /></td>
+			<%
+				for (int i = 1; i <= project.getSliceQuantity(); i++) {
+			%>
+			<td><%=String.valueOf(i)%></td>
+			<%
+				}
+			%>
+			<td>A</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</c:forEach>
 
 
 	<tr>

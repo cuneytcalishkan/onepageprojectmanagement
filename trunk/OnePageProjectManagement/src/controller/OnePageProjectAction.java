@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.MajorTask;
 import model.Objective;
 import model.Project;
+import model.SubjectiveTask;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -37,14 +38,16 @@ public class OnePageProjectAction extends Action {
         request.setAttribute("project", project);
         
         List<Objective> objectives = project.getObjectives();
-        System.out.println(objectives.size());
         Set<MajorTask> mTasks = new HashSet<MajorTask>();
+        Set<SubjectiveTask> sTasks = new HashSet<SubjectiveTask>();
         Iterator<Objective> it = objectives.iterator();
         while(it.hasNext()){
         	Objective obj = it.next();
         	mTasks.addAll(obj.getMajorTasks());
+        	sTasks.addAll(obj.getSubjectiveTasks());
         }
         request.setAttribute("mTasks", mTasks);
+        request.setAttribute("sTasks", sTasks);
     	
 		return (mapping.findForward("success"));
 	}
