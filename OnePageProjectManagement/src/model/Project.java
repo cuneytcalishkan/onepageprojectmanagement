@@ -24,6 +24,7 @@ import exception.RemoveElementException;
 public class Project {
 
 	private long id;
+	private int sliceAmount;
 	private String name;
 	private Date startDate;
 	private Date finishDate;
@@ -207,6 +208,14 @@ public class Project {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public int getSliceAmount() {
+		return sliceAmount;
+	}
+
+	public void setSliceAmount(int sliceAmount) {
+		this.sliceAmount = sliceAmount;
 	}
 
 }
