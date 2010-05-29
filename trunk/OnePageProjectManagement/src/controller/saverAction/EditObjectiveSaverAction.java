@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Objective;
+import model.Project;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
@@ -37,8 +38,9 @@ public class EditObjectiveSaverAction extends DispatchAction {
 			objective = (Objective) hibernateSession.get(Objective.class, id);
 		else
 			objective = new Objective();
+		Project project = (Project) hibernateSession.get(Project.class, objective.getProjectId());
 		objective.setName(objectiveForm.getName());
-		objective.setProject(objectiveForm.getProject());
+		objective.setProject(project);
 		hibernateSession.saveOrUpdate(objective);
 		ta.commit();
 		hibernateSession.close();

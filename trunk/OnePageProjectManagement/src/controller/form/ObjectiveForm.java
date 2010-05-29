@@ -2,8 +2,6 @@ package controller.form;
 
 import javax.servlet.http.HttpServletRequest;
 
-import model.Project;
-
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -18,14 +16,14 @@ public class ObjectiveForm extends ActionForm {
 
 	private long id;
 	private String name;
-	private Project project;
+	private long projectId;
 
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
 		ActionErrors errors = new ActionErrors();
 
 		if (name != null && name.equals(""))
 			errors.add("name", new ActionMessage("empty"));
-		if (project != null)
+		if (projectId != 0)
 			errors.add("project", new ActionMessage("empty"));
 		return errors;
 	}
@@ -50,12 +48,12 @@ public class ObjectiveForm extends ActionForm {
 		this.name = name;
 	}
 
-	public Project getProject() {
-		return project;
+	public long getProjectId() {
+		return projectId;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setProjectId(long project) {
+		this.projectId = project;
 	}
 
 }
