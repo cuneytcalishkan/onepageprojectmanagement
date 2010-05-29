@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +17,10 @@ import exception.RemoveElementException;
 
 @Entity
 @Table(name = "MAJORTASK")
-@Embeddable
 public class MajorTask {
 
-	//private List<Assignment> assignments;
+	private List<Assignment> assignments;
+
 	private List<MajorSlice> majorSlices;
 	private List<Objective> objectives;
 	private long id;
@@ -49,27 +48,6 @@ public class MajorTask {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-//	public void addAssignment(Assignment assgn) throws AddElementException {
-//		if (this.assignments == null)
-//			setAssignments(new ArrayList<Assignment>());
-//		if (!this.assignments.add(assgn))
-//			throw new AddElementException(
-//					"Specified assignment cannot be added!");
-//	}
-//
-//	public void removeAssignment(Assignment assgn)
-//			throws RemoveElementException {
-//		if (this.assignments.size() > 0)
-//			if (!this.assignments.remove(assgn))
-//				throw new RemoveElementException(
-//						"Specified assignment cannot be removed!");
-//	}
-
-//	@OneToMany(mappedBy = "majorTask")
-//	public List<Assignment> getAssignments() {
-//		return assignments;
-//	}
 
 	public void addMajorSlice(MajorSlice ms) throws AddElementException {
 		if (this.majorSlices == null)
@@ -104,9 +82,14 @@ public class MajorTask {
 		this.objectives = objectives;
 	}
 
-	// public void setAssignments(List<Assignment> assignments) {
-	// this.assignments = assignments;
-	// }
+	@OneToMany(mappedBy = "majorTask")
+	public List<Assignment> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
+	}
 
 	public void setMajorSlices(List<MajorSlice> majorSlices) {
 		this.majorSlices = majorSlices;

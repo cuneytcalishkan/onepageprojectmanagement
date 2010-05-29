@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "ASSIGNMENT")
 public class Assignment {
 
+	private long id;
 	private char priority;
 	private Puser puser;
 	private MajorTask majorTask;
@@ -33,7 +36,6 @@ public class Assignment {
 		this.priority = priority;
 	}
 
-	@Id
 	@ManyToOne
 	@JoinColumn(name = "PUSER_ID")
 	public Puser getPuser() {
@@ -44,7 +46,6 @@ public class Assignment {
 		this.puser = user;
 	}
 
-	@Id
 	@ManyToOne
 	@JoinColumn(name = "MAJORTASK_ID")
 	public MajorTask getMajorTask() {
@@ -53,6 +54,16 @@ public class Assignment {
 
 	public void setMajorTask(MajorTask task) {
 		this.majorTask = task;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }
