@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import model.MajorTask;
 import model.Objective;
-import model.Project;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
