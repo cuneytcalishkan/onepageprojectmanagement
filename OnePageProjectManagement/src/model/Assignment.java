@@ -1,7 +1,7 @@
 package model;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -33,7 +33,7 @@ public class Assignment {
 		this.priority = priority;
 	}
 
-	@EmbeddedId
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "PUSER_ID")
 	public Puser getPuser() {
@@ -44,7 +44,7 @@ public class Assignment {
 		this.puser = user;
 	}
 
-	@EmbeddedId
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "MAJORTASK_ID")
 	public MajorTask getMajorTask() {
