@@ -44,7 +44,8 @@ public class EditUserAction extends DispatchAction {
 			userForm.setUserName(pUser.getUserName());
 			userForm.setNameSurname(pUser.getNameSurname());
 			userForm.setPassword(pUser.getPassword());
-			userForm.setRole(pUser.getRole());
+			if(user.getRole().equals("manager"))
+				userForm.setRole(pUser.getRole());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
