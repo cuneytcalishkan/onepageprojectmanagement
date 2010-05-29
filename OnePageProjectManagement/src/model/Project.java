@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import controller.Utilizer;
+
 import exception.AddElementException;
 import exception.RemoveElementException;
 
@@ -61,6 +63,16 @@ public class Project {
 		this.finishDate = finishDate;
 		this.leader = leader;
 		this.objective = objective;
+	}
+
+	@Transient
+	public String getStartDateAsString() {
+		return Utilizer.getDateAsString(startDate);
+	}
+
+	@Transient
+	public String getFinishDateAsString() {
+		return Utilizer.getDateAsString(finishDate);
 	}
 
 	@Transient
