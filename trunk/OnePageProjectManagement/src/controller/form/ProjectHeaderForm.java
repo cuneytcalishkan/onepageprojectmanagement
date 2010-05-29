@@ -22,6 +22,7 @@ public class ProjectHeaderForm extends ActionForm {
 	private int finishDateDay;
 	private int finishDateMonth;
 	private int finishDateYear;
+	private int sliceAmount;
 	private String leader;
 	private String objective;
 
@@ -30,6 +31,9 @@ public class ProjectHeaderForm extends ActionForm {
 
 		if (name.equals(""))
 			errors.add("name", new ActionMessage("empty"));
+		
+		if(sliceAmount < 1)
+			errors.add("sliceAmount", new ActionMessage("slice.invalid"));
 
 		// set id to null if not specified
 		if (id != null && id.intValue() == 0) {
@@ -144,5 +148,14 @@ public class ProjectHeaderForm extends ActionForm {
 	public void setObjective(String objective) {
 		this.objective = objective;
 	}
+
+	public int getSliceAmount() {
+		return sliceAmount;
+	}
+
+	public void setSliceAmount(int sliceAmount) {
+		this.sliceAmount = sliceAmount;
+	}
+	
 
 }

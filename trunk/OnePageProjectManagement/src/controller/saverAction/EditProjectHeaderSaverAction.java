@@ -46,6 +46,7 @@ public class EditProjectHeaderSaverAction extends DispatchAction {
 			project = new Project();
 		project.setName(projectForm.getName());
 		project.setObjective(projectForm.getObjective());
+		project.setSliceAmount(projectForm.getSliceAmount());
 		project.setStartDate(projectForm.getStartDate());
 		project.setFinishDate(projectForm.getFinishDate());
         hibernateSession.saveOrUpdate(project);
