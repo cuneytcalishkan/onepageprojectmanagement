@@ -18,6 +18,18 @@
 			<a href="javascript:Popup()" /> Delete Subjective</a>
 		</c:if></td>
 	</tr>
+	<table border="1" cellpadding="0" cellspacing="2">
+		<th>Select Objective(s) from the List</th>
+		<tr>
+			<td><html:select property="objectivesList" multiple="true">
+				<c:forEach items='${objectives}' var='objective'>
+					<html:option value='${objective.id }'>
+						<c:out value='${objective.name }' />
+					</html:option>
+				</c:forEach>
+			</html:select></td>
+		</tr>
+	</table>
 </html:form></center>
 <script language="javascript">
 	function Popup() {
