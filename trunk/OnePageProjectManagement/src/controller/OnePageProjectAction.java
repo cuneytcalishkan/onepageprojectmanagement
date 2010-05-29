@@ -1,20 +1,22 @@
 package controller;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import model.MajorTask;
+import model.Objective;
 import model.Project;
-import model.Puser;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import controller.form.IdForm;
 
@@ -33,6 +35,15 @@ public class OnePageProjectAction extends Action {
     	Session ses = HibernateUtil.getSession();
         Project project = (Project) ses.get(Project.class, id);
         request.setAttribute("project", project);
+        
+        List<Objective> objectives = project.getObjectives();
+        Set<MajorTask> mTasks = new HashSet<MajorTask>();
+        Iterator<Objective> it = objectives.iterator();
+        while(it.hasNext()){
+        	Objective obj = it.next();
+        	mTasks.addAll(obj.getMajorTasks());
+        }
+        request.setAttribute("mTasks", mTasks);
     	
 		return (mapping.findForward("success"));
 	}
