@@ -74,6 +74,14 @@
     		input="main.jsp">
     	<forward name="success" path="/main.jsp" />
     </action>
+    
+    <action path="/OnePageProject" 
+    		name="idForm"
+    		type="controller.OnePageProjectAction"
+    		scope="request"
+    		input="pm.jsp">
+    	<forward name="success" path="/pm.jsp" />
+    </action>
    
     <action path="/EditProjectHeader"
     		type="controller.editAction.EditProjectHeaderAction"
