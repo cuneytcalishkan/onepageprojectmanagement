@@ -5,13 +5,15 @@
 <h2>Edit Operations</h2>
 
 <%-- either add or edit based on id --%> <c:choose>
-	<c:when test="${not empty userForm.id}">
+	<c:when test="${not empty objectiveForm.id}">
 		<h2>Edit Objective</h2>
 	</c:when>
 	<c:otherwise>
 		<h2>Add an Objective</h2>
 	</c:otherwise>
 </c:choose> <html:form action="/EditObjectiveSaver">
+	<html:hidden property="projectId"/>
+	<html:hidden property="id"/>
 	<tr>
 		<td>Objective Name&nbsp;:</td>
 		<td><html:text property="name"></html:text><html:errors
