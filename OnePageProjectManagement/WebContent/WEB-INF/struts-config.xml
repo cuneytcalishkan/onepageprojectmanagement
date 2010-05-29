@@ -11,6 +11,8 @@
 		type="com.seitti.tunnusx.web.FeedbackForm"/>
 	-->
 	<form-beans>
+		<form-bean name="subjectiveTaskForm" type="controller.form.SubjectiveTaskForm" />
+
 		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
 
 		<form-bean name="objectiveForm" type="controller.form.ObjectiveForm" />
@@ -34,6 +36,8 @@
 		<forward name="main" path="/MainPage.do" />
 
 		<forward name="editObjective" path="/EditObjective.do" />
+
+		<forward name="editSubjective" path="/EditSubjective.do" />
 
 		<forward name="editMajorTask" path="/EditMajorTask.do" />
 
@@ -90,6 +94,25 @@
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
+		<action path="/EditSubjective" type="controller.editAction.EditSubjectiveAction"
+			name="subjectiveForm" input="/editSubjective.jsp" scope="request"
+			validate="false">
+			<forward name="success" path="/editSubjective.jsp" />
+			<forward name="failure" path="/editSubjective.jsp" />
+		</action>
+
+		<action path="/DeleteSubjective" type="controller.deleteAction.DeleteSubjectiveAction"
+			name="idForm">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/EditSubjectiveSaver" type="controller.saverAction.EditSubjectiveSaverAction"
+			name="subjectiveForm" scope="request" input="/editSubjective.jsp"
+			validate="true">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
 
 		<action path="/EditMajorTask" type="controller.editAction.EditMajorTaskAction"
 			name="majorTaskForm" input="/editMajorTask.jsp" scope="request"
