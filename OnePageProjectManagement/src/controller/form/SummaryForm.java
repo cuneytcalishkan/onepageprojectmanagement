@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMessage;
 
 public class SummaryForm extends ActionForm {
 	
+	private long id;
 	private Long projectId;
 	private String description;
 	
@@ -43,4 +44,14 @@ public class SummaryForm extends ActionForm {
 		this.projectId = projectId;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
+	
 }
