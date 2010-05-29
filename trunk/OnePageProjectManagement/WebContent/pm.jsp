@@ -1,5 +1,7 @@
 <%@ include file="/include/header.jspfrag"%>
-<% Project project = (Project) request.getAttribute("project"); %>
+<%
+	Project project = (Project) request.getAttribute("project");
+%>
 
 <%@page import="model.Project"%>
 <%@page import="controller.Utilizer"%>
@@ -10,7 +12,7 @@
 			value="${project.leader.nameSurname}" />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Project : <c:out
 			value="${project.name}" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		Date: <%= Utilizer.getDateAsString(new java.util.Date())%> <br>
+		Date: <%=Utilizer.getDateAsString(new java.util.Date())%> <br>
 		Project Objective: <c:out value="${project.objective}" /></th>
 	</tr>
 	<tr>
@@ -20,33 +22,39 @@
 			value="${project.finishDateAsString}" /></td>
 		<td colspan="4" align="center">Owner/ Priority</td>
 	</tr>
-	<tr><td colspan="15">
-	<html:link action="/EditMajorTask" paramId="projectId"
-							paramName="project" paramProperty="id">
-							Add Major Task
-						</html:link>
-	</td></tr>
-	<c:forEach items='${mTasks}' var='mTask'>
 	<tr>
-	
-		
-		
-		
-		<td>*</td>
-		<td><c:out value="${mTask.id}"/></td>
-		<td><c:out value="${mTask.name}"/></td>
-		<%
-					for (int i = 1; i <= project.getSliceQuantity() ; i++) {
-		%>
-		<td><%= String.valueOf(i) %></td>
-		<%
-		}
-		%>
-		<td>A</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
+		<td colspan="15"><html:link action="/EditMajorTask"
+			paramId="projectId" paramName="project" paramProperty="id">
+							Add Major Task
+						</html:link></td>
 	</tr>
+	<% java.util.List<model.Objective> objectives = project.getObjectives(); %>
+	<c:forEach items='${mTasks}' var='mTask'>
+		<tr>
+
+			<td>&nbsp;</td>
+			<c:forEach items='${project.objectives}' var='objective'>
+			<td>
+			<c:choose>
+			<c:when test='${fn:contains(objective.majorTasks,mTask)}'> * </c:when>
+			<c:otherwise> &nbsp;</c:otherwise>
+			</c:choose>
+			</td>
+			</c:forEach>
+			<td><c:out value="${mTask.id}" /></td>
+			<td><c:out value="${mTask.name}" /></td>
+			<%
+				for (int i = 1; i <= project.getSliceQuantity(); i++) {
+			%>
+			<td><%=String.valueOf(i)%></td>
+			<%
+				}
+			%>
+			<td>A</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
 	</c:forEach>
 
 	<tr bordercolordark="#000000">
@@ -101,36 +109,37 @@
 	</tr>
 
 	<tr>
-		<td rowspan="3"><html:link action="/EditObjective" paramId="projectId"
-							paramName="project" paramProperty="id">
+		<td rowspan="3"><html:link action="/EditObjective"
+			paramId="projectId" paramName="project" paramProperty="id">
 							Add Objective
 						</html:link></td>
 		<c:forEach items='${project.objectives}' var='objective'>
-		<td rowspan="3"><c:out value="${objective.name }"/></td>
+			<td rowspan="3"><c:out value="${objective.name }" /></td>
 		</c:forEach>
 		<td rowspan="2">Objectives</td>
 		<td>Target Dates</td>
 		<%
-					GregorianCalendar sCal = new GregorianCalendar();
-					sCal.setTime(project.getStartDate());
-					int sYear = sCal.get(java.util.Calendar.YEAR);
-					int sMonth = sCal.get(java.util.Calendar.MONTH);
-					sCal.setTime(project.getFinishDate());
-					int fYear = sCal.get(java.util.Calendar.YEAR);
-					int fMonth = sCal.get(java.util.Calendar.MONTH);
-					while(sYear != fYear || sMonth != fMonth+1){
+			GregorianCalendar sCal = new GregorianCalendar();
+			sCal.setTime(project.getStartDate());
+			int sYear = sCal.get(java.util.Calendar.YEAR);
+			int sMonth = sCal.get(java.util.Calendar.MONTH);
+			sCal.setTime(project.getFinishDate());
+			int fYear = sCal.get(java.util.Calendar.YEAR);
+			int fMonth = sCal.get(java.util.Calendar.MONTH);
+			while (sYear != fYear || sMonth != fMonth + 1) {
 		%>
-		<td height="50"><%= String.valueOf(sMonth+1)+"/"+String.valueOf(sYear) %></td>
+		<td height="50"><%=String.valueOf(sMonth + 1) + "/"
+						+ String.valueOf(sYear)%></td>
 		<%
-						sMonth++;	
-						if(sMonth > 11){
-							sMonth=0;
-							sYear++;
-						}
-					}
+			sMonth++;
+				if (sMonth > 11) {
+					sMonth = 0;
+					sYear++;
+				}
+			}
 		%>
 		<c:forEach items='${project.users}' var='user'>
-		<td><c:out value="${user.nameSurname }"/></td>
+			<td><c:out value="${user.nameSurname }" /></td>
 		</c:forEach>
 	</tr>
 
@@ -140,12 +149,12 @@
 	</tr>
 	<tr>
 		<td colspan="2">Summary and Forecasts</td>
-		<td colspan="14"><html:link action="/EditSummary" paramId="projectId"
-							paramName="project" paramProperty="id">
+		<td colspan="14"><html:link action="/EditSummary"
+			paramId="projectId" paramName="project" paramProperty="id">
 							Add Summary
 		</html:link></td>
 		<c:forEach items='${project.summaries}' var='summary'>
-		<td colspan="15"><c:out value="${summary.description}"/></td>
+			<td colspan="15"><c:out value="${summary.description}" /></td>
 		</c:forEach>
 	</tr>
 </table>
