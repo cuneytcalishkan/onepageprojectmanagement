@@ -2,16 +2,7 @@
 
 
 <center>
-<h2>Edit Operations</h2>
-
-<%-- either add or edit based on id --%> <c:choose>
-	<c:when test="${not empty summaryForm.id}">
-		<h2>Edit Summary</h2>
-	</c:when>
-	<c:otherwise>
-		<h2>Add Summary</h2>
-	</c:otherwise>
-</c:choose> 
+<h2>Summary Operations</h2>
 
 <html:form action="/EditSummarySaver">
 	<html:hidden property="id"/>
@@ -23,10 +14,12 @@
 	<html:hidden property="projectId"/>
 	<tr>
 		<td>&nbsp;</td>
-		<td><html:submit>Save</html:submit> <c:if
-			test="${(not empty summaryForm.id) && (user.role == 'project manager')}">
-			<a href="javascript:Popup()" /> Delete Summary</a>
-		</c:if></td>
+		<td><html:submit>Save</html:submit><c:if
+				test="${not empty summaryForm.id}">
+
+				<a href="javascript:Popup()"/>
+				Delete Summary</a>
+			</c:if></td>
 	</tr>
 </html:form></center>
 <script language="javascript">
