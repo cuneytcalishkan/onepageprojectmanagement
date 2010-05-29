@@ -1,5 +1,7 @@
 <%@ include file="/include/header.jspfrag"%>
-<table border="1">
+<% Project project = (Project) request.getAttribute("project"); %>
+
+<%@page import="model.Project"%><table border="1">
 	<tr>
 		<th colspan="3">ONE PAGE</th>
 		<th colspan="18">Project Leader : <c:out
@@ -22,18 +24,13 @@
 		<td>*</td>
 		<td>1</td>
 		<td>Award Contracts</td>
-		<td>*</td>
-		<td>*</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
+		<%
+					for (int i = 1; i < project.getSliceQuantity() ; i++) {
+		%>
+		<td><%= String.valueOf(i) %></td>
+		<%
+		}
+		%>
 		<td>A</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
