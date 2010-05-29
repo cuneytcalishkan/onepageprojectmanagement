@@ -68,8 +68,8 @@
 					}
 				%>
 			</html:select></td>
-			<td>&nbsp;</td>
-
+			<tr>
+			
 			<td>Finish Date&nbsp;:</td>
 			<td><html:select property="finishDateDay">
 				<%
@@ -100,6 +100,7 @@
 					}
 				%>
 			</html:select></td>
+			</tr>
 		</tr>
 		<tr>
 			<html:errors property="date" />
