@@ -27,10 +27,8 @@
 		
 		
 		<td>*</td>
-		<td>&nbsp;</td>
-		<td>*</td>
-		<td>1</td>
-		<td><c:out value="${mTask.name }"/></td>
+		<td><c:out value="${mTask.id}"/></td>
+		<td><c:out value="${mTask.name}"/></td>
 		<%
 					for (int i = 1; i <= project.getSliceQuantity() ; i++) {
 		%>
@@ -46,8 +44,6 @@
 	</c:forEach>
 
 	<tr bordercolordark="#000000">
-		<td>&nbsp;</td>
-		<td>*</td>
 		<td>&nbsp;</td>
 		<td>A</td>
 		<td>Internal Software Operational</td>
@@ -72,8 +68,6 @@
 
 	<tr>
 		<td>&nbsp;</td>
-		<td>*</td>
-		<td>&nbsp;</td>
 		<td>B</td>
 		<td>External Software Operational</td>
 		<td>&nbsp;</td>
@@ -97,15 +91,17 @@
 
 	<tr>
 		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
 		<td colspan="2">Major Task</td>
 	</tr>
 
 	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
+		<td rowspan="3"><html:link action="/EditObjective" paramId="id"
+							paramName="project" paramProperty="id">
+							Add Objective
+						</html:link></td>
+		<c:forEach items='${project.objectives}' var='objective'>
+		<td><c:out value="${objective.name }"/></td>
+		</c:forEach>
 		<td rowspan="2">Objectives</td>
 		<td>Target Dates</td>
 		<%
@@ -134,33 +130,14 @@
 
 
 	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
 		<td height="70">Costs</td>
 	</tr>
 	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
 		<td colspan="2">Summary and Forecasts</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-
+		<td colspan="14"><html:link action="/EditSummary" paramId="id"
+							paramName="project" paramProperty="id">
+							Add Summary
+						</html:link></td>
 	</tr>
 </table>
 <%@ include file="/include/footer.jspfrag"%>

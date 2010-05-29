@@ -38,7 +38,7 @@ public class EditObjectiveSaverAction extends DispatchAction {
 			objective = (Objective) hibernateSession.get(Objective.class, id);
 		else
 			objective = new Objective();
-		Project project = (Project) hibernateSession.get(Project.class, objective.getProjectId());
+		Project project = (Project) hibernateSession.get(Project.class, objectiveForm.getProjectId());
 		objective.setName(objectiveForm.getName());
 		objective.setProject(project);
 		hibernateSession.saveOrUpdate(objective);
