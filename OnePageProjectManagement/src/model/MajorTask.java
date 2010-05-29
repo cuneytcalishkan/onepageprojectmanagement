@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ import exception.RemoveElementException;
 
 @Entity
 @Table(name = "MAJORTASK")
+@Embeddable
 public class MajorTask {
 
 	private List<Assignment> assignments;
