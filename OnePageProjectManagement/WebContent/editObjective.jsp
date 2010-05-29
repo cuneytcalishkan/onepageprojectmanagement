@@ -21,8 +21,7 @@
 		<td>&nbsp;</td>
 		<td><html:submit>Save</html:submit> <c:if
 			test="${(not empty objectiveForm.id) && (user.role == 'project manager')}">
-			<a href="javascript:Popup()"/>
-			Delete Objective</a>
+			<a href="javascript:Popup()" /> Delete Objective</a>
 		</c:if></td>
 	</tr>
 </html:form></center>

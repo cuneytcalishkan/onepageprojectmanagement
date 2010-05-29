@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import exception.AddElementException;
 import exception.RemoveElementException;
@@ -40,6 +41,11 @@ public class Objective {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+
+	@Transient
+	public long getProjectId() {
+		return this.project.getId();
 	}
 
 	public void addMajorTask(MajorTask newTask) throws AddElementException {
@@ -105,7 +111,7 @@ public class Objective {
 	}
 
 	@ManyToOne
-    @JoinColumn(name="projectId")
+	@JoinColumn(name = "projectId")
 	public Project getProject() {
 		return project;
 	}

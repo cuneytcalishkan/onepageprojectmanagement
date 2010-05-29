@@ -1,7 +1,5 @@
 package controller.editAction;
 
-import java.io.Serializable;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,12 +36,13 @@ public class EditObjectiveAction extends DispatchAction {
 		Session hibernateSession = HibernateUtil.getSession();
 		try {
 			ta = hibernateSession.beginTransaction();
-			Project project = (Project) hibernateSession.get(Project.class, (Serializable) objectiveForm.getProject());
+			Project project = (Project) hibernateSession.get(Project.class,
+					objectiveForm.getProjectId());
 			Objective objective = null;
 			objective = (Objective) hibernateSession.get(Objective.class,
 					objectiveForm.getId());
 			objectiveForm.setName(objective.getName());
-			objectiveForm.setProject(project);
+			objectiveForm.setProjectId(project.getId());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
