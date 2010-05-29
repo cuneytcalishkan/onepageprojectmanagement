@@ -3,10 +3,7 @@
 
 <%@page import="controller.Utilizer"%>
 
-<p><c:if test="${user.role=='project manager'}">
-	<html:link forward="editProject">Add New Project</html:link>
-</c:if></p>
-<table>
+<table align="center">
 	<tr>
 		<c:if test="${user.role=='manager'}">
 			<td align="center">
@@ -31,7 +28,9 @@
 			</td>
 		</c:if>
 
-		<td align="center">
+		<td align="center"><c:if test="${user.role=='project manager'}">
+			<p><html:link forward="editProject">Add New Project</html:link></p>
+		</c:if>
 		<p><b>LIST OF THE PROJECTS</b></p>
 		<table border="1" bordercolor="#ECECEC" cellspacing="0"
 			cellpadding="2">
