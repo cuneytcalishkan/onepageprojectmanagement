@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.MajorTask;
+import model.SubjectiveTask;
 import model.Objective;
 import model.Puser;
 
@@ -21,15 +21,15 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import controller.HibernateUtil;
-import controller.form.MajorTaskForm;
+import controller.form.SubjectiveTaskForm;
 
-public class EditMajorTaskAction extends DispatchAction {
+public class EditSubjectiveTaskAction extends DispatchAction {
 
 	@SuppressWarnings("unchecked")
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(true);
-		MajorTaskForm majorTaskForm = (MajorTaskForm) form;
+		SubjectiveTaskForm subjectiveTaskForm = (SubjectiveTaskForm) form;
 		Puser user = (Puser) session.getAttribute("user");
 		if (user == null || (!user.getRole().equals("project manager"))) {
 			throw new RuntimeException(
@@ -40,13 +40,15 @@ public class EditMajorTaskAction extends DispatchAction {
 		Session hibernateSession = HibernateUtil.getSession();
 		try {
 			ta = hibernateSession.beginTransaction();
-			List<Objective> objectives = (List<Objective>) hibernateSession.createCriteria(Objective.class)
-				.add(Restrictions.eq("project.id",majorTaskForm.getProjectId() )).list();
+			List<Objective> objectives = (List<Objective>) hibernateSession
+					.createCriteria(Objective.class).add(
+							Restrictions.eq("project.id", subjectiveTaskForm
+									.getProjectId())).list();
 			request.setAttribute("objectives", objectives);
-			MajorTask majorTask = null;
-			majorTask = (MajorTask) hibernateSession.get(MajorTask.class,
-					majorTaskForm.getId());
-			majorTaskForm.setName(majorTask.getName());
+			SubjectiveTask subjectiveTask = null;
+			subjectiveTask = (SubjectiveTask) hibernateSession.get(
+					SubjectiveTask.class, subjectiveTaskForm.getId());
+			subjectiveTaskForm.setName(subjectiveTask.getName());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
@@ -58,10 +60,11 @@ public class EditMajorTaskAction extends DispatchAction {
 			System.out.println(e.getMessage());
 			ActionMessages actionMessages = new ActionMessages();
 			actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-					new ActionMessage("majorTask.notFound"));
+					new ActionMessage("subjectiveTask.notFound"));
 			saveMessages(request, actionMessages);
 			return mapping.findForward("failure");
 		}
 
 	}
+
 }
