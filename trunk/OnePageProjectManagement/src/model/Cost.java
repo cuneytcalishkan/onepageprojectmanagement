@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Color;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +13,7 @@ import javax.persistence.Table;
 public class Cost {
 
 	private long id;
-	private Color color;
+	private String color;
 	private float budget;
 	private float expense;
 	private Project project;
@@ -24,14 +22,14 @@ public class Cost {
 		super();
 	}
 
-	public Cost(Color color, float budget, float expense) {
+	public Cost(String color, float budget, float expense) {
 		super();
 		this.color = color;
 		this.budget = budget;
 		this.expense = expense;
 	}
 
-	public Cost(long id, Color color, float budget, float expense) {
+	public Cost(long id, String color, float budget, float expense) {
 		super();
 		this.id = id;
 		this.color = color;
@@ -39,11 +37,11 @@ public class Cost {
 		this.expense = expense;
 	}
 
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 
