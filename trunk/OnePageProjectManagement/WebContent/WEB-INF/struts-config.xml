@@ -110,7 +110,7 @@
 		</action>
 
 		<action path="/EditSubjectiveTaskSaver" type="controller.saverAction.EditSubjectiveTaskSaverAction"
-			name="subjectiveForm" scope="request" input="/editSubjectiveTask.jsp"
+			name="subjectiveTaskForm" scope="request" input="/editSubjectiveTask.jsp"
 			validate="true">
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
