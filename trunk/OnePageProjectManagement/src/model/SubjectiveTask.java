@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -75,7 +73,6 @@ public class SubjectiveTask {
 	}
 
 	@OneToMany(mappedBy = "task")
-	@JoinTable(name = "ST_HAS", joinColumns = @JoinColumn(name = "SUBJECTIVETASK_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECTIVESLICE_ID"))
 	public List<SubjectiveSlice> getSubjectiveSlices() {
 		return subjectiveSlices;
 	}

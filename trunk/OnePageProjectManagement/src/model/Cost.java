@@ -2,13 +2,11 @@ package model;
 
 import java.awt.Color;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -75,8 +73,8 @@ public class Cost {
 		this.id = id;
 	}
 
-	@ManyToOne(cascade = { CascadeType.PERSIST , CascadeType.MERGE})
-	@JoinTable(name = "PROJECT_HAS", joinColumns = @JoinColumn(name = "COST_ID"), inverseJoinColumns = @JoinColumn(name = "PROJECT_ID"))
+	@ManyToOne
+	@JoinColumn(name = "projectId")
 	public Project getProject() {
 		return project;
 	}
