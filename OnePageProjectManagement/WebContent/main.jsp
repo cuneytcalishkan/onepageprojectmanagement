@@ -29,7 +29,6 @@
 		</c:if>
 
 		<td align="center"><c:if test="${user.role=='project manager'}">
-		<p><html:link forward="editMajorTask">Add New MajorTask</html:link></p>
 			<p><html:link forward="editProject">Add New Project</html:link></p>
 		</c:if>
 		<p><b>LIST OF THE PROJECTS</b></p>

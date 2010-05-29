@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.MajorTask;
+import model.Objective;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
@@ -16,6 +17,7 @@ import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
 import controller.form.MajorTaskForm;
+import exception.AddElementException;
 
 public class EditMajorTaskSaverAction extends DispatchAction{
 
@@ -39,6 +41,18 @@ public class EditMajorTaskSaverAction extends DispatchAction{
 			majorTask = new MajorTask();
 		
 		majorTask.setName(majorTaskForm.getName());
+		String[] objectives = majorTaskForm.getObjectivesList();
+		for(int i = 0; i< objectives.length; i++){
+			Objective obj = (Objective) hibernateSession.get(Objective.class, Long.parseLong(objectives[i]));
+			majorTask.addObjective(obj);
+			try {
+				obj.addMajorTask(majorTask);
+			} catch (AddElementException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			hibernateSession.saveOrUpdate(obj);
+		}
 		
 		hibernateSession.saveOrUpdate(majorTask);
 		ta.commit();

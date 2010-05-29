@@ -44,7 +44,6 @@ public class EditMajorTaskAction extends DispatchAction {
 			System.out.println("hmm");
 			List<Objective> objectives = (List<Objective>) hibernateSession.createCriteria(Objective.class)
 				.add(Restrictions.eq("project.id",majorTaskForm.getProjectId() )).list();
-			System.out.println(objectives.size());
 			request.setAttribute("objectives", objectives);
 			MajorTask majorTask = null;
 			majorTask = (MajorTask) hibernateSession.get(MajorTask.class,
