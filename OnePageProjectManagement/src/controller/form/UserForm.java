@@ -8,24 +8,25 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 public class UserForm extends ActionForm {
-	
+
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String userName;
 	private String nameSurname;
 	private String password;
 	private String role;
-	
-	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
-        ActionErrors errors = new ActionErrors();
 
-        if(userName != null && userName.equals(""))
-	    	errors.add("userName", new ActionMessage("empty"));
-        if(nameSurname!= null && nameSurname.equals(""))
-	    	errors.add("nameSurname", new ActionMessage("empty"));
-        if(password != null && password.equals(""))
-	    	errors.add("password", new ActionMessage("empty"));
-        
-        return errors;
+	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
+		ActionErrors errors = new ActionErrors();
+
+		if (userName != null && userName.equals(""))
+			errors.add("userName", new ActionMessage("empty"));
+		if (nameSurname != null && nameSurname.equals(""))
+			errors.add("nameSurname", new ActionMessage("empty"));
+		if (password != null && password.equals(""))
+			errors.add("password", new ActionMessage("empty"));
+
+		return errors;
 	}
 
 	public Long getId() {
