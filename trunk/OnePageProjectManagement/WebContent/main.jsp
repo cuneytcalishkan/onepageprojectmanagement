@@ -30,6 +30,7 @@
 
 		<td align="center"><c:if test="${user.role=='project manager'}">
 			<p><html:link forward="editProject">Add New Project</html:link></p>
+			<p><html:link forward="editObjective">Add New Objective</html:link></p>
 		</c:if>
 		<p><b>LIST OF THE PROJECTS</b></p>
 		<table border="1" bordercolor="#ECECEC" cellspacing="0"
