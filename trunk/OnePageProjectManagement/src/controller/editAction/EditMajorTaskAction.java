@@ -1,10 +1,13 @@
 package controller.editAction;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.MajorTask;
+import model.Objective;
 import model.Project;
 import model.Puser;
 
@@ -16,12 +19,14 @@ import org.apache.struts.action.ActionMessages;
 import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import controller.HibernateUtil;
 import controller.form.MajorTaskForm;
 
 public class EditMajorTaskAction extends DispatchAction {
 
+	@SuppressWarnings("unchecked")
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(true);
@@ -36,13 +41,15 @@ public class EditMajorTaskAction extends DispatchAction {
 		Session hibernateSession = HibernateUtil.getSession();
 		try {
 			ta = hibernateSession.beginTransaction();
-			Project project = (Project) hibernateSession.get(Project.class,
-					majorTaskForm.getProjectId());
+			System.out.println("hmm");
+			List<Objective> objectives = (List<Objective>) hibernateSession.createCriteria(Objective.class)
+				.add(Restrictions.eq("project.id",majorTaskForm.getProjectId() )).list();
+			System.out.println(objectives.size());
+			request.setAttribute("objectives", objectives);
 			MajorTask majorTask = null;
 			majorTask = (MajorTask) hibernateSession.get(MajorTask.class,
 					majorTaskForm.getId());
 			majorTaskForm.setName(majorTask.getName());
-			majorTaskForm.setProjectId(project.getId());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
@@ -51,6 +58,7 @@ public class EditMajorTaskAction extends DispatchAction {
 				ta.rollback();
 				hibernateSession.close();
 			}
+			System.out.println(e.getMessage());
 			ActionMessages actionMessages = new ActionMessages();
 			actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
 					new ActionMessage("majorTask.notFound"));
