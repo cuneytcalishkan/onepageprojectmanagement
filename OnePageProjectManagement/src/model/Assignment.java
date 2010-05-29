@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Assignment {
 
 	private char priority;
-	private Puser user;
+	private Puser puser;
 	private MajorTask majorTask;
 
 	public Assignment() {
@@ -21,9 +21,10 @@ public class Assignment {
 	public Assignment(char priority, Puser user, MajorTask task) {
 		super();
 		this.priority = priority;
-		this.user = user;
+		this.puser = user;
 		this.majorTask = task;
 	}
+
 	public char getPriority() {
 		return priority;
 	}
@@ -33,22 +34,22 @@ public class Assignment {
 	}
 	@Id
 	@ManyToOne
-    @JoinColumn(name="USER_ID")
-	public Puser getUser() {
-		return user;
+	@JoinColumn(name = "PUSER_ID")
+	public Puser getPuser() {
+		return puser;
 	}
 
-	public void setUser(Puser user) {
-		this.user = user;
+	public void setPuser(Puser user) {
+		this.puser = user;
 	}
 	@Id
 	@ManyToOne
-    @JoinColumn(name="MAJORTASK_ID")
-	public MajorTask getTask() {
+	@JoinColumn(name = "MAJORTASK_ID")
+	public MajorTask getMajorTask() {
 		return majorTask;
 	}
 
-	public void setTask(MajorTask task) {
+	public void setMajorTask(MajorTask task) {
 		this.majorTask = task;
 	}
 

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import exception.AddElementException;
@@ -18,7 +18,6 @@ import exception.RemoveElementException;
 
 @Entity
 @Table(name = "PUSER")
-@Embeddable
 public class Puser {
 
 	private long id;
@@ -26,7 +25,7 @@ public class Puser {
 	private String nameSurname;
 	private String password;
 	private String role;
-	// private List<Assignment> assignments;
+	private List<Assignment> assignments;
 	private List<Project> projects;
 
 	public Puser() {
@@ -61,20 +60,21 @@ public class Puser {
 		return this.nameSurname;
 	}
 
-	// public void addAssignment(Assignment assgn) throws AddElementException {
-	// if (this.assignments == null)
-	// setAssignments(new ArrayList<Assignment>());
-	// if (!this.assignments.add(assgn))
-	// throw new AddElementException(
-	// "Specified assignment cannot be added!");
-	// }
-	//
-	// public void removeAssignment(Assignment assgn) throws RemoteException {
-	// if (this.assignments.size() > 0)
-	// if (!this.assignments.remove(assgn))
-	// throw new RemoteException(
-	// "Specified assignment cannot be removed!");
-	// }
+	public void addAssignment(Assignment assgn) throws AddElementException {
+		if (this.assignments == null)
+			setAssignments(new ArrayList<Assignment>());
+		if (!this.assignments.add(assgn))
+			throw new AddElementException(
+					"Specified assignment cannot be added!");
+	}
+
+	public void removeAssignment(Assignment assgn)
+			throws RemoveElementException {
+		if (this.assignments.size() > 0)
+			if (!this.assignments.remove(assgn))
+				throw new RemoveElementException(
+						"Specified assignment cannot be removed!");
+	}
 
 	public void addProject(Project prj) throws AddElementException {
 		if (this.projects == null)
@@ -91,14 +91,14 @@ public class Puser {
 						"Specified prject cannot be removed!");
 	}
 
-	// @OneToMany(mappedBy = "user")
-	// public List<Assignment> getAssignments() {
-	// return assignments;
-	// }
-	//
-	// public void setAssignments(List<Assignment> assignments) {
-	// this.assignments = assignments;
-	// }
+	@OneToMany(mappedBy = "puser")
+	public List<Assignment> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
+	}
 
 	public String getUserName() {
 		return userName;
