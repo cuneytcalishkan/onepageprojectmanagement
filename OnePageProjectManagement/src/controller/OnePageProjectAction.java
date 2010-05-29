@@ -37,6 +37,7 @@ public class OnePageProjectAction extends Action {
         request.setAttribute("project", project);
         
         List<Objective> objectives = project.getObjectives();
+        System.out.println(objectives.size());
         Set<MajorTask> mTasks = new HashSet<MajorTask>();
         Iterator<Objective> it = objectives.iterator();
         while(it.hasNext()){
