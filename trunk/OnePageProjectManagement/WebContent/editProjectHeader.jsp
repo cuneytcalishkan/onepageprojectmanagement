@@ -2,14 +2,7 @@
 <center>
 <h2>Project Operations</h2>
 
-<%-- either add or edit based on id --%> <c:choose>
-	<c:when test="${not empty projectHeaderForm.id}">
-		<h2>Edit Project</h2>
-	</c:when>
-	<c:otherwise>
-		<h2>Add a Project</h2>
-	</c:otherwise>
-</c:choose> <html:form action="/EditProjectHeaderSaver">
+<html:form action="/EditProjectHeaderSaver">
 
 	<html:hidden property="id" />
 

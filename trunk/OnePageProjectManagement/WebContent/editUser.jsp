@@ -1,16 +1,7 @@
 <%@ include file="/include/header.jspfrag"%>
 <center>
-<h2>Edit Operations</h2>
+<h2>User Operations</h2>
 
-<%-- either add or edit based on id --%> 
-<c:choose>
-	<c:when test="${not empty userForm.id}">
-		<h2>Edit User</h2>
-	</c:when>
-	<c:otherwise>
-		<h2>Add a User</h2>
-	</c:otherwise>
-</c:choose> 
 <html:form action="/EditUserSaver">
 
 	<html:hidden property="id" />
