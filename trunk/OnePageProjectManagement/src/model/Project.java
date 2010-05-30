@@ -93,8 +93,9 @@ public class Project {
 		fnM = fnCal.get(Calendar.MONTH) + 1;
 
 		result = (fnY - stY) * 12;
-		result += fnM - stM;
-		return ++result;
+		result += fnM - stM + 1;
+		result *= sliceAmount;
+		return result;
 
 	}
 

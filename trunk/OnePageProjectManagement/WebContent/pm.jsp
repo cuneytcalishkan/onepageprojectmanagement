@@ -1,4 +1,5 @@
 <%@ include file="/include/header.jspfrag"%>
+<%@ include file="/include/menu.jsp"%>
 <%
 	Project project = (Project) request.getAttribute("project");
 %>
@@ -55,7 +56,11 @@
 			<td align="center"><c:out value="${mTask.name}" /></td>
 			<%
 				for (int i = 1; i <= project.getSliceQuantity(); i++) {
+					
 			%>
+					<c:forEach items='${mTask.majorSlices}' var='slice'>
+					
+					</c:forEach>
 			<td><%=String.valueOf(i)%></td>
 			<%
 				}
@@ -78,7 +83,7 @@
 		<tr>
 
 			<c:forEach items='${project.objectives}' var='objective'>
-				<td><c:choose>
+				<td align="center"><c:choose>
 					<c:when test='${fn:contains(objective.subjectiveTasks,sTask)}'>
 						<img src="images/checkedbox.png" />
 					</c:when>
@@ -87,8 +92,8 @@
 					</c:otherwise>
 				</c:choose></td>
 			</c:forEach>
-			<td><c:out value="${sTask.id}" /></td>
-			<td><c:out value="${sTask.name}" /></td>
+			<td align="center"><c:out value="${sTask.id}" /></td>
+			<td align="center"><c:out value="${sTask.name}" /></td>
 			<%
 				for (int i = 1; i <= project.getSliceQuantity(); i++) {
 			%>
