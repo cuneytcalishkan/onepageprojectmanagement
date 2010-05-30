@@ -136,12 +136,14 @@
 							Add Cost
 						</html:link></td>
 		<td>
-		<table border="0">
-			<th>Expense/Budget</th>
+		<table border="1" cellspacing="0" cellpadding="1">
+			<th colspan="2">Expense/Budget</th>
 			<c:forEach items='${project.costs}' var='cost'>
 				<tr align="center">
 					<td align="center" bgcolor="${cost.color}"><c:out
 						value="${cost.expense}" />/<c:out value="${cost.budget}" /></td>
+						<td bordercolor="${cost.color}"><c:out
+						value="${cost.name}" /></td>
 				</tr>
 			</c:forEach>
 		</table>
