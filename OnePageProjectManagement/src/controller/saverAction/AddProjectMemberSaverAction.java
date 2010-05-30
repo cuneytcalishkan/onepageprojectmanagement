@@ -36,7 +36,7 @@ public class AddProjectMemberSaverAction extends DispatchAction {
 		Project project = (Project) hibernateSession.get(Project.class,
 				projectMemberForm.getProjectId());
 		Puser newMember = (Puser) hibernateSession.get(Puser.class,
-				Integer.parseInt(projectMemberForm.getProjectMember()));
+				projectMemberForm.getProjectMember());
 		try {
 			newMember.addProject(project);
 			project.addUser(newMember);
