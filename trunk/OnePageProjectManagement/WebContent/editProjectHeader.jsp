@@ -115,11 +115,7 @@
 	function Popup() {
 		sure = confirm("Are you sure?");
 		if (sure) {
-			window.location = "DeleteProject.do?id=" + $
-			{
-				projectForm.id
-			}
-			;
+			window.location = "DeleteProject.do?id=" + ${projectHeaderForm.id};
 		}
 	}
 </script>

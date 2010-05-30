@@ -12,7 +12,7 @@
 		<tr>
 			<td>&nbsp;</td>
 			<td><html:submit>Save</html:submit> 
-			<c:if test="${(subjectiveTaskForm.id!=0) && (user.role=='project manager')}">
+			<c:if test="${subjectiveTaskForm.id!=0}">
 				<a href="javascript:Popup()" /> Delete Task</a>
 			</c:if></td>
 		</tr>

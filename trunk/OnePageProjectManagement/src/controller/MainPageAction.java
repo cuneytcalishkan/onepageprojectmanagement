@@ -13,6 +13,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -25,6 +27,10 @@ public class MainPageAction extends Action {
 		Puser user = (Puser) session.getAttribute("user");
 		
 		if(user == null){
+			ActionMessages actionMessages = new ActionMessages();
+	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+	        	new ActionMessage("user.notFound"));
+	        saveMessages(request,actionMessages);
 			return mapping.findForward("login");
 		}
 		Session ses = HibernateUtil.getSession();
