@@ -1,18 +1,18 @@
 <%@ include file="/include/header.jspfrag"%>
 
 <center>
-<h2>Major Task Operations</h2>
-<html:form action="/EditMajorTaskSaver">
+<h2>Subjective Task Operations</h2>
+<html:form action="/EditSubjectiveTaskSaver">
 
 	<table border='0'>
 		<tr>
-			<td>Major Task Name&nbsp;:</td>
+			<td>Subjective Task Name&nbsp;:</td>
 			<td><html:text property="name" /><html:errors property="name" /></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td><html:submit>Save</html:submit> 
-			<c:if test="${(majorTaskForm.id!=0) && (user.role=='project manager')}">
+			<c:if test="${(subjectiveTaskForm.id!=0) && (user.role=='project manager')}">
 				<a href="javascript:Popup()" /> Delete Task</a>
 			</c:if></td>
 		</tr>
@@ -35,9 +35,9 @@
 	function Popup() {
 		sure = confirm("Are you sure?");
 		if (sure) {
-			window.location = "DeleteMajorTask.do?id=" + $
+			window.location = "DeleteSubjectiveTask.do?id=" + $
 			{
-				majorTaskForm.id
+				subjectiveTaskForm.id
 			}
 			;
 		}
