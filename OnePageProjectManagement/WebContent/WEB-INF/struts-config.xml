@@ -11,9 +11,6 @@
 		type="com.seitti.tunnusx.web.FeedbackForm"/>
 	-->
 	<form-beans>
-		<form-bean name="projectMemberForm" type="controller.form.ProjectMemberForm" />
-	
-		<form-bean name="subjectiveTaskForm" type="controller.form.SubjectiveTaskForm" />
 
 		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
 
@@ -39,8 +36,6 @@
 
 		<forward name="editObjective" path="/EditObjective.do" />
 
-		<forward name="editSubjectiveTask" path="/EditSubjectiveTask.do" />
-		
 		<forward name="editCost" path="/EditCost.do" />
 
 		<forward name="editMajorTask" path="/EditMajorTask.do" />
@@ -78,40 +73,26 @@
 		</action>
 
 
-		<action path="/AddProjectMember" type="controller.editAction.AddProjectMemberAction"
-			name="projectMemberForm" input="/addProjectMember.jsp" scope="request"
+		<action path="/EditObjective" type="controller.editAction.EditObjectiveAction"
+			name="objectiveForm" input="/editObjective.jsp" scope="request"
 			validate="false">
-			<forward name="success" path="/addProjectMember.jsp" />
-			<forward name="failure" path="/addProjectMember.jsp" />
+			<forward name="success" path="/editObjective.jsp" />
+			<forward name="failure" path="/editObjective.jsp" />
 		</action>
 
-		<action path="/AddProjectMemberSaver" type="controller.saverAction.AddProjectMemberSaverAction"
-			name="projectMemberForm" scope="request" input="/addProjectMember.jsp"
-			validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
-			<forward name="failure" path="/message.jsp" />
-		</action>
-
-		<action path="/EditSubjectiveTask" type="controller.editAction.EditSubjectiveTaskAction"
-			name="subjectiveTaskForm" input="/editSubjectiveTask.jsp" scope="request"
-			validate="false">
-			<forward name="success" path="/editSubjectiveTask.jsp" />
-			<forward name="failure" path="/editSubjectiveTask.jsp" />
-		</action>
-
-		<action path="/DeleteSubjectiveTask" type="controller.deleteAction.DeleteSubjectiveTaskAction"
+		<action path="/DeleteObjective" type="controller.deleteAction.DeleteObjectiveAction"
 			name="idForm">
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
-		<action path="/EditSubjectiveTaskSaver" type="controller.saverAction.EditSubjectiveTaskSaverAction"
-			name="subjectiveTaskForm" scope="request" input="/editSubjectiveTask.jsp"
+		<action path="/EditObjectiveSaver" type="controller.saverAction.EditObjectiveSaverAction"
+			name="objectiveForm" scope="request" input="/editObjective.jsp"
 			validate="true">
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
-		
+
 		
 		<action path="/EditCost" type="controller.editAction.EditCostAction"
 			name="costForm" input="/editCost.jsp" scope="request"
