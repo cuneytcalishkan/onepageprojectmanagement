@@ -2,7 +2,9 @@
 <%@ include file="/include/menu.jsp"%>
 
 <%@page import="controller.Utilizer"%>
-
+<html:messages id="message" message="true">
+  <h2><bean:write name="message"/></h2>
+</html:messages>
 <table align="center">
 	<tr>
 		<c:if test="${user.role=='manager'}">
