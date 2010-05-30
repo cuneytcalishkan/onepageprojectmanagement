@@ -6,7 +6,7 @@
 <%@page import="model.Project"%>
 <%@page import="controller.Utilizer"%>
 <%@page import="java.util.GregorianCalendar"%><table border="1"
-	align="center">
+	align="center" cellpadding="5" cellspacing="0" bordercolor="#ECECEC">
 	<tr>
 		<th colspan="3">ONE PAGE</th>
 		<th colspan="18">Project Leader : <c:out
@@ -24,23 +24,27 @@
 		<td colspan="4" align="center">Owner/ Priority</td>
 	</tr>
 	<tr>
-		<td align="center"><html:link action="/EditMajorTask"
+		<td colspan="5" align="left"><html:link
+			style="text-decoration:none" action="/EditMajorTask"
 			paramId="projectId" paramName="project" paramProperty="id">
-							Add Major Task
+							[ Add Major Task ]
 						</html:link></td>
 	</tr>
 	<c:forEach items='${mTasks}' var='mTask'>
 		<tr>
 
-			<td>&nbsp;</td>
 			<c:forEach items='${project.objectives}' var='objective'>
-				<td><c:choose>
-					<c:when test='${fn:contains(objective.majorTasks,mTask)}'> * </c:when>
-					<c:otherwise> &nbsp;</c:otherwise>
+				<td align="center"><c:choose>
+					<c:when test='${fn:contains(objective.majorTasks,mTask)}'>
+						<img src="images/checkedbox.png" />
+					</c:when>
+					<c:otherwise>
+						<img src="images/uncheckbox.png" />
+					</c:otherwise>
 				</c:choose></td>
 			</c:forEach>
-			<td><c:out value="${mTask.id}" /></td>
-			<td><c:out value="${mTask.name}" /></td>
+			<td align="center"><c:out value="${mTask.id}" /></td>
+			<td align="center"><c:out value="${mTask.name}" /></td>
 			<%
 				for (int i = 1; i <= project.getSliceQuantity(); i++) {
 			%>
@@ -50,25 +54,27 @@
 			%>
 			<td>A</td>
 			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
 		</tr>
 	</c:forEach>
 
 	<tr>
-		<td align="center"><html:link action="/EditSubjectiveTask"
+		<td colspan="5" align="left"><html:link
+			style="text-decoration:none" action="/EditSubjectiveTask"
 			paramId="projectId" paramName="project" paramProperty="id">
-							Add Subjective Task
+							[ Add Subjective Task ]
 						</html:link></td>
 	</tr>
 	<c:forEach items='${sTasks}' var='sTask'>
 		<tr>
 
-			<td>&nbsp;</td>
 			<c:forEach items='${project.objectives}' var='objective'>
 				<td><c:choose>
-					<c:when test='${fn:contains(objective.subjectiveTasks,sTask)}'> * </c:when>
-					<c:otherwise> &nbsp;</c:otherwise>
+					<c:when test='${fn:contains(objective.subjectiveTasks,sTask)}'>
+						<img src="images/checkedbox.png" />
+					</c:when>
+					<c:otherwise>
+						<img src="images/uncheckbox.png" />
+					</c:otherwise>
 				</c:choose></td>
 			</c:forEach>
 			<td><c:out value="${sTask.id}" /></td>
@@ -82,22 +88,10 @@
 			%>
 			<td>A</td>
 			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
 		</tr>
 	</c:forEach>
 
-
 	<tr>
-		<td>&nbsp;</td>
-		<td colspan="2">Major Task</td>
-	</tr>
-
-	<tr>
-		<td rowspan="3" align="center"><html:link action="/EditObjective"
-			paramId="projectId" paramName="project" paramProperty="id">
-							Add Objective
-						</html:link></td>
 		<c:forEach items='${project.objectives}' var='objective'>
 			<td rowspan="3"><c:out value="${objective.name }" /></td>
 		</c:forEach>
@@ -124,51 +118,59 @@
 			}
 		%>
 		<c:forEach items='${project.users}' var='user'>
-			<td><c:out value="${user.nameSurname }" /> 
-			<c:url
+			<td><c:out value="${user.nameSurname }" /> <c:url
 				value="/RemoveProjectMember.do" var="url">
 				<c:param name="projectId" value="${project.id }" />
 				<c:param name="projectMember" value="${user.id }" />
-			</c:url>
-			<a href="${url}">Remove from Project</a>
-		</c:forEach></td>
-		<td><html:link action="/AddProjectMember" paramId="projectId"
-			paramName="project" paramProperty="id">
-							Add Project Member
+			</c:url> <a href="${url}" style="text-decoration:none">[ Remove ]</a>
+		</c:forEach>
+		</td>
+		<td><html:link style="text-decoration:none"
+			action="/AddProjectMember" paramId="projectId" paramName="project"
+			paramProperty="id">
+							[ Add Member ]
 						</html:link></td>
 	</tr>
 
 
 	<tr>
 		<td height="70">Costs</td>
-		<td><html:link action="/EditCost" paramId="projectId"
-			paramName="project" paramProperty="id">
-							Add Cost
+		<td><html:link style="text-decoration:none" action="/EditCost"
+			paramId="projectId" paramName="project" paramProperty="id">
+							[ Add Cost ]
 						</html:link></td>
-		<td>
+		<td colspan="10">
 		<table border="1" cellspacing="0" cellpadding="1">
 			<th colspan="2">Expense/Budget</th>
 			<c:forEach items='${project.costs}' var='cost'>
 				<tr align="center">
 					<td align="center" bgcolor="${cost.color}"><c:out
 						value="${cost.expense}" />/<c:out value="${cost.budget}" /></td>
-						<td bordercolor="${cost.color}"><c:out
-						value="${cost.name}" /></td>
+					<td bordercolor="${cost.color}"><c:out value="${cost.name}" /></td>
 				</tr>
 			</c:forEach>
 		</table>
 		</td>
 		<tr>
 			<td colspan="2">Summary and Forecasts</td>
-			<td><html:link action="/EditSummary" paramId="projectId"
-				paramName="project" paramProperty="id">
-							Add Summary
+			<td><html:link style="text-decoration:none"
+				action="/EditSummary" paramId="projectId" paramName="project"
+				paramProperty="id">
+							[ Add Summary ]
 		</html:link></td>
-			<td><c:forEach items='${project.summaries}' var='summary'>
+			<td colspan="10"><c:forEach items='${project.summaries}'
+				var='summary'>
 				<c:out value="${summary.description}" />
 				<hr color="#CCCCCC"></hr>
 			</c:forEach></td>
 		</tr>
+	</tr>
+	<tr>
+		<td align="left" colspan="5"><html:link
+			style="text-decoration:none" action="/EditObjective"
+			paramId="projectId" paramName="project" paramProperty="id">
+							[ Add Objective ]
+						</html:link></td>
 	</tr>
 </table>
 <%@ include file="/include/footer.jspfrag"%>
