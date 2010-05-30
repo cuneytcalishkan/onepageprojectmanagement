@@ -11,6 +11,7 @@
 		type="com.seitti.tunnusx.web.FeedbackForm"/>
 	-->
 	<form-beans>
+		<form-bean name="projectMemberForm" type="controller.form.ProjectMemberForm" />
 
 		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
 
@@ -72,6 +73,19 @@
 			<forward name="success" path="/pm.jsp" />
 		</action>
 
+		<action path="/AddProjectMember" type="controller.editAction.AddProjectMemberAction"
+			name="projectMemberForm" input="/addProjectMember.jsp" scope="request"
+			validate="false">
+			<forward name="success" path="/addProjectMember.jsp" />
+			<forward name="failure" path="/addProjectMember.jsp" />
+		</action>
+		
+		<action path="/AddProjectMemberSaver" type="controller.saverAction.AddProjectMemberSaverAction"
+			name="projectMemberForm" scope="request" input="/addProjectMember.jsp"
+			validate="true">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
 
 		<action path="/EditObjective" type="controller.editAction.EditObjectiveAction"
 			name="objectiveForm" input="/editObjective.jsp" scope="request"
