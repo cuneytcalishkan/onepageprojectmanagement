@@ -9,6 +9,11 @@
 
 	<table border='0'>
 
+
+		<tr>
+			<td>Name&nbsp;:</td>
+			<td><html:text property="name" /><html:errors property="budget" /></td>
+		</tr>
 		<tr>
 			<td>Budget&nbsp;:</td>
 			<td><html:text property="budget" /><html:errors
@@ -23,16 +28,14 @@
 
 		<tr>
 			<td>Color&nbsp;:</td>
-			<td><html:text property="color" /><html:errors
-				property="color" /></td>
+			<td><html:text property="color" /><html:errors property="color" /></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><html:submit>Save</html:submit> 
-			<c:if test="${(not empty costForm.id) && (user.role=='project manager' )}">
+			<td><html:submit>Save</html:submit> <c:if
+				test="${(not empty costForm.id) && (user.role=='project manager' )}">
 
-				<a href="javascript:Popup()" />
-				Delete Cost</a>
+				<a href="javascript:Popup()" /> Delete Cost</a>
 			</c:if></td>
 		</tr>
 	</table>
