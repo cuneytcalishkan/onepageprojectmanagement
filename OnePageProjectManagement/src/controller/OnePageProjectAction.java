@@ -7,16 +7,20 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.MajorTask;
 import model.Objective;
 import model.Project;
+import model.Puser;
 import model.SubjectiveTask;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.hibernate.Session;
 
 import controller.form.IdForm;
@@ -27,8 +31,15 @@ public class OnePageProjectAction extends Action {
             ActionForm form,
             HttpServletRequest request,
             HttpServletResponse response) {
-    	/*HttpSession session = request.getSession(true);
-    	Puser user = (Puser) session.getAttribute("user");*/
+    	HttpSession session = request.getSession(true);
+    	Puser user = (Puser) session.getAttribute("user");
+    	if(user == null){
+			ActionMessages actionMessages = new ActionMessages();
+	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+	        	new ActionMessage("user.notFound"));
+	        saveMessages(request,actionMessages);
+			return mapping.findForward("login");
+		}
     	IdForm idForm = (IdForm) form;
         Long id = idForm.getId();
     	

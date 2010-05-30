@@ -11,6 +11,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,9 +25,8 @@ public class AddProjectMemberSaverAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-
-		HttpSession session = request.getSession(true);
 		ProjectMemberForm projectMemberForm = (ProjectMemberForm) form;
+		HttpSession session = request.getSession(true);
 		Puser user = (Puser) session.getAttribute("user");
 		if (user == null || (!user.getRole().equals("project manager"))) {
 			throw new RuntimeException(
@@ -51,6 +52,11 @@ public class AddProjectMemberSaverAction extends Action {
 		}
 		ta.commit();
 		hibernateSession.close();
+		ActionMessages actionMessages = new ActionMessages();
+        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+                new ActionMessage("member.added",newMember.getNameSurname()));
+        saveMessages(request,actionMessages);
+		
 		return new ActionForward("/OnePageProject.do?id="+projectMemberForm.getProjectId());
 	}
 

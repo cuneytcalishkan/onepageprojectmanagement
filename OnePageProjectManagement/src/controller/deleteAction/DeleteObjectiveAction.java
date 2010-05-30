@@ -33,7 +33,7 @@ public class DeleteObjectiveAction extends Action {
 		session.close();
 
 		actionMessages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-				"objective.deleted"));
+				"objective.deleted",o.getName()));
 		saveMessages(request, actionMessages);
 
 		return new ActionForward("/OnePageProject.do?id="+o.getProjectId());

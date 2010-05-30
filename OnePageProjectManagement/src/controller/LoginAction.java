@@ -49,12 +49,6 @@ public class LoginAction extends Action {
 		if (user != null && password.equals(user.getPassword())) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
-
-			ActionMessages actionMessages = new ActionMessages();
-			actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-					new ActionMessage("login.ok"));
-			saveMessages(request, actionMessages);
-
 			return mapping.findForward("success");
 		} else {
 			ActionMessages actionMessages = new ActionErrors();
@@ -69,5 +63,7 @@ public class LoginAction extends Action {
 			return mapping.getInputForward();
 		}
 	}
+	
+	
 
 }

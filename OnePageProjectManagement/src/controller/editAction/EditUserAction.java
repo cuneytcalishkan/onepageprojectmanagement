@@ -28,6 +28,13 @@ public class EditUserAction extends Action {
 		HttpSession session = request.getSession(true);
 		UserForm userForm = (UserForm) form;
 		Puser user = (Puser) session.getAttribute("user");
+		if(user == null){
+			ActionMessages actionMessages = new ActionMessages();
+	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+	        	new ActionMessage("user.notFound"));
+	        saveMessages(request,actionMessages);
+			return mapping.findForward("login");
+		}
 		if (user == null
 				|| (!user.getRole().equals("manager") && !(user.getId() == userForm
 						.getId()))) {

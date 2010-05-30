@@ -49,7 +49,7 @@ public class RemoveProjectMemberAction extends Action {
 		hibernateSession.close();
 
 		actionMessages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-				"member.removed"));
+				"member.removed",oldMember.getNameSurname()));
 		saveMessages(request, actionMessages);
 
 		return new ActionForward("/OnePageProject.do?id="+projectMemberForm.getProjectId());
