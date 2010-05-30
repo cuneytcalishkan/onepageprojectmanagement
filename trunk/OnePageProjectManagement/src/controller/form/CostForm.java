@@ -14,8 +14,8 @@ public class CostForm extends ActionForm {
 	private long id;
 	private long projectId;
 	private String color;
-	private float budget;
-	private float expense;
+	private int budget;
+	private int expense;
 
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
 		ActionErrors errors = new ActionErrors();
@@ -43,19 +43,19 @@ public class CostForm extends ActionForm {
 		this.color = color;
 	}
 
-	public float getBudget() {
+	public int getBudget() {
 		return budget;
 	}
 
-	public void setBudget(float budget) {
+	public void setBudget(int budget) {
 		this.budget = budget;
 	}
 
-	public float getExpense() {
+	public int getExpense() {
 		return expense;
 	}
 
-	public void setExpense(float expense) {
+	public void setExpense(int expense) {
 		this.expense = expense;
 	}
 
