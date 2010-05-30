@@ -28,12 +28,16 @@
 
 		<tr>
 			<td>Color&nbsp;:</td>
-			<td><html:text property="color" /><html:errors property="color" /></td>
+			<td><html:select property="color">
+				<html:option value="green"> Green </html:option>
+				<html:option value="yellow"> Yellow </html:option>
+				<html:option value="red"> Red </html:option>
+			</html:select><html:errors property="color" /></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td><html:submit>Save</html:submit> <c:if
-				test="${(not empty costForm.id) && (user.role=='project manager' )}">
+				test="${(not empty costForm.id)}">
 
 				<a href="javascript:Popup()" /> Delete Cost</a>
 			</c:if></td>
@@ -45,11 +49,7 @@
 	function Popup() {
 		sure = confirm("Are you sure?");
 		if (sure) {
-			window.location = "DeleteCost.do?id=" + $
-			{
-				costForm.id
-			}
-			;
+			window.location = "DeleteCost.do?id=" + ${costForm.id};
 		}
 	}
 </script>

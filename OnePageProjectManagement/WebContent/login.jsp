@@ -1,6 +1,8 @@
 <%@ include file="/include/header.jspfrag"%>
 <center>
-<html:errors />
+<html:messages id="message" message="true">
+  <h2><bean:write name="message"/></h2>
+</html:messages>
 <html:form action="/Login.do">
 	<table height=125 background="images/login.png"
 		style="background-repeat: no-repeat">

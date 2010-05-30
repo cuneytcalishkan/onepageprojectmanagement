@@ -64,7 +64,7 @@
 		</action>
 
 		<action path="/Logout" type="controller.LogoutAction">
-			<forward name="success" path="/Login.do" />
+			<forward name="success" path="/login.jsp" />
 		</action>
 
 		<action path="/MainPage" type="controller.MainPageAction"
