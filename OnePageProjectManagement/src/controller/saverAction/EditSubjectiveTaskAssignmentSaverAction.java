@@ -18,6 +18,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import controller.HibernateUtil;
+import controller.form.SubjectiveTaskAssignmentForm;
 import exception.AddElementException;
 
 public class EditSubjectiveTaskAssignmentSaverAction extends DispatchAction {
@@ -26,6 +27,7 @@ public class EditSubjectiveTaskAssignmentSaverAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession(true);
+		SubjectiveTaskAssignmentForm staf = (SubjectiveTaskAssignmentForm) form;
 		Puser user = (Puser) session.getAttribute("user");
 		if (user == null || !user.getRole().equals("project manager")) {
 			throw new RuntimeException(
@@ -34,13 +36,23 @@ public class EditSubjectiveTaskAssignmentSaverAction extends DispatchAction {
 
 		Session hibernateSession = HibernateUtil.getSession();
 		Transaction ta = hibernateSession.beginTransaction();
-		long taskId = (Long)session.getAttribute("taskId");
-		long userId = (Long)session.getAttribute("userId");
-		char priority = (Character)session.getAttribute("priority");
-		
-		Puser assignmentUser = (Puser) hibernateSession.get(Puser.class,userId);
-		SubjectiveTask task = (SubjectiveTask) hibernateSession.get(SubjectiveTask.class, taskId);
-		SubjectiveAssignment sa = new SubjectiveAssignment(priority, assignmentUser, task);
+		Long id = staf.getId();
+		SubjectiveAssignment sa;
+		if (id != null && id != 0)
+			sa = (SubjectiveAssignment) hibernateSession.get(
+					SubjectiveAssignment.class, id);
+		else
+			sa = new SubjectiveAssignment();
+
+		Puser assignmentUser = (Puser) hibernateSession.get(Puser.class, staf
+				.getPuserId());
+		SubjectiveTask task = (SubjectiveTask) hibernateSession.get(
+				SubjectiveTask.class, staf.getSubjectiveTaskId());
+
+		sa.setPriority(staf.getPriority());
+		sa.setPuser(assignmentUser);
+		sa.setSubjectiveTask(task);
+
 		hibernateSession.saveOrUpdate(sa);
 		try {
 			assignmentUser.addSubjectiveAssignment(sa);
