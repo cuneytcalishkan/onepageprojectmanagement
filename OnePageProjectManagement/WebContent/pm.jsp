@@ -5,7 +5,8 @@
 
 <%@page import="model.Project"%>
 <%@page import="controller.Utilizer"%>
-<%@page import="java.util.GregorianCalendar"%><table border="1">
+<%@page import="java.util.GregorianCalendar"%><table border="1"
+	align="center">
 	<tr>
 		<th colspan="3">ONE PAGE</th>
 		<th colspan="18">Project Leader : <c:out
@@ -23,7 +24,7 @@
 		<td colspan="4" align="center">Owner/ Priority</td>
 	</tr>
 	<tr>
-		<td colspan="15"><html:link action="/EditMajorTask"
+		<td align="center"><html:link action="/EditMajorTask"
 			paramId="projectId" paramName="project" paramProperty="id">
 							Add Major Task
 						</html:link></td>
@@ -55,7 +56,7 @@
 	</c:forEach>
 
 	<tr>
-		<td colspan="15"><html:link action="/EditSubjectiveTask"
+		<td align="center"><html:link action="/EditSubjectiveTask"
 			paramId="projectId" paramName="project" paramProperty="id">
 							Add Subjective Task
 						</html:link></td>
@@ -93,7 +94,7 @@
 	</tr>
 
 	<tr>
-		<td rowspan="3"><html:link action="/EditObjective"
+		<td rowspan="3" align="center"><html:link action="/EditObjective"
 			paramId="projectId" paramName="project" paramProperty="id">
 							Add Objective
 						</html:link></td>
@@ -130,36 +131,32 @@
 
 	<tr>
 		<td height="70">Costs</td>
-		<td>
-			<html:link action="/EditCost" paramId="projectId" paramName="project"
-				paramProperty="id">
+		<td><html:link action="/EditCost" paramId="projectId"
+			paramName="project" paramProperty="id">
 							Add Cost
-						</html:link>
+						</html:link></td>
+		<td>
+		<table border="0">
+			<th>Expense/Budget</th>
 			<c:forEach items='${project.costs}' var='cost'>
-			<td colspan="${cost.budget }">
-			<td colspan="${cost.expense}" color="${cost.color}"></td>
-			</td>
-	</c:forEach>
+				<tr align="center">
+					<td align="center" bgcolor="${cost.color}"><c:out
+						value="${cost.expense}" />/<c:out value="${cost.budget}" /></td>
+				</tr>
+			</c:forEach>
+		</table>
 		</td>
-	<tr>
-		<td colspan="2">Summary and Forecasts</td>
-		<td colspan="14">
-		<TABLE border="1" > <tr>
-			<html:link action="/EditSummary" paramId="projectId"
+		<tr>
+			<td colspan="2">Summary and Forecasts</td>
+			<td><html:link action="/EditSummary" paramId="projectId"
 				paramName="project" paramProperty="id">
 							Add Summary
-		</html:link>
-	</tr>
-	<c:forEach items='${project.summaries}' var='summary'>
-		<tr colspan="15">
-			<c:out value="${summary.description}" />
+		</html:link></td>
+			<td><c:forEach items='${project.summaries}' var='summary'>
+				<c:out value="${summary.description}" />
+				<hr color="#CCCCCC"></hr>
+			</c:forEach></td>
 		</tr>
-	</c:forEach>
-		<TABLE>
-		</td>
-</TABLE>
-</td>
-</tr>
+	</tr>
 </table>
 <%@ include file="/include/footer.jspfrag"%>
-
