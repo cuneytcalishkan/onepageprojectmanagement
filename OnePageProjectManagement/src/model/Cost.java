@@ -45,7 +45,7 @@ public class Cost {
 		this.color = color;
 	}
 
-	public float getBudget() {
+	public int getBudget() {
 		return budget;
 	}
 
