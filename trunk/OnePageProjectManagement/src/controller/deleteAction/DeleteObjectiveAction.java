@@ -36,6 +36,6 @@ public class DeleteObjectiveAction extends DispatchAction {
 				"objective.deleted"));
 		saveMessages(request, actionMessages);
 
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+o.getProjectId());
 	}
 }

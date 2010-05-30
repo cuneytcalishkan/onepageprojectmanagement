@@ -73,7 +73,7 @@
 		</action>
 
 		<action path="/OnePageProject" name="idForm"
-			type="controller.OnePageProjectAction" scope="request" input="pm.jsp">
+			type="controller.OnePageProjectAction" scope="request" input="/pm.jsp">
 			<forward name="success" path="/pm.jsp" />
 		</action>
 
@@ -87,13 +87,11 @@
 		<action path="/AddProjectMemberSaver" type="controller.saverAction.AddProjectMemberSaverAction"
 			name="projectMemberForm" scope="request" input="/addProjectMember.jsp"
 			validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 		
 		<action path="/RemoveProjectMember" type="controller.deleteAction.RemoveProjectMemberAction"
 			name="projectMemberForm" validate="false">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -106,14 +104,12 @@
 
 		<action path="/DeleteObjective" type="controller.deleteAction.DeleteObjectiveAction"
 			name="idForm">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
 		<action path="/EditObjectiveSaver" type="controller.saverAction.EditObjectiveSaverAction"
 			name="objectiveForm" scope="request" input="/editObjective.jsp"
 			validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -127,14 +123,12 @@
 
 		<action path="/DeleteCost" type="controller.deleteAction.DeleteCostAction"
 			name="idForm">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
 		<action path="/EditCostSaver" type="controller.saverAction.EditCostSaverAction"
 			name="costForm" scope="request" input="/editCost.jsp"
 			validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -154,7 +148,6 @@
 		<action path="/EditMajorTaskSaver" type="controller.saverAction.EditMajorTaskSaverAction"
 			name="majorTaskForm" scope="request" input="/editMajorTask.jsp"
 			validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -167,14 +160,12 @@
 
 		<action path="/DeleteSubjectiveTask" type="controller.deleteAction.DeleteSubjectiveTaskAction"
 			name="idForm">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
 		<action path="/EditSubjectiveTaskSaver" type="controller.saverAction.EditSubjectiveTaskSaverAction"
 			name="subjectiveTaskForm" scope="request" input="/editSubjectiveTask.jsp"
 			validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -206,7 +197,6 @@
 
 		<action path="/EditSummarySaver" type="controller.saverAction.EditSummarySaverAction"
 			name="summaryForm" scope="request" input="/editSummary.jsp" validate="true">
-			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
