@@ -14,6 +14,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -50,6 +52,10 @@ public class EditSummarySaverAction extends Action {
         hibernateSession.saveOrUpdate(summary);
         ta.commit();
         hibernateSession.close();
+        ActionMessages actionMessages = new ActionMessages();
+        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+                new ActionMessage("summary.added",summary.getDescription()));
+        saveMessages(request,actionMessages);
         return new ActionForward("/OnePageProject.do?id="+summaryForm.getProjectId());
     }
     

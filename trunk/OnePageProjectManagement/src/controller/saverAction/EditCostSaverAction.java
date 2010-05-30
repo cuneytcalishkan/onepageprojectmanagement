@@ -12,6 +12,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -59,6 +61,10 @@ public class EditCostSaverAction extends Action {
 		hibernateSession.saveOrUpdate(cost);
 		ta.commit();
 		hibernateSession.close();
+		ActionMessages actionMessages = new ActionMessages();
+        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+                new ActionMessage("cost.added",cost.getName()));
+        saveMessages(request,actionMessages);
 		return mapping.findForward("success");
 	}
 
