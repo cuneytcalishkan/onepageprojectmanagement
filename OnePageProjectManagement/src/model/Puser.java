@@ -61,6 +61,23 @@ public class Puser {
 		return this.nameSurname;
 	}
 
+	public void addSubjectiveAssignment(SubjectiveAssignment assgn)
+			throws AddElementException {
+		if (this.subjectiveAssignments == null)
+			setSubjectiveAssignments(new ArrayList<SubjectiveAssignment>());
+		if (!this.subjectiveAssignments.add(assgn))
+			throw new AddElementException(
+					"Specified assignment cannot be added!");
+	}
+
+	public void removeSubjectiveAssignment(SubjectiveAssignment assgn)
+			throws RemoveElementException {
+		if (this.subjectiveAssignments.size() > 0)
+			if (!this.subjectiveAssignments.remove(assgn))
+				throw new RemoveElementException(
+						"Specified assignment cannot be removed!");
+	}
+
 	public void addAssignment(Assignment assgn) throws AddElementException {
 		if (this.assignments == null)
 			setAssignments(new ArrayList<Assignment>());
