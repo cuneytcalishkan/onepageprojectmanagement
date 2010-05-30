@@ -25,16 +25,7 @@ public class MainPageAction extends Action {
 			HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(true);
 		Puser user = (Puser) session.getAttribute("user");
-		
-		if(user == null){
-			ActionMessages actionMessages = new ActionMessages();
-	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-	        	new ActionMessage("user.notFound"));
-	        saveMessages(request,actionMessages);
-			return mapping.findForward("login");
-		}
 		Session ses = HibernateUtil.getSession();
-
 		List<Project> projects;
 		List<Puser> users = null;
 		if (user.getRole().equals("manager")) {
