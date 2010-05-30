@@ -53,7 +53,20 @@
 				</c:choose></td>
 			</c:forEach>
 			<td align="center"><c:out value="${mTask.id}" /></td>
-			<td align="center"><c:out value="${mTask.name}" /></td>
+			<td align="center">
+			<c:choose>
+			<c:when test="${user.role=='project manager'}">
+			<c:url value="/EditMajorTask.do" var="url">
+					<c:param name="projectId" value="${project.id }" />
+					<c:param name="id" value="${mTask.id }" />
+				</c:url>
+				<html:link href="${url}" style="text-decoration: none">
+				<c:out value="${mTask.name}" /></html:link>
+			</c:when>
+			<c:otherwise>
+			<c:out value="${mTask.name}" /></c:otherwise>
+			</c:choose>
+			</td>
 			<%
 				for (int i = 1; i <= project.getSliceQuantity(); i++) {
 					
@@ -105,9 +118,9 @@
 				<c:choose>
 				 <c:when test="${user.role=='project manager'}"> 
 				  
-				<td ondblclick="javascript:assign(${member.id},${sTask.id})"> asds</td> </c:when>
+				<td ondblclick="javascript:assign(${member.id},${sTask.id})"> editable</td> </c:when>
 				<c:otherwise>
-				<td>afak</td>
+				<td>non editable</td>
 				</c:otherwise>
 				</c:choose>
 			</c:forEach>
