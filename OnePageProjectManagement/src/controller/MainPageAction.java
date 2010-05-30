@@ -25,13 +25,8 @@ public class MainPageAction extends Action {
 		Puser user = (Puser) session.getAttribute("user");
 		
 		if(user == null){
-			mapping.findForward("login");
+			return mapping.findForward("login");
 		}
-		if ( (!user.getRole().equals("project manager"))) {
-			throw new RuntimeException(
-					"You are not authorized to execute this action.");
-		}
-
 		Session ses = HibernateUtil.getSession();
 
 		List<Project> projects;
