@@ -38,7 +38,7 @@ public class EditMajorTaskAction extends Action {
 	        saveMessages(request,actionMessages);
 			return mapping.findForward("login");
 		}
-		if (user == null || (!user.getRole().equals("project manager"))) {
+		if (!user.getRole().equals("project manager")) {
 			throw new RuntimeException(
 					"You are not authorized to execute this action.");
 		}
@@ -54,6 +54,7 @@ public class EditMajorTaskAction extends Action {
 			majorTask = (MajorTask) hibernateSession.get(MajorTask.class,
 					majorTaskForm.getId());
 			majorTaskForm.setName(majorTask.getName());
+			majorTaskForm.setObjectivesList((String[])majorTask.getObjectives().toArray());
 			ta.commit();
 			hibernateSession.close();
 			return mapping.getInputForward();
@@ -62,7 +63,6 @@ public class EditMajorTaskAction extends Action {
 				ta.rollback();
 				hibernateSession.close();
 			}
-			System.out.println(e.getMessage());
 			ActionMessages actionMessages = new ActionMessages();
 			actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
 					new ActionMessage("majorTask.notFound"));
