@@ -17,6 +17,7 @@ public class Cost {
 	private int budget;
 	private int expense;
 	private Project project;
+	private String name;
 
 	public Cost() {
 		super();
@@ -81,4 +82,14 @@ public class Cost {
 		this.project = project;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	
 }

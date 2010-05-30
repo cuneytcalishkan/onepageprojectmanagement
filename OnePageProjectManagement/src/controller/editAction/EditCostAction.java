@@ -47,6 +47,7 @@ public class EditCostAction extends DispatchAction {
 			costForm.setColor(cost.getColor());
 			costForm.setBudget(cost.getBudget());
 			costForm.setExpense(cost.getExpense());
+			costForm.setName(cost.getName());
 			costForm.setProjectId(project.getId());
 			ta.commit();
 			hibernateSession.close();

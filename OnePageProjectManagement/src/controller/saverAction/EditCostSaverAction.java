@@ -46,6 +46,7 @@ public class EditCostSaverAction extends DispatchAction {
 		cost.setColor(costForm.getColor());
 		cost.setBudget(costForm.getBudget());
 		cost.setExpense(costForm.getExpense());
+		cost.setName(costForm.getName());
 		cost.setProject(project);
 		System.out.println(costForm.getProjectId());
 		try {

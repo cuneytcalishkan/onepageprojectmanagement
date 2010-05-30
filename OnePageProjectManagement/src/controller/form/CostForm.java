@@ -16,6 +16,7 @@ public class CostForm extends ActionForm {
 	private String color;
 	private int budget;
 	private int expense;
+	private String name;
 
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
 		ActionErrors errors = new ActionErrors();
@@ -24,6 +25,8 @@ public class CostForm extends ActionForm {
 			errors.add("color", new ActionMessage("empty"));
 		if (budget <= 0)
 			errors.add("budget", new ActionMessage("zero"));
+		if (name != null && name.equals(""))
+			errors.add("name", new ActionMessage("empty"));
 		return errors;
 	}
 
@@ -65,6 +68,14 @@ public class CostForm extends ActionForm {
 
 	public void setProjectId(long projectId) {
 		this.projectId = projectId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
