@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Project;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
@@ -39,10 +40,11 @@ public class AddProjectMemberAction extends DispatchAction {
 		try {
 			ta = hibernateSession.beginTransaction();
 			List<Puser> members = (List<Puser>) hibernateSession.createCriteria(Puser.class)
-				.list();
-			List<Puser> alreadyMembers = (List<Puser>) hibernateSession.createCriteria(Puser.class)
-			.add(Restrictions.eq("project.id",projectMemberForm.getProjectId() )).list(); //TODO olmaz bu, gelince yaparým :P
-			
+				.add(Restrictions.eq("role","project member")).list();
+			System.out.println("pmembers : " + members.size());
+			List<Puser> alreadyMembers = ((Project) hibernateSession.get(Project.class,
+					projectMemberForm.getProjectId())).getUsers(); //TODO olmaz bu, gelince yaparým :P
+			System.out.println("already members : " + alreadyMembers.size());
 			request.setAttribute("members", members);
 			request.setAttribute("alreadyMembers", alreadyMembers);
 			ta.commit();

@@ -20,7 +20,7 @@ public class ProjectMemberForm extends ActionForm {
 	public ActionErrors validate(ActionMapping arg0, HttpServletRequest arg1) {
 		ActionErrors errors = new ActionErrors();
 
-		if (projectMember != null && projectMember.equals(""))
+		if (projectMember != null || projectMember.equals(""))
 			errors.add("name", new ActionMessage("empty"));
 		if (projectId == 0)
 			errors.add("project", new ActionMessage("project.empty"));
