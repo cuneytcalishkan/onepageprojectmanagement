@@ -37,6 +37,6 @@ public class DeleteMajorTaskAction extends DispatchAction {
 				"majorTask.deleted"));
 		saveMessages(request, actionMessages);
 
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+o.getObjectives().get(0).getProjectId());
 	}
 }

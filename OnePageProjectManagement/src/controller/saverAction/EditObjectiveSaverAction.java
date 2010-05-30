@@ -44,7 +44,7 @@ public class EditObjectiveSaverAction extends DispatchAction {
 		hibernateSession.saveOrUpdate(objective);
 		ta.commit();
 		hibernateSession.close();
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+objectiveForm.getProjectId());
 	}
 
 }

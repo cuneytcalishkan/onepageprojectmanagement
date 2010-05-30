@@ -37,7 +37,7 @@ public class DeleteCostAction extends DispatchAction {
 				"cost.deleted"));
 		saveMessages(request, actionMessages);
 
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+o.getProject().getId());
 	}
 
 }

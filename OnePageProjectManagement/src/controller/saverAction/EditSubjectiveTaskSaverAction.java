@@ -58,7 +58,7 @@ public class EditSubjectiveTaskSaverAction extends DispatchAction {
 		hibernateSession.saveOrUpdate(subjectiveTask);
 		ta.commit();
 		hibernateSession.close();
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+subjectiveTaskForm.getProjectId());
 	}
 
 }

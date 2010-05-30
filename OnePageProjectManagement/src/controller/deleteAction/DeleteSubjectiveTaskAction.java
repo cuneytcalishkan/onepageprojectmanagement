@@ -38,7 +38,7 @@ public class DeleteSubjectiveTaskAction extends DispatchAction {
 				"subjectiveTask.deleted"));
 		saveMessages(request, actionMessages);
 
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+o.getObjectives().get(0).getProject().getId());
 	}
 
 }

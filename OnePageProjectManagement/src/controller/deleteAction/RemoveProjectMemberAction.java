@@ -52,7 +52,7 @@ public class RemoveProjectMemberAction extends DispatchAction {
 				"member.removed"));
 		saveMessages(request, actionMessages);
 
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+projectMemberForm.getProjectId());
 	}
 
 }

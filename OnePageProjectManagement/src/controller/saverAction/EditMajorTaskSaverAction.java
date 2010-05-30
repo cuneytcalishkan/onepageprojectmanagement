@@ -57,7 +57,7 @@ public class EditMajorTaskSaverAction extends DispatchAction{
 		hibernateSession.saveOrUpdate(majorTask);
 		ta.commit();
 		hibernateSession.close();
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+majorTaskForm.getProjectId());
 	}
 	
 }

@@ -36,6 +36,6 @@ public class DeleteSummaryAction extends DispatchAction {
 				"summary.deleted"));
 		saveMessages(request, actionMessages);
 
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+o.getProject().getId());
 	}
 }

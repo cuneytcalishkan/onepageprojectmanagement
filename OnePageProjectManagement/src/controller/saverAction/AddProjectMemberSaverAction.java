@@ -51,7 +51,7 @@ public class AddProjectMemberSaverAction extends DispatchAction {
 		}
 		ta.commit();
 		hibernateSession.close();
-		return mapping.findForward("success");
+		return new ActionForward("/OnePageProject.do?id="+projectMemberForm.getProjectId());
 	}
 
 }
