@@ -38,7 +38,7 @@
 		<tr>
 			<td>&nbsp;</td>
 			<td><html:submit>Save</html:submit> <c:if
-				test="${(not empty costForm.id)}">
+				test="${(not empty costForm.id) && (costForm.id != 0)}">
 
 				<a href="javascript:Popup()" /> Delete Cost</a>
 			</c:if></td>

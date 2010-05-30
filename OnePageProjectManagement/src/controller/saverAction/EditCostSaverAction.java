@@ -65,7 +65,7 @@ public class EditCostSaverAction extends Action {
         actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
                 new ActionMessage("cost.added",cost.getName()));
         saveMessages(request,actionMessages);
-		return mapping.findForward("success");
+        return new ActionForward("/OnePageProject.do?id="+costForm.getProjectId());
 	}
 
 }
