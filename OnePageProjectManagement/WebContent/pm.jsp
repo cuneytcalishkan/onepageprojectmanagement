@@ -60,8 +60,8 @@
 					<c:param name="projectId" value="${project.id }" />
 					<c:param name="id" value="${mTask.id }" />
 				</c:url>
-				<html:link href="${url}" style="text-decoration: none">
-				<c:out value="${mTask.name}" /></html:link>
+				<html:link href="${url}" style="text-decoration: none"><font style="font-size:12px">
+				<c:out value="${mTask.name}" /></font></html:link>
 			</c:when>
 			<c:otherwise>
 			<c:out value="${mTask.name}" /></c:otherwise>

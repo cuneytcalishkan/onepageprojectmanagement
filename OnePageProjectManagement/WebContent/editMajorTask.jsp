@@ -13,7 +13,7 @@
 		<tr>
 			<td>&nbsp;</td>
 			<td><html:submit>Save</html:submit> 
-			<c:if test="${(not empty costForm.id) && (costForm.id !=0)}">
+			<c:if test="${(not empty majorTaskForm.id) && (majorTaskForm.id !=0)}">
 				<a href="javascript:Popup()" /> Delete Task</a>
 			</c:if></td>
 		</tr>
@@ -38,7 +38,7 @@
 		if (sure) {
 			window.location = "DeleteMajorTask.do?id=" + $
 			{
-				costForm.id
+				majorTaskForm.id
 			}
 			;
 		}
