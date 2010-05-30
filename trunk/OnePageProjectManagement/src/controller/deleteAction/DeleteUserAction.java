@@ -28,18 +28,16 @@ public class DeleteUserAction extends Action {
 
         IdForm idForm = (IdForm) form;
         Long id = idForm.getId();
-
-        ActionMessages actionMessages = new ActionMessages();
-        //<html:link action="/DeleteObservation" paramId="id" paramName="observationForm" paramProperty="id">
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Puser p = (Puser) session.get(Puser.class, id);
         session.delete(p);
         session.getTransaction().commit();
         session.close();
-
+        
+        ActionMessages actionMessages = new ActionMessages();
         actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
-                new ActionMessage("user.deleted"));
+                new ActionMessage("user.deleted",p.getNameSurname()));
         saveMessages(request,actionMessages);
 
         return mapping.findForward("success");

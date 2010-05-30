@@ -29,6 +29,13 @@ public class EditSummaryAction extends Action {
 		HttpSession session = request.getSession(true);
 		SummaryForm summaryForm = (SummaryForm) form;
 		Puser user = (Puser) session.getAttribute("user");
+		if(user == null){
+			ActionMessages actionMessages = new ActionMessages();
+	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+	        	new ActionMessage("user.notFound"));
+	        saveMessages(request,actionMessages);
+			return mapping.findForward("login");
+		}
 
 		Transaction ta = null;
 		Session hibernateSession = HibernateUtil.getSession();

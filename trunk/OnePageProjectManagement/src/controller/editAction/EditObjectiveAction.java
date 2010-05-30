@@ -27,6 +27,13 @@ public class EditObjectiveAction extends Action {
 		HttpSession session = request.getSession(true);
 		ObjectiveForm objectiveForm = (ObjectiveForm) form;
 		Puser user = (Puser) session.getAttribute("user");
+		if(user == null){
+			ActionMessages actionMessages = new ActionMessages();
+	        actionMessages.add(ActionMessages.GLOBAL_MESSAGE,
+	        	new ActionMessage("user.notFound"));
+	        saveMessages(request,actionMessages);
+			return mapping.findForward("login");
+		}
 		if (user == null || (!user.getRole().equals("project manager"))) {
 			throw new RuntimeException(
 					"You are not authorized to execute this action.");

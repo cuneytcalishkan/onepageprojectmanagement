@@ -35,7 +35,7 @@ public class DeleteSubjectiveTaskAction extends Action {
 		session.close();
 
 		actionMessages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-				"subjectiveTask.deleted"));
+				"subjectiveTask.deleted",o.getName()));
 		saveMessages(request, actionMessages);
 
 		return new ActionForward("/OnePageProject.do?id="+o.getObjectives().get(0).getProject().getId());
