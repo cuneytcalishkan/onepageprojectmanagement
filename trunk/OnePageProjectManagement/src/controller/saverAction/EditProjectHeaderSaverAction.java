@@ -32,7 +32,7 @@ public class EditProjectHeaderSaverAction extends Action {
         HttpSession session = request.getSession(true);
         Puser user = (Puser) session.getAttribute("user");
         if( user == null || ! user.getRole().equals("project manager"))  {
-        	throw new RuntimeException("You are not unauthorized to execute this action.");
+        	throw new RuntimeException("You are not authorized to execute this action.");
         }
 
         ProjectHeaderForm projectForm = (ProjectHeaderForm) form;
