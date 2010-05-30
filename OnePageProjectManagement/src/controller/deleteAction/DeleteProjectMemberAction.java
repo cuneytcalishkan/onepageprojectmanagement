@@ -30,7 +30,7 @@ public class DeleteProjectMemberAction extends DispatchAction {
 		session.beginTransaction();
 
 		Objective o = (Objective) session.get(Objective.class, id);
-		session.delete(o);
+		session.delete(o); //silmeyeceðiz, projeden kaldýrýp update
 		session.getTransaction().commit();
 		session.close();
 

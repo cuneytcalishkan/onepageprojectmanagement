@@ -126,6 +126,10 @@
 		<c:forEach items='${project.users}' var='user'>
 			<td><c:out value="${user.nameSurname }" /></td>
 		</c:forEach>
+		<td><html:link action="/AddProjectMember" paramId="projectId"
+			paramName="project" paramProperty="id">
+							Add Project Member
+						</html:link></td>
 	</tr>
 
 
