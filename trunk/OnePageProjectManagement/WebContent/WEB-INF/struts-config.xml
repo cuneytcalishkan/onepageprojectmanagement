@@ -90,6 +90,12 @@
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
 		</action>
+		
+		<action path="/RemoveProjectMember" type="controller.deleteAction.RemoveProjectMemberAction"
+			name="projectMemberForm" validate="false">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
 
 		<action path="/EditObjective" type="controller.editAction.EditObjectiveAction"
 			name="objectiveForm" input="/editObjective.jsp" scope="request"

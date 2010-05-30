@@ -124,8 +124,14 @@
 			}
 		%>
 		<c:forEach items='${project.users}' var='user'>
-			<td><c:out value="${user.nameSurname }" /></td>
-		</c:forEach>
+			<td><c:out value="${user.nameSurname }" /> 
+			<c:url
+				value="/RemoveProjectMember.do" var="url">
+				<c:param name="projectId" value="${project.id }" />
+				<c:param name="projectMember" value="${user.id }" />
+			</c:url>
+			<a href="${url}">Remove from Project</a>
+		</c:forEach></td>
 		<td><html:link action="/AddProjectMember" paramId="projectId"
 			paramName="project" paramProperty="id">
 							Add Project Member
