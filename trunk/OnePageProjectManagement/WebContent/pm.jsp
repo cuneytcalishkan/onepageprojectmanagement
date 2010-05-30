@@ -6,6 +6,10 @@
 <%@page import="model.Project"%>
 <%@page import="controller.Utilizer"%>
 <%@page import="java.util.GregorianCalendar"%>
+
+<html:messages id="message" message="true">
+	<h3><font color = #FF0000><bean:write name="message" /></font></h3>
+</html:messages>
 <table border="1" align="center" cellpadding="5" cellspacing="0"
 	bordercolor="#ECECEC">
 	<tr>
