@@ -10,12 +10,12 @@ import model.MajorTask;
 import model.Objective;
 import model.Puser;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -23,7 +23,7 @@ import org.hibernate.criterion.Restrictions;
 import controller.HibernateUtil;
 import controller.form.MajorTaskForm;
 
-public class EditMajorTaskAction extends DispatchAction {
+public class EditMajorTaskAction extends Action {
 
 	@SuppressWarnings("unchecked")
 	public ActionForward execute(ActionMapping mapping, ActionForm form,

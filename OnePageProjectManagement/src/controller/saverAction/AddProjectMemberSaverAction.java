@@ -7,10 +7,10 @@ import javax.servlet.http.HttpSession;
 import model.Project;
 import model.Puser;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,7 +19,7 @@ import controller.HibernateUtil;
 import controller.form.ProjectMemberForm;
 import exception.AddElementException;
 
-public class AddProjectMemberSaverAction extends DispatchAction {
+public class AddProjectMemberSaverAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
