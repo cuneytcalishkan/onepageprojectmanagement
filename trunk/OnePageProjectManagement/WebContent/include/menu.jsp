@@ -7,12 +7,12 @@
 			<html:link forward="login">Login</html:link>
 		</c:when>
 		<c:otherwise>
-    Hello, <html:link action="/EditUser" paramId="id" paramName="user"
-				paramProperty="id">
-				<c:out value="${user.nameSurname}" />
+    Hello, <html:link style = "text-decoration:none" action="/EditUser" paramId="id" paramName="user"
+				paramProperty="id">[&nbsp;
+				<c:out value="${user.nameSurname}" />&nbsp;]
 			</html:link>
 			<br />
-			<html:link forward="logout">Logout</html:link>
+			<html:link style = "text-decoration:none" forward="logout">[ Logout ]</html:link>
 		</c:otherwise>
 	</c:choose></td>
 
