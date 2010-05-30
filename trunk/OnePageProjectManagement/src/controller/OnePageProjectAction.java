@@ -23,7 +23,6 @@ import controller.form.IdForm;
 
 public class OnePageProjectAction extends Action {
     
-	@SuppressWarnings("unchecked")
 	public ActionForward execute(ActionMapping mapping,
             ActionForm form,
             HttpServletRequest request,
