@@ -11,10 +11,13 @@
 		type="com.seitti.tunnusx.web.FeedbackForm"/>
 	-->
 	<form-beans>
+		<form-bean name="subjectiveTaskAssignmentForm"
+			type="controller.form.SubjectiveTaskAssignmentForm" />
+
 		<form-bean name="projectMemberForm" type="controller.form.ProjectMemberForm" />
 
 		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
-		
+
 		<form-bean name="subjectiveTaskForm" type="controller.form.SubjectiveTaskForm" />
 
 		<form-bean name="objectiveForm" type="controller.form.ObjectiveForm" />
@@ -39,10 +42,12 @@
 
 		<forward name="editObjective" path="/EditObjective.do" />
 
+		<forward name="editSubjectiveTaskAssignment" path="/EditSubjectiveTaskAssignment.do" />
+
 		<forward name="editCost" path="/EditCost.do" />
 
 		<forward name="editMajorTask" path="/EditMajorTask.do" />
-		
+
 		<forward name="editSubjectiveTask" path="/EditSubjectiveTask.do" />
 
 		<forward name="editUser" path="/EditUser.do" />
@@ -77,36 +82,42 @@
 			<forward name="success" path="/pm.jsp" />
 		</action>
 
-		<!-- EditSubjectiveTaskAssignmentSaverAction -->
-		<action path="/EditSubjectiveTaskAssignmentSaver" type="controller.saverAction.EditSubjectiveTaskAssignmentSaverAction"
-			scope="request" validate="true">
-			<forward name="failure" path="/message.jsp" />
-		</action>
-	
-
 		<action path="/AddProjectMember" type="controller.editAction.AddProjectMemberAction"
 			name="projectMemberForm" input="/addProjectMember.jsp" scope="request"
 			validate="false">
 			<forward name="success" path="/addProjectMember.jsp" />
 			<forward name="failure" path="/addProjectMember.jsp" />
 		</action>
-		
-		<action path="/AddProjectMemberSaver" type="controller.saverAction.AddProjectMemberSaverAction"
-			name="projectMemberForm" scope="request" input="/addProjectMember.jsp"
-			validate="true">
-			<forward name="failure" path="/message.jsp" />
-		</action>
-		
-		<action path="/RemoveProjectMember" type="controller.deleteAction.RemoveProjectMemberAction"
-			name="projectMemberForm" validate="false">
+
+		<action path="/AddProjectMemberSaver"
+			type="controller.saverAction.AddProjectMemberSaverAction" name="projectMemberForm"
+			scope="request" input="/addProjectMember.jsp" validate="true">
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
-		<action path="/EditObjective" type="controller.editAction.EditObjectiveAction"
-			name="objectiveForm" input="/editObjective.jsp" scope="request"
+		<action path="/RemoveProjectMember"
+			type="controller.deleteAction.RemoveProjectMemberAction" name="projectMemberForm"
 			validate="false">
-			<forward name="success" path="/editObjective.jsp" />
-			<forward name="failure" path="/editObjective.jsp" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/EditSubjectiveTaskAssignmentSaver"
+			type="controller.saverAction.EditSubjectiveTaskAssignmentSaverAction"
+			scope="request" validate="true" name="subjectiveTaskAssignmentForm">
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/DeleteSubjectiveTaskAssignment"
+			type="controller.deleteAction.DeleteSubjectiveTaskAssignment" name="subjectiveTaskAssignmentForm"
+			validate="false">
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/EditSubjectiveTaskAssignment"
+			type="controller.editAction.EditSubjectiveTaskAssignmentaction" name="SubjectiveTaskAssignmentForm"
+			scope="request" validate="false">
+			<forward name="success" path="/pm.jsp" />
+			<forward name="failure" path="/pm.jsp" />
 		</action>
 
 		<action path="/DeleteObjective" type="controller.deleteAction.DeleteObjectiveAction"
@@ -120,10 +131,15 @@
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
-		
-		<action path="/EditCost" type="controller.editAction.EditCostAction"
-			name="costForm" input="/editCost.jsp" scope="request"
+		<action path="/EditObjective" type="controller.editAction.EditObjectiveAction"
+			name="objectiveForm" input="/editObjective.jsp" scope="request"
 			validate="false">
+			<forward name="success" path="/editObjective.jsp" />
+			<forward name="failure" path="/editObjective.jsp" />
+		</action>
+
+		<action path="/EditCost" type="controller.editAction.EditCostAction"
+			name="costForm" input="/editCost.jsp" scope="request" validate="false">
 			<forward name="success" path="/editCost.jsp" />
 			<forward name="failure" path="/editCost.jsp" />
 		</action>
@@ -134,8 +150,7 @@
 		</action>
 
 		<action path="/EditCostSaver" type="controller.saverAction.EditCostSaverAction"
-			name="costForm" scope="request" input="/editCost.jsp"
-			validate="true">
+			name="costForm" scope="request" input="/editCost.jsp" validate="true">
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
@@ -165,14 +180,14 @@
 			<forward name="failure" path="/editSubjectiveTask.jsp" />
 		</action>
 
-		<action path="/DeleteSubjectiveTask" type="controller.deleteAction.DeleteSubjectiveTaskAction"
-			name="idForm">
+		<action path="/DeleteSubjectiveTask"
+			type="controller.deleteAction.DeleteSubjectiveTaskAction" name="idForm">
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
-		<action path="/EditSubjectiveTaskSaver" type="controller.saverAction.EditSubjectiveTaskSaverAction"
-			name="subjectiveTaskForm" scope="request" input="/editSubjectiveTask.jsp"
-			validate="true">
+		<action path="/EditSubjectiveTaskSaver"
+			type="controller.saverAction.EditSubjectiveTaskSaverAction" name="subjectiveTaskForm"
+			scope="request" input="/editSubjectiveTask.jsp" validate="true">
 			<forward name="failure" path="/message.jsp" />
 		</action>
 
