@@ -1,13 +1,11 @@
 
 <tr>
-	<%-- show menu. If category is frontpage, show it as active etc. --%>
-	<%-- condition?a:b below means that if "condition" is true, then a else b --%>
 	<td><c:choose>
 		<c:when test="${user==null}">
-			<html:link forward="login">Login</html:link>
+			<% response.sendRedirect(response.encodeRedirectURL("login.jsp")); %>
 		</c:when>
 		<c:otherwise>
-    Hello, <html:link style = "text-decoration:none" action="/EditUser" paramId="id" paramName="user"
+    Hello, <html:link action="/EditUser" paramId="id" paramName="user"
 				paramProperty="id">[&nbsp;
 				<c:out value="${user.nameSurname}" />&nbsp;]
 			</html:link>

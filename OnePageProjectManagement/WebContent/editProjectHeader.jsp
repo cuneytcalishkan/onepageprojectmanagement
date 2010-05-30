@@ -1,4 +1,5 @@
 <%@ include file="/include/header.jspfrag"%>
+<%@ include file="/include/menu.jsp"%>
 <center>
 <h2>Project Operations</h2>
 
