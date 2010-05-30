@@ -77,6 +77,13 @@
 			<forward name="success" path="/pm.jsp" />
 		</action>
 
+		<!-- EditSubjectiveTaskAssignmentSaverAction -->
+		<action path="/EditSubjectiveTaskAssignmentSaver" type="controller.saverAction.EditSubjectiveTaskAssignmentSaverAction"
+			scope="request" validate="true">
+			<forward name="failure" path="/message.jsp" />
+		</action>
+	
+
 		<action path="/AddProjectMember" type="controller.editAction.AddProjectMemberAction"
 			name="projectMemberForm" input="/addProjectMember.jsp" scope="request"
 			validate="false">
