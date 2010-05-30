@@ -14,6 +14,8 @@
 		<form-bean name="projectMemberForm" type="controller.form.ProjectMemberForm" />
 
 		<form-bean name="majorTaskForm" type="controller.form.MajorTaskForm" />
+		
+		<form-bean name="subjectiveTaskForm" type="controller.form.SubjectiveTaskForm" />
 
 		<form-bean name="objectiveForm" type="controller.form.ObjectiveForm" />
 
@@ -40,6 +42,8 @@
 		<forward name="editCost" path="/EditCost.do" />
 
 		<forward name="editMajorTask" path="/EditMajorTask.do" />
+		
+		<forward name="editSubjectiveTask" path="/EditSubjectiveTask.do" />
 
 		<forward name="editUser" path="/EditUser.do" />
 
@@ -143,6 +147,26 @@
 
 		<action path="/EditMajorTaskSaver" type="controller.saverAction.EditMajorTaskSaverAction"
 			name="majorTaskForm" scope="request" input="/editMajorTask.jsp"
+			validate="true">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/EditSubjectiveTask" type="controller.editAction.EditSubjectiveTaskAction"
+			name="subjectiveTaskForm" input="/editSubjectiveTask.jsp" scope="request"
+			validate="false">
+			<forward name="success" path="/editSubjectiveTask.jsp" />
+			<forward name="failure" path="/editSubjectiveTask.jsp" />
+		</action>
+
+		<action path="/DeleteSubjectiveTask" type="controller.deleteAction.DeleteSubjectiveTaskAction"
+			name="idForm">
+			<forward name="success" path="/MainPage.do" redirect="true" />
+			<forward name="failure" path="/message.jsp" />
+		</action>
+
+		<action path="/EditSubjectiveTaskSaver" type="controller.saverAction.EditSubjectiveTaskSaverAction"
+			name="subjectiveTaskForm" scope="request" input="/editSubjectiveTask.jsp"
 			validate="true">
 			<forward name="success" path="/MainPage.do" redirect="true" />
 			<forward name="failure" path="/message.jsp" />
