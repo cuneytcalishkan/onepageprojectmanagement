@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Objective;
-import model.Project;
 import model.Puser;
 
 import org.apache.struts.action.ActionForm;
