@@ -14,22 +14,22 @@ public class Cost {
 
 	private long id;
 	private String color;
-	private float budget;
-	private float expense;
+	private int budget;
+	private int expense;
 	private Project project;
 
 	public Cost() {
 		super();
 	}
 
-	public Cost(String color, float budget, float expense) {
+	public Cost(String color, int budget, int expense) {
 		super();
 		this.color = color;
 		this.budget = budget;
 		this.expense = expense;
 	}
 
-	public Cost(long id, String color, float budget, float expense) {
+	public Cost(long id, String color, int budget, int expense) {
 		super();
 		this.id = id;
 		this.color = color;
@@ -49,15 +49,15 @@ public class Cost {
 		return budget;
 	}
 
-	public void setBudget(float budget) {
+	public void setBudget(int budget) {
 		this.budget = budget;
 	}
 
-	public float getExpense() {
+	public int getExpense() {
 		return expense;
 	}
 
-	public void setExpense(float expense) {
+	public void setExpense(int expense) {
 		this.expense = expense;
 	}
 
