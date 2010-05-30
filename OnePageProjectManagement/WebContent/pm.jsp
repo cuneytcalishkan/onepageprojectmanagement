@@ -101,10 +101,26 @@
 			<%
 				}
 			%>
-			<td>A</td>
+			<c:forEach items='${project.users}' var='member'>
+				<c:choose>
+				 <c:when test="${user.role=='project manager'}"> 
+				  
+				<td ondblclick="javascript:assign(${member.id},${sTask.id})"> asds</td> </c:when>
+				<c:otherwise>
+				<td>afak</td>
+				</c:otherwise>
+				</c:choose>
+			</c:forEach>
 			<td>&nbsp;</td>
 		</tr>
 	</c:forEach>
+	<script language="javascript">
+	function assign(userId,taskId) {
+		priority = prompt("Priority?","A");
+		window.location = "EditSubjectiveTaskAssignmentSaver.do?userId="+userId+
+			"&taskId="+taskId + "&priority="+priority;
+	}
+</script>
 
 	<tr>
 		<c:forEach items='${project.objectives}' var='objective'>
@@ -142,7 +158,7 @@
 				<html:link href="${url}" style="text-decoration: none">
 					<font style="font-size: 12px">[ Remove ]</font>
 				</html:link>
-			</c:if></td>
+			</c:if>
 		</c:forEach>
 
 		<c:if test="${user.role=='project manager'}">
