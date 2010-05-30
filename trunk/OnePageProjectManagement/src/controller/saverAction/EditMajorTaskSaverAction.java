@@ -8,10 +8,10 @@ import model.MajorTask;
 import model.Objective;
 import model.Puser;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,7 +19,7 @@ import controller.HibernateUtil;
 import controller.form.MajorTaskForm;
 import exception.AddElementException;
 
-public class EditMajorTaskSaverAction extends DispatchAction{
+public class EditMajorTaskSaverAction extends Action{
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {

@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import model.Project;
 import model.Puser;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -19,7 +19,7 @@ import controller.HibernateUtil;
 import controller.form.ProjectMemberForm;
 import exception.RemoveElementException;
 
-public class RemoveProjectMemberAction extends DispatchAction {
+public class RemoveProjectMemberAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {

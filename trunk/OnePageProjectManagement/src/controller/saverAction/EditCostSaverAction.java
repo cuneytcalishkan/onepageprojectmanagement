@@ -8,10 +8,10 @@ import model.Cost;
 import model.Project;
 import model.Puser;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,7 +19,7 @@ import controller.HibernateUtil;
 import controller.form.CostForm;
 import exception.AddElementException;
 
-public class EditCostSaverAction extends DispatchAction {
+public class EditCostSaverAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {

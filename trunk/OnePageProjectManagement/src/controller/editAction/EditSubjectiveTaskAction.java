@@ -6,16 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.SubjectiveTask;
 import model.Objective;
 import model.Puser;
+import model.SubjectiveTask;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -23,7 +23,7 @@ import org.hibernate.criterion.Restrictions;
 import controller.HibernateUtil;
 import controller.form.SubjectiveTaskForm;
 
-public class EditSubjectiveTaskAction extends DispatchAction {
+public class EditSubjectiveTaskAction extends Action {
 
 	@SuppressWarnings("unchecked")
 	public ActionForward execute(ActionMapping mapping, ActionForm form,

@@ -10,10 +10,10 @@ import model.Project;
 import model.Puser;
 import model.Summary;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -23,7 +23,7 @@ import controller.form.SummaryForm;
 /**
  * @author tile
  */
-public class EditSummarySaverAction extends DispatchAction {
+public class EditSummarySaverAction extends Action {
     
     public ActionForward execute(ActionMapping mapping,
             ActionForm form,

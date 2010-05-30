@@ -4,14 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.SubjectiveTask;
 import model.Objective;
 import model.Puser;
+import model.SubjectiveTask;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.actions.DispatchAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,7 +19,7 @@ import controller.HibernateUtil;
 import controller.form.SubjectiveTaskForm;
 import exception.AddElementException;
 
-public class EditSubjectiveTaskSaverAction extends DispatchAction {
+public class EditSubjectiveTaskSaverAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
