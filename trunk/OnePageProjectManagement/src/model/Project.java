@@ -65,6 +65,11 @@ public class Project {
 	}
 
 	@Transient
+	public int getObjectivesSize() {
+		return this.objectives.size();
+	}
+
+	@Transient
 	public String getStartDateAsString() {
 		return Utilizer.getDateAsString(startDate);
 	}
