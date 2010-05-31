@@ -116,7 +116,20 @@
 				</c:choose></td>
 			</c:forEach>
 			<td align="center"><c:out value="${sTask.id}" /></td>
-			<td align="center"><c:out value="${sTask.name}" /></td>
+			<td>
+			<c:choose>
+			<c:when test="${user.role=='project manager'}">
+			<c:url value="/EditSubjectiveTask.do" var="url">
+					<c:param name="projectId" value="${project.id }" />
+					<c:param name="id" value="${sTask.id }" />
+				</c:url>
+				<html:link href="${url}" style="text-decoration: none">
+				<c:out value="${sTask.name}" /></html:link>
+			</c:when>
+			<c:otherwise>
+			<c:out value="${sTask.name}" /></c:otherwise>
+			</c:choose>
+			</td>
 			<%
 				for (int i = 1; i <= project.getSliceQuantity(); i++) {
 			%>
