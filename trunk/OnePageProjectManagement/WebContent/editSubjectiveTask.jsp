@@ -4,7 +4,7 @@
 <center>
 <h2>Subjective Task Operations</h2>
 <html:form action="/EditSubjectiveTaskSaver">
-
+	<html:hidden property="projectId"/>
 	<table border='0'>
 		<tr>
 			<td>Subjective Task Name&nbsp;:</td>
