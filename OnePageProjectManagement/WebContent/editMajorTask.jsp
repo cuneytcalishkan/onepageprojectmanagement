@@ -4,7 +4,7 @@
 <center>
 <h2>Major Task Operations</h2>
 <html:form action="/EditMajorTaskSaver">
-
+	<html:hidden property="projectId"/>
 	<table border='0'>
 		<tr>
 			<td>Major Task Name&nbsp;:</td>
