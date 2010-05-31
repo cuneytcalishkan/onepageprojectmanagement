@@ -73,7 +73,7 @@
 			<c:forEach items='${mTask.majorSlices}' var='slice'>
 
 			</c:forEach>
-			<td>
+			<td align="center">
 				<% if(i%3==0){ %>
 				<img src="images/circle.png" />
 				<%} %>
@@ -87,8 +87,9 @@
 			<%
 				}
 			%>
-			<td>A</td>
-			<td>&nbsp;</td>
+			<c:forEach items='${project.users}' var='priority'>
+				<td align="center">A</td>
+			</c:forEach>
 		</tr>
 	</c:forEach>
 	<c:if test="${user.role=='project manager'}">
