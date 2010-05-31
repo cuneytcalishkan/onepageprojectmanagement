@@ -9,7 +9,7 @@
 <%@page import="java.util.GregorianCalendar"%>
 
 <html:messages id="message" message="true">
-	<h3><font color = #FF0000><bean:write name="message" /></font></h3>
+	<h3><font color=#FF0000><bean:write name="message" /></font></h3>
 </html:messages>
 <table border="1" align="center" cellpadding="5" cellspacing="0"
 	bordercolor="#ECECEC">
@@ -53,28 +53,37 @@
 				</c:choose></td>
 			</c:forEach>
 			<td align="center"><c:out value="${mTask.id}" /></td>
-			<td align="center">
-			<c:choose>
-			<c:when test="${user.role=='project manager'}">
-			<c:url value="/EditMajorTask.do" var="url">
-					<c:param name="projectId" value="${project.id }" />
-					<c:param name="id" value="${mTask.id }" />
-				</c:url>
-				<html:link href="${url}" style="text-decoration: none"><font style="font-size:12px">
-				<c:out value="${mTask.name}" /></font></html:link>
-			</c:when>
-			<c:otherwise>
-			<c:out value="${mTask.name}" /></c:otherwise>
-			</c:choose>
-			</td>
+			<td align="center"><c:choose>
+				<c:when test="${user.role=='project manager'}">
+					<c:url value="/EditMajorTask.do" var="url">
+						<c:param name="projectId" value="${project.id }" />
+						<c:param name="id" value="${mTask.id }" />
+					</c:url>
+					<html:link href="${url}" style="text-decoration: none">
+						<font style="font-size: 12px"> <c:out value="${mTask.name}" /></font>
+					</html:link>
+				</c:when>
+				<c:otherwise>
+					<c:out value="${mTask.name}" />
+				</c:otherwise>
+			</c:choose></td>
 			<%
 				for (int i = 1; i <= project.getSliceQuantity(); i++) {
-					
 			%>
-					<c:forEach items='${mTask.majorSlices}' var='slice'>
-					
-					</c:forEach>
-			<td><%=String.valueOf(i)%></td>
+			<c:forEach items='${mTask.majorSlices}' var='slice'>
+
+			</c:forEach>
+			<td>
+				<% if(i%3==0){ %>
+				<img src="images/circle.png" />
+				<%} %>
+				<% if(i%3==1){ %>
+				<img src="images/completed.png" />
+				<% } %>
+				<% if(i%3==2){ %>
+				<img src="images/verified.png" />
+				<% } %>
+			</td>
 			<%
 				}
 			%>
@@ -116,12 +125,14 @@
 			%>
 			<c:forEach items='${project.users}' var='member'>
 				<c:choose>
-				 <c:when test="${user.role=='project manager'}"> 
-				  
-				<td ondblclick="javascript:assign(${member.id},${sTask.id})"> editable</td> </c:when>
-				<c:otherwise>
-				<td>non editable</td>
-				</c:otherwise>
+					<c:when test="${user.role=='project manager'}">
+
+						<td ondblclick="javascript:assign(${member.id},${sTask.id})">
+						editable</td>
+					</c:when>
+					<c:otherwise>
+						<td>non editable</td>
+					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<td>&nbsp;</td>
